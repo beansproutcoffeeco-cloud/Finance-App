@@ -1,0 +1,6 @@
+# Node / CI tooling (dev-only; the app itself has no runtime deps)
+node_modules/
+
+# OS / editor cruft
+.DS_Store
+*.log
