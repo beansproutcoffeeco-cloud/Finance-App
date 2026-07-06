@@ -169,6 +169,30 @@ label.fld > span { display: block; margin-bottom: 4px; }
 .meter.over .track { background: color-mix(in srgb, var(--critical) 20%, var(--surface-1)); }
 .meter .overnote { color: var(--critical); font-size: 12px; margin-top: 3px; font-weight: 600; }
 
+/* --- budgets (pkg A) --- */
+.tile.wide { grid-column: 1 / -1; }
+.meter .track { position: relative; }
+.meter.near .fill { background: var(--warning); }
+.pace-tick { position: absolute; top: -2px; bottom: -2px; width: 2px; border-radius: 1px; background: var(--text-primary); opacity: .5; }
+.meter.overall .track { overflow: visible; }
+.meter.overall { margin-bottom: 16px; }
+.meter .top { align-items: center; }
+.meter .top .iconbtn { padding: 2px 4px; flex: 0 0 auto; }
+.meter[data-cat], .meter.unbudgeted { cursor: pointer; border-radius: 8px; padding: 2px 4px; margin: 0 -4px 12px; }
+.meter[data-cat]:hover, .meter.unbudgeted:hover { background: var(--wash); }
+.meter[data-cat]:focus-visible, .meter.unbudgeted:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.meter.unbudgeted .track { background: none; border: 1px dashed var(--border); }
+.meter.unbudgeted .fill { background: var(--text-muted); opacity: .45; }
+.budget-editor { background: var(--surface-1); border: 1px solid var(--accent); border-radius: 12px; padding: 12px; margin: -6px 0 12px; }
+.ub-list { margin: -6px 0 10px; padding: 0 4px; }
+.ub-row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); padding: 6px 0; border-bottom: 1px solid var(--grid); }
+.ub-row:last-child { border-bottom: 0; }
+.ub-row .amt { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--text-primary); }
+.budget-setup .bsrow { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--grid); }
+.budget-setup .bsrow:last-of-type { border-bottom: 0; }
+.budget-setup .bsrow input[type=number] { width: 96px; flex: 0 0 auto; margin-left: auto; }
+.budget-setup .bsrow .chk { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-primary); flex: 1; min-width: 0; }
+
 /* ---- transactions ---- */
 .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
 .filters > * { flex: 1 1 130px; }
@@ -812,6 +836,71 @@ function lastNMonths(n, endYm) {
   return out;
 }
 
+/* ---------- budgeting ---------- */
+function daysInMonth(ym) {
+  const [y, m] = ym.split('-').map(Number);
+  return new Date(y, m, 0).getDate();
+}
+
+// How far through a month we are: frac=1 for past months, 0 for future ones,
+// day/days while the month is in progress.
+function monthProgress(ym) {
+  const days = daysInMonth(ym);
+  const cur = curMonth();
+  if (ym < cur) return { day: days, days, frac: 1 };
+  if (ym > cur) return { day: 0, days, frac: 0 };
+  const day = Number(todayStr().slice(8, 10));
+  return { day, days, frac: day / days };
+}
+
+// Aggregate a month's budget picture from an already-computed monthTotals()
+// result. Refunds (negative category totals) clamp to 0 so bars and sums never
+// go negative. state: ok < 80% <= near <= 100% < over.
+function budgetSummary(ym, totals) {
+  const rows = [];
+  let totalBudget = 0, totalSpent = 0;
+  for (const c of data.categories) {
+    if (!c.budget || c.kind === 'income') continue;
+    const spent = Math.max(0, totals.byCat[c.id] || 0);
+    const frac = spent / c.budget;
+    rows.push({ cat: c, budget: c.budget, spent, frac, state: frac > 1 ? 'over' : frac >= 0.8 ? 'near' : 'ok' });
+    totalBudget += c.budget;
+    totalSpent += spent;
+  }
+  // Expense categories with spend this month but no budget ("everything else").
+  const ubMap = {};
+  for (const [id, amt] of Object.entries(totals.byCat)) {
+    if (amt <= 0) continue;
+    const c = catById(id);
+    if (c.budget) continue;
+    if (ubMap[c.id]) ubMap[c.id].amt += amt;
+    else ubMap[c.id] = { cat: c, amt };
+  }
+  const unbudgeted = Object.values(ubMap).sort((a, b) => b.amt - a.amt);
+  const unbudgetedTotal = unbudgeted.reduce((s, u) => s + u.amt, 0);
+  return { rows, totalBudget, totalSpent, left: totalBudget - totalSpent, unbudgetedTotal, unbudgeted };
+}
+
+// Round a suggested budget up to a friendly step: $5 under $50, $10 under
+// $200, $25 above. Cents in, cents out.
+function roundBudgetUp(cents) {
+  const step = cents < 5000 ? 500 : cents < 20000 ? 1000 : 2500;
+  return Math.ceil(cents / step) * step;
+}
+
+// Suggest a monthly budget from the last 3 completed months: average of the
+// months that actually had spend, but only when at least 2 did (one data point
+// is too thin to suggest from). Returns cents, or null when there's no basis.
+function suggestBudget(catId) {
+  const months = lastNMonths(3, monthAdd(curMonth(), -1));
+  const spends = months
+    .map(ym => Math.max(0, monthTotals(ym).byCat[catId] || 0))
+    .filter(v => v > 0);
+  if (spends.length < 2) return null;
+  const avg = spends.reduce((s, v) => s + v, 0) / spends.length;
+  return roundBudgetUp(avg);
+}
+
 /* ---------- recurring detection ---------- */
 function median(arr) {
   const s = arr.slice().sort((a, b) => a - b);
@@ -881,6 +970,8 @@ const state = {
   fTransfers: false, fUncatOnly: false,
   editingId: null, showCount: 100,
   addOpen: false,
+  budgetEdit: null,       // catId with the inline budget editor open, or null
+  unbudgetedOpen: false,  // "Everything else" row expanded on the dashboard
 };
 
 const VIEWS = [
@@ -961,12 +1052,44 @@ function renderDashboard(app) {
     return `<div class="delta ${good ? 'good' : 'bad'}">${d > 0 ? '▲' : '▼'} ${moneyAbs(d)} vs ${monthShort(monthAdd(ym, -1))}</div>`;
   };
 
-  html += `<div class="tiles">
-    <div class="tile hero">
-      <div class="lbl">Net · ${monthLabel(ym)}</div>
+  const bs = budgetSummary(ym, t);
+  const mp = monthProgress(ym);
+  const hasBudgets = bs.rows.length > 0;
+  const isCurMonth = ym === curMonth();
+  // Hero becomes "Left to spend" only when budgets exist AND we're looking at
+  // the current month; past months and budget-less data keep Net (zero regression).
+  const heroBudget = hasBudgets && isCurMonth;
+
+  const netTileInner = `
       <div class="val">${t.net < 0 ? '−' : ''}${moneyAbs(t.net)}</div>
-      ${deltaHtml(t.net, prev.income || prev.spending ? prev.net : 0, true)}
-    </div>
+      ${deltaHtml(t.net, prev.income || prev.spending ? prev.net : 0, true)}`;
+  let heroHtml;
+  if (heroBudget) {
+    const overCount = bs.rows.filter(r => r.state === 'over').length;
+    const expected = Math.round(bs.totalBudget * mp.frac);
+    const paceDiff = bs.totalSpent - expected;
+    let paceBit;
+    if (Math.abs(paceDiff) <= bs.totalBudget * 0.03) paceBit = `<span style="color:var(--good-text)">on pace ✓</span>`;
+    else if (paceDiff > 0) paceBit = `<span style="color:var(--critical)">${moneyAbs(paceDiff)} over pace</span>`;
+    else paceBit = `<span style="color:var(--good-text)">${moneyAbs(paceDiff)} ahead of pace</span>`;
+    const overBit = overCount ? ` · <span style="color:var(--critical)">${overCount} over budget</span>` : '';
+    heroHtml = `<div class="tile hero">
+      <div class="lbl">Left to spend · ${monthLabel(ym)}</div>
+      <div class="val">${bs.left < 0 ? '−' : ''}${moneyAbs(bs.left)}${bs.left < 0 ? ' <span class="sub" style="font-size:20px">over</span>' : ''}</div>
+      <div class="delta muted">of ${moneyAbs(bs.totalBudget)} budgeted · ${paceBit}${overBit}</div>
+    </div>`;
+  } else {
+    heroHtml = `<div class="tile hero">
+      <div class="lbl">Net · ${monthLabel(ym)}</div>${netTileInner}
+    </div>`;
+  }
+
+  const hasSavedTile = data.accounts.some(a => SAVE_TYPES.includes(a.type));
+  // Grid: hero full width, Income/Spending pair, then a Net worth pair —
+  // with Net (demoted) when the hero is budget-led, with Saved otherwise.
+  // Whichever tile is left alone goes full width so no orphan cell remains.
+  html += `<div class="tiles">
+    ${heroHtml}
     <div class="tile" data-drill="income" role="button" tabindex="0" aria-label="Income ${moneyAbs(t.income)} in ${esc(monthLabel(ym))} — view income transactions">
       <div class="lbl">Income</div>
       <div class="val">${moneyAbs(t.income)}</div>
@@ -977,18 +1100,23 @@ function renderDashboard(app) {
       <div class="val">${moneyAbs(t.spending)}</div>
       ${deltaHtml(t.spending, prev.spending, false)}
     </div>
-    <div class="tile">
+    ${heroBudget ? `<div class="tile">
+      <div class="lbl">Net · ${monthLabel(ym)}</div>${netTileInner}
+    </div>` : ''}
+    <div class="tile${!heroBudget && !hasSavedTile ? ' wide' : ''}">
       <div class="lbl">Net worth</div>
       <div class="val">${nw < 0 ? '−' : ''}${moneyAbs(nw)}</div>
       <div class="delta muted">across all accounts</div>
     </div>
-    ${data.accounts.some(a => SAVE_TYPES.includes(a.type)) ? `
-    <div class="tile" style="grid-column:1/-1">
+    ${hasSavedTile ? `
+    <div class="tile${heroBudget ? ' wide' : ''}">
       <div class="lbl">🏦 Saved · into savings & investments</div>
       <div class="val">${saved < 0 ? '−' : '+'}${moneyAbs(saved)}</div>
       ${deltaHtml(saved, savedPrev, true)}
     </div>` : ''}
   </div>`;
+
+  html += budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth);
 
   // category breakdown — single-series horizontal bars, direct-labeled
   const cats = Object.entries(t.byCat)
@@ -1005,26 +1133,6 @@ function renderDashboard(app) {
         <div class="trackcell"><div class="bar" data-tip="${esc(cat.name)}: ${moneyAbs(amt)} (${t.spending ? Math.round(amt / t.spending * 100) : 0}%)" style="width:${Math.max(1, amt / max * 100)}%;background:${catColor(cat)}"></div></div>
         <div class="amt">${moneyAbs(amt)}</div>
       </div>`).join('') + `</div>`;
-  }
-  html += `</div>`;
-
-  // budgets
-  const budgeted = data.categories.filter(c => c.budget && c.kind !== 'income');
-  html += `<div class="card"><h2>Budgets · ${monthLabel(ym)}</h2>`;
-  if (!budgeted.length) {
-    html += `<div class="sub">No budgets set. Add monthly limits per category in <a href="#" id="goto-settings">Settings</a>.</div>`;
-  } else {
-    for (const c of budgeted) {
-      const spent = t.byCat[c.id] || 0;
-      const pct = Math.min(100, spent / c.budget * 100);
-      const over = spent > c.budget;
-      html += `<div class="meter ${over ? 'over' : ''}">
-        <div class="top"><span class="nm">${c.emoji} ${esc(c.name)}</span>
-          <span class="st">${moneyAbs(spent)} <span class="muted">/ ${moneyAbs(c.budget)}</span></span></div>
-        <div class="track"><div class="fill" style="width:${pct}%"></div></div>
-        ${over ? `<div class="overnote">⚠️ Over budget by ${moneyAbs(spent - c.budget)}</div>` : ''}
-      </div>`;
-    }
   }
   html += `</div>`;
 
@@ -1048,7 +1156,221 @@ function renderDashboard(app) {
     el.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } };
   });
 
+  // Budget meter rows drill like .crow; the ✎ button toggles the inline editor.
+  $$('.meter[data-cat]', app).forEach(el => {
+    const act = () => drillToActivity(el.dataset.cat, ym);
+    el.onclick = e => { if (e.target.closest && e.target.closest('.budget-edit')) return; act(); };
+    el.onkeydown = e => { if (e.target !== el) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } };
+  });
+  $$('.budget-edit', app).forEach(btn => {
+    btn.onclick = e => {
+      e.stopPropagation();
+      state.budgetEdit = state.budgetEdit === btn.dataset.cat ? null : btn.dataset.cat;
+      render();
+    };
+  });
+
+  // "Everything else" expands into the unbudgeted category list.
+  const ubt = $('#ub-toggle', app);
+  if (ubt) {
+    const tog = () => { state.unbudgetedOpen = !state.unbudgetedOpen; render(); };
+    ubt.onclick = tog;
+    ubt.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tog(); } };
+  }
+  $$('.ub-set', app).forEach(chip => {
+    const act = () => { state.budgetEdit = chip.dataset.cat; render(); };
+    chip.onclick = e => { e.stopPropagation(); act(); };
+    chip.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); act(); } };
+  });
+
+  wireBudgetEditor(app);
+
+  // Bootstrap card: write all checked budgets at once, or dismiss quietly.
+  const bsStart = $('#bs-start', app);
+  if (bsStart) bsStart.onclick = () => {
+    let n = 0;
+    $$('.bs-chk', app).forEach(chk => {
+      if (!chk.checked) return;
+      const c = data.categories.find(x => x.id === chk.dataset.cat);
+      const inp = $(`.bs-amt[data-cat="${chk.dataset.cat}"]`, app);
+      const v = inp ? parseFloat(inp.value) : NaN;
+      if (c && isFinite(v) && v > 0) { c.budget = Math.round(v * 100); n++; }
+    });
+    if (!n) { toast('Tick at least one category and give it an amount'); return; }
+    saveData(); render();
+    toast(`Budgets set for ${n} categor${n === 1 ? 'y' : 'ies'}`);
+  };
+  const bsLater = $('#bs-later', app);
+  if (bsLater) bsLater.onclick = () => {
+    if (!data.settings) data.settings = {};
+    data.settings.budgetsSetupDismissed = true;
+    saveData(); render();
+  };
+  const reopen = $('#budget-reopen', app);
+  if (reopen) reopen.onclick = e => {
+    e.preventDefault();
+    if (!data.settings) data.settings = {};
+    data.settings.budgetsSetupDismissed = false;
+    saveData(); render();
+  };
+
   wireBarTips(app);
+}
+
+// The dashboard's budget card: overall bar + pace copy, per-category meters
+// (over → near → ok, remaining-first labels), the "Everything else" rollup,
+// and — when no budgets exist yet — the one-time setup card.
+function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth) {
+  if (!hasBudgets) {
+    if (data.settings && data.settings.budgetsSetupDismissed) {
+      return `<div class="sub" style="margin:0 2px 12px"><a href="#" id="budget-reopen">Set budgets →</a></div>`;
+    }
+    return budgetSetupCardHtml();
+  }
+
+  const overallPct = bs.totalBudget ? bs.totalSpent / bs.totalBudget : 0;
+  const fillColor = overallPct > 1 ? 'var(--critical)' : overallPct >= 0.9 ? 'var(--warning)' : 'var(--accent)';
+  let paceLine = '';
+  if (isCurMonth) {
+    const expected = Math.round(bs.totalBudget * mp.frac);
+    const diff = bs.totalSpent - expected;
+    if (Math.abs(diff) <= bs.totalBudget * 0.03) paceLine = 'On pace';
+    else if (diff > 0) paceLine = `${moneyAbs(diff)} over pace for day ${mp.day}`;
+    else paceLine = `${moneyAbs(diff)} ahead of pace`;
+    // Projection needs a week of data before it stops being noise.
+    if (mp.day > 7 && mp.frac > 0) paceLine += ` · ~${moneyAbs(Math.round(bs.totalSpent / mp.frac))} by month end at this rate`;
+  } else if (ym < curMonth()) {
+    paceLine = bs.left >= 0 ? `Finished ${moneyAbs(bs.left)} under budget ✓` : `${moneyAbs(bs.left)} over budget`;
+  }
+
+  let html = `<div class="card"><h2>Budget · ${monthShort(ym)}</h2>
+    <div class="meter overall">
+      <div class="top"><span class="nm">${moneyAbs(bs.totalSpent)} of ${moneyAbs(bs.totalBudget)}</span>
+        <span class="st">${bs.left >= 0 ? moneyAbs(bs.left) + ' left' : `<span style="color:var(--critical)">${moneyAbs(bs.left)} over</span>`}</span></div>
+      <div class="track"><div class="fill" style="width:${Math.min(100, Math.max(0, overallPct * 100))}%;background:${fillColor}"></div>${isCurMonth ? `<div class="pace-tick" style="left:calc(${(mp.frac * 100).toFixed(1)}% - 1px)"></div>` : ''}</div>
+      ${paceLine ? `<div class="sub" style="margin-top:4px">${paceLine}</div>` : ''}
+    </div>`;
+
+  const rank = { over: 0, near: 1, ok: 2 };
+  const rows = bs.rows.slice().sort((a, b) => (rank[a.state] - rank[b.state]) || (b.frac - a.frac));
+  for (const r of rows) {
+    const c = r.cat;
+    const rem = r.budget - r.spent;
+    const w = Math.min(100, Math.max(0, r.frac * 100));
+    html += `<div class="meter ${r.state}" data-cat="${esc(c.id)}" role="button" tabindex="0" aria-label="${esc(c.name)}: ${moneyAbs(r.spent)} of ${moneyAbs(r.budget)} budget — view transactions">
+      <div class="top"><span class="nm">${c.emoji} ${esc(c.name)}</span>
+        <span class="st">${rem >= 0 ? `${moneyAbs(rem)} left` : `<span style="color:var(--critical)">${moneyAbs(rem)} over</span>`}
+          <span class="muted" style="font-size:11.5px">${moneyAbs(r.spent)} / ${moneyAbs(r.budget)}</span></span>
+        <button class="iconbtn budget-edit" data-cat="${esc(c.id)}" aria-label="Edit ${esc(c.name)} budget">✎</button></div>
+      <div class="track"><div class="fill" style="width:${w}%${r.state === 'ok' ? `;background:${catColor(c)}` : ''}"></div></div>
+      ${r.state === 'over' ? `<div class="overnote">⚠️ Over budget by ${moneyAbs(r.spent - r.budget)}</div>` : ''}
+    </div>`;
+    if (state.budgetEdit === c.id) html += budgetEditorHtml(c);
+  }
+
+  if (bs.unbudgeted.length) {
+    const nUb = bs.unbudgeted.length;
+    const ubW = bs.totalBudget ? Math.min(100, bs.unbudgetedTotal / bs.totalBudget * 100) : 100;
+    html += `<div class="meter unbudgeted" id="ub-toggle" role="button" tabindex="0" aria-expanded="${state.unbudgetedOpen}" aria-label="Everything else: ${moneyAbs(bs.unbudgetedTotal)} across ${nUb} unbudgeted categor${nUb === 1 ? 'y' : 'ies'}">
+      <div class="top"><span class="nm">📦 Everything else · ${moneyAbs(bs.unbudgetedTotal)} across ${nUb} categor${nUb === 1 ? 'y' : 'ies'}</span>
+        <span class="st muted">${state.unbudgetedOpen ? '▲' : '▼'}</span></div>
+      <div class="track"><div class="fill" style="width:${ubW}%"></div></div>
+    </div>`;
+    if (state.unbudgetedOpen) {
+      html += `<div class="ub-list">` + bs.unbudgeted.map(u => {
+        let h = `<div class="ub-row"><span>${u.cat.emoji} ${esc(u.cat.name)}</span>
+          <span class="amt">${moneyAbs(u.amt)}</span>
+          <span class="chip ub-set" role="button" tabindex="0" data-cat="${esc(u.cat.id)}">Set budget</span></div>`;
+        if (state.budgetEdit === u.cat.id) h += budgetEditorHtml(u.cat);
+        return h;
+      }).join('') + `</div>`;
+      if (t.spending > 0 && bs.unbudgetedTotal > t.spending * 0.25) {
+        html += `<div class="sub" style="margin-top:2px">Over a quarter of this month's spending has no budget yet.</div>`;
+      }
+    }
+  }
+
+  html += `</div>`;
+  return html;
+}
+
+// One-time setup card shown when there are transactions but no budgets yet:
+// top 5 expense categories by 3-month average, prefilled with suggestions.
+function budgetSetupCardHtml() {
+  const compMonths = lastNMonths(3, monthAdd(curMonth(), -1));
+  const cand = data.categories
+    .filter(c => c.kind !== 'income' && c.id !== 'uncat')
+    .map(c => {
+      const avg = compMonths.reduce((s, m) => s + Math.max(0, monthTotals(m).byCat[c.id] || 0), 0) / compMonths.length;
+      return { cat: c, avg, sug: suggestBudget(c.id) };
+    })
+    .filter(x => x.avg > 0)
+    .sort((a, b) => b.avg - a.avg)
+    .slice(0, 5);
+  if (!cand.length) {
+    return `<div class="card"><h2>Budget</h2>
+      <div class="sub">No budgets set. Add monthly limits per category in <a href="#" id="goto-settings">Settings</a>.</div></div>`;
+  }
+  return `<div class="card budget-setup"><h2>Start budgeting</h2>
+    <div class="sub" style="margin-bottom:8px">We drafted these from your last 3 months of spending — adjust or untick, then start.</div>
+    ${cand.map(x => `<div class="bsrow">
+      <label class="chk"><input type="checkbox" class="bs-chk" data-cat="${esc(x.cat.id)}" checked> ${x.cat.emoji} ${esc(x.cat.name)}</label>
+      <input type="number" class="bs-amt" min="0" step="1" inputmode="decimal" data-cat="${esc(x.cat.id)}" value="${((x.sug != null ? x.sug : roundBudgetUp(x.avg)) / 100).toFixed(0)}" aria-label="Monthly budget for ${esc(x.cat.name)}">
+    </div>`).join('')}
+    <div class="row" style="margin-top:10px">
+      <button class="btn" id="bs-start">Start budgeting</button>
+      <button class="btn secondary" id="bs-later">Not now</button>
+    </div>
+  </div>`;
+}
+
+// Inline budget editor rendered under the row being edited. Prefills with the
+// current budget, or the suggestion when none is set yet.
+function budgetEditorHtml(c) {
+  const sug = suggestBudget(c.id);
+  const val = c.budget ? (c.budget / 100).toFixed(0) : (sug != null ? (sug / 100).toFixed(0) : '');
+  return `<div class="budget-editor" data-cat="${esc(c.id)}">
+    <label class="fld"><span>${c.emoji} ${esc(c.name)} budget ($ / month)</span>
+      <input type="number" id="be-amt" min="0" step="1" inputmode="decimal" placeholder="e.g. 400" value="${val}"></label>
+    ${sug != null ? `<div class="sub" style="margin:-2px 0 10px">Suggested: <span class="chip" id="be-sug" role="button" tabindex="0">${moneyAbs(sug)} (3-mo avg)</span></div>` : ''}
+    <div class="row">
+      <button class="btn small" id="be-save">Save</button>
+      ${c.budget ? `<button class="btn secondary small" id="be-remove">Remove budget</button>` : ''}
+      <button class="btn secondary small" id="be-cancel">Cancel</button>
+    </div>
+  </div>`;
+}
+
+// Save/remove semantics identical to the Settings budget inputs — two doors,
+// one field (cat.budget in cents, null = no budget).
+function wireBudgetEditor(root) {
+  const ed = $('.budget-editor', root);
+  if (!ed) return;
+  const c = data.categories.find(x => x.id === ed.dataset.cat);
+  if (!c) return;
+  const save = () => {
+    const v = parseFloat($('#be-amt', ed).value);
+    c.budget = isFinite(v) && v > 0 ? Math.round(v * 100) : null;
+    saveData(); state.budgetEdit = null; render();
+    toast(c.budget ? `${c.name} budget: ${moneyAbs(c.budget)}/month` : `${c.name} budget removed`);
+  };
+  $('#be-save', ed).onclick = save;
+  $('#be-amt', ed).onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); save(); } };
+  const rm = $('#be-remove', ed);
+  if (rm) rm.onclick = () => {
+    c.budget = null; saveData(); state.budgetEdit = null; render();
+    toast(`${c.name} budget removed`);
+  };
+  $('#be-cancel', ed).onclick = () => { state.budgetEdit = null; render(); };
+  const sugChip = $('#be-sug', ed);
+  if (sugChip) {
+    const fill = () => {
+      const s = suggestBudget(c.id);
+      if (s != null) $('#be-amt', ed).value = (s / 100).toFixed(0);
+    };
+    sugChip.onclick = fill;
+    sugChip.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fill(); } };
+  }
 }
 
 // Switch to the Activity view with a category + month filter applied, clearing
