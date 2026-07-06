@@ -161,9 +161,9 @@ label.fld > span { display: block; margin-bottom: 4px; }
 
 /* ---- stat tiles ---- */
 .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-.tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-l); padding: 12px var(--sp-4); box-shadow: var(--shadow-1); }
+.tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-l); padding: 12px var(--sp-4); box-shadow: var(--shadow-1); min-width: 0; }
 .tile .lbl { font-size: 12.5px; color: var(--text-secondary); }
-.tile .val { font-size: var(--fs-stat); font-weight: 600; margin-top: 2px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.tile .val { font-size: var(--fs-stat); font-weight: 600; margin-top: 2px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; overflow-wrap: anywhere; }
 .tile .delta { font-size: 12px; margin-top: 2px; }
 .tile.hero { grid-column: 1 / -1; background: color-mix(in srgb, var(--accent) 7%, var(--surface-1)); }
 .tile.hero .val { font-size: var(--fs-hero); font-weight: 650; }
@@ -291,7 +291,7 @@ table.mini tr:last-child td { border-bottom: 0; }
 /* ---- settings lists ---- */
 .setrow { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--grid); }
 .setrow:last-child { border-bottom: 0; }
-.setrow input[type=text] { flex: 1; }
+.setrow input[type=text] { flex: 1; min-width: 0; }
 .setrow input.budget { width: 96px; flex: 0 0 auto; }
 .iconbtn {
   border: 0; background: none; cursor: pointer; font-size: 15px; color: var(--text-muted);
@@ -319,6 +319,10 @@ table.mini tr:last-child td { border-bottom: 0; }
 .sheet h2 { font-size: 17px; }
 .preview-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
 .preview-scroll table.mini { min-width: 420px; }
+/* Narrow in-card tables (Trends "By month", Savings contributions): no forced
+   min-width, so all columns fit a phone viewport instead of scrolling off-screen. */
+.preview-scroll.flush { border: 0; }
+.preview-scroll.flush table.mini { min-width: 0; }
 td.badrow { color: var(--critical); }
 
 #toast {
@@ -375,7 +379,7 @@ textarea:focus-visible, nav.tabbar button:focus-visible, .iconbtn:focus-visible 
   background: var(--page); padding: 0 8px;
 }
 .moneyfield .aff { font-size: 12px; color: var(--text-muted); flex: 0 0 auto; }
-.setrow .moneyfield input.budget { border: 0; background: none; width: 58px; min-height: 42px; padding: 8px 4px; border-radius: 0; }
+.setrow .moneyfield input.budget { border: 0; background: none; width: 86px; min-height: 42px; padding: 8px 4px; border-radius: 0; }
 .moneyfield:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
 .setrow .moneyfield input.budget:focus-visible { outline: none; }
 .danger-zone { border-top: 1px solid var(--border); margin-top: var(--sp-5); padding-top: var(--sp-4); }
@@ -1038,6 +1042,37 @@ function roundBudgetUp(cents) {
   return Math.ceil(cents / step) * step;
 }
 
+// Budget cents → prefill string for a $ input. Whole dollars stay terse
+// ("250"); anything with cents keeps them ("250.75") so reopening an editor
+// and saving untouched never silently rewrites the stored amount.
+function budgetInputVal(cents) {
+  if (!cents) return '';
+  return cents % 100 ? (cents / 100).toFixed(2) : String(cents / 100);
+}
+
+// Expected share of the month's budgeted spending by day mp.day. Linear by
+// default, but when recent months have data, the median of their real
+// through-this-day shares is used instead — so front-loaded fixed bills
+// (rent on the 1st) don't read as "over pace" for the rest of every month.
+function paceExpectedFrac(ym, mp) {
+  if (mp.frac <= 0) return 0;
+  if (mp.frac >= 1) return 1;
+  const budgeted = new Set(data.categories.filter(c => c.budget && c.kind !== 'income').map(c => c.id));
+  if (!budgeted.size) return mp.frac;
+  const fracs = [];
+  for (let k = 1; k <= 3; k++) {
+    const m = monthAdd(ym, -k);
+    let tot = 0, thru = 0;
+    for (const t of realTxns()) {
+      if (monthKey(t.date) !== m || isSavingsAcct(t.accountId) || !budgeted.has(t.categoryId)) continue;
+      tot += -t.amount;
+      if (Number(t.date.slice(8, 10)) <= mp.day) thru += -t.amount;
+    }
+    if (tot > 0) fracs.push(Math.max(0, Math.min(1, thru / tot)));
+  }
+  return fracs.length ? median(fracs) : mp.frac;
+}
+
 // Suggest a monthly budget from the last 3 completed months: average of the
 // months that actually had spend, but only when at least 2 did (one data point
 // is too thin to suggest from). Returns cents, or null when there's no basis.
@@ -1229,11 +1264,11 @@ function renderDashboard(app) {
   let heroHtml;
   if (heroBudget) {
     const overCount = bs.rows.filter(r => r.state === 'over').length;
-    const expected = Math.round(bs.totalBudget * mp.frac);
+    const expected = Math.round(bs.totalBudget * paceExpectedFrac(ym, mp));
     const paceDiff = bs.totalSpent - expected;
     let paceBit;
     if (Math.abs(paceDiff) <= bs.totalBudget * 0.03) paceBit = `<span style="color:var(--good-text)">on pace ✓</span>`;
-    else if (paceDiff > 0) paceBit = `<span style="color:var(--critical)">${moneyAbs(paceDiff)} over pace</span>`;
+    else if (paceDiff > 0) paceBit = `<span style="color:var(--text-warning)">${moneyAbs(paceDiff)} over pace</span>`;
     else paceBit = `<span style="color:var(--good-text)">${moneyAbs(paceDiff)} ahead of pace</span>`;
     const overBit = overCount ? ` · <span style="color:var(--critical)">${overCount} over budget</span>` : '';
     heroHtml = `<div class="tile hero">
@@ -1292,17 +1327,21 @@ function renderDashboard(app) {
     const max = cats[0].amt;
     html += `<div class="cbar">` + cats.map(({ cat, amt }) => {
       const pct = t.spending ? Math.round(amt / t.spending * 100) : 0;
+      // Net-refund categories (amt < 0) get no share-of-spending percent —
+      // "$20.00 · -2%" reads as nonsense; label the row as a net refund instead.
+      const pctBit = amt > 0 && t.spending ? `${pct}%` : amt < 0 ? 'net refund' : '';
       return `
-      <div class="crow" role="button" tabindex="0" data-cat="${esc(cat.id)}" aria-label="${esc(cat.name)}: ${moneyAbs(amt)} in ${esc(monthLabel(ym))} — view transactions">
+      <div class="crow" role="button" tabindex="0" data-cat="${esc(cat.id)}" aria-label="${esc(cat.name)}: ${moneyAbs(amt)}${amt < 0 ? ' net refund' : ''} in ${esc(monthLabel(ym))} — view transactions">
         <div class="name">${cat.emoji} ${esc(cat.name)}</div>
-        <div class="trackcell"><div class="bar" data-tip="${esc(cat.name)}: ${moneyAbs(amt)} (${pct}%)" style="width:${Math.max(1, amt / max * 100)}%;background:${catColor(cat)}"></div></div>
-        <div class="amt">${moneyAbs(amt)} <span class="pct">· ${pct}%</span></div>
+        <div class="trackcell"><div class="bar" data-tip="${esc(cat.name)}: ${moneyAbs(amt)}${pctBit ? ` (${pctBit})` : ''}" style="width:${Math.max(1, amt / max * 100)}%;background:${catColor(cat)}"></div></div>
+        <div class="amt">${moneyAbs(amt)}${pctBit ? ` <span class="pct">· ${pctBit}</span>` : ''}</div>
       </div>`;
     }).join('') + `</div>`;
   }
   html += `</div>`;
 
   app.innerHTML = html;
+  fitTileVals(app);
   $('#mp-prev').onclick = () => { state.dashMonth = monthAdd(state.dashMonth, -1); render(); };
   $('#mp-next').onclick = () => { state.dashMonth = monthAdd(state.dashMonth, 1); render(); };
   wireMonthJump();
@@ -1397,14 +1436,15 @@ function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth) {
   const overallPct = bs.totalBudget ? bs.totalSpent / bs.totalBudget : 0;
   const fillColor = overallPct > 1 ? 'var(--critical)' : overallPct >= 0.9 ? 'var(--warning)' : 'var(--accent)';
   let paceLine = '';
+  const paceFrac = isCurMonth ? paceExpectedFrac(ym, mp) : mp.frac;
   if (isCurMonth) {
-    const expected = Math.round(bs.totalBudget * mp.frac);
+    const expected = Math.round(bs.totalBudget * paceFrac);
     const diff = bs.totalSpent - expected;
     if (Math.abs(diff) <= bs.totalBudget * 0.03) paceLine = 'On pace';
     else if (diff > 0) paceLine = `${moneyAbs(diff)} over pace for day ${mp.day}`;
     else paceLine = `${moneyAbs(diff)} ahead of pace`;
     // Projection needs a week of data before it stops being noise.
-    if (mp.day > 7 && mp.frac > 0) paceLine += ` · ~${moneyAbs(Math.round(bs.totalSpent / mp.frac))} by month end at this rate`;
+    if (mp.day > 7 && paceFrac > 0) paceLine += ` · ~${moneyAbs(Math.round(bs.totalSpent / paceFrac))} by month end at this rate`;
   } else if (ym < curMonth()) {
     paceLine = bs.left >= 0 ? `Finished ${moneyAbs(bs.left)} under budget ✓` : `${moneyAbs(bs.left)} over budget`;
   }
@@ -1413,7 +1453,7 @@ function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth) {
     <div class="meter overall">
       <div class="top"><span class="nm">${moneyAbs(bs.totalSpent)} of ${moneyAbs(bs.totalBudget)}</span>
         <span class="st">${bs.left >= 0 ? moneyAbs(bs.left) + ' left' : `<span style="color:var(--critical)">${moneyAbs(bs.left)} over</span>`}</span></div>
-      <div class="track" role="meter" aria-valuemin="0" aria-valuemax="${Math.round(bs.totalBudget / 100)}" aria-valuenow="${Math.round(bs.totalSpent / 100)}" aria-label="Overall budget"><div class="fill" style="width:${Math.min(100, Math.max(0, overallPct * 100))}%;background:${fillColor}"></div>${isCurMonth ? `<div class="pace-tick" style="left:calc(${(mp.frac * 100).toFixed(1)}% - 1px)"></div>` : ''}</div>
+      <div class="track" role="meter" aria-valuemin="0" aria-valuemax="${Math.round(bs.totalBudget / 100)}" aria-valuenow="${Math.round(bs.totalSpent / 100)}" aria-label="Overall budget"><div class="fill" style="width:${Math.min(100, Math.max(0, overallPct * 100))}%;background:${fillColor}"></div>${isCurMonth ? `<div class="pace-tick" style="left:calc(${(paceFrac * 100).toFixed(1)}% - 1px)"></div>` : ''}</div>
       ${paceLine ? `<div class="sub" style="margin-top:4px">${paceLine}</div>` : ''}
     </div>`;
 
@@ -1431,7 +1471,10 @@ function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth) {
       const capPct = Math.max(0, Math.min(100, r.budget / r.spent * 100));
       trackInner = `<div class="fill" style="width:100%"></div><div class="overage" style="width:${(100 - capPct).toFixed(1)}%"></div><div class="cap-tick" style="left:calc(${capPct.toFixed(1)}% - 1px)"></div>`;
     } else {
-      trackInner = `<div class="fill" style="width:${w}%${r.state === 'ok' ? `;background:${catColor(c)}` : ''}"></div>`;
+      // One calm fill color for all under-budget rows: raw category colors here
+      // (e.g. a brick-red palette entry) can mimic the over/near warning hues
+      // and break the traffic-light scan.
+      trackInner = `<div class="fill" style="width:${w}%"></div>`;
     }
     html += `<div class="meter ${r.state}" data-cat="${esc(c.id)}" role="button" tabindex="0" aria-label="${esc(c.name)}: ${moneyAbs(r.spent)} of ${moneyAbs(r.budget)} budget — view transactions">
       <div class="top"><span class="nm">${c.emoji} ${esc(c.name)}</span>
@@ -1504,10 +1547,10 @@ function budgetSetupCardHtml() {
 // current budget, or the suggestion when none is set yet.
 function budgetEditorHtml(c) {
   const sug = suggestBudget(c.id);
-  const val = c.budget ? (c.budget / 100).toFixed(0) : (sug != null ? (sug / 100).toFixed(0) : '');
+  const val = c.budget ? budgetInputVal(c.budget) : (sug != null ? (sug / 100).toFixed(0) : '');
   return `<div class="budget-editor" data-cat="${esc(c.id)}">
     <label class="fld"><span>${c.emoji} ${esc(c.name)} budget ($ / month)</span>
-      <input type="number" id="be-amt" min="0" step="1" inputmode="decimal" placeholder="e.g. 400" value="${val}"></label>
+      <input type="number" id="be-amt" min="0" step="0.01" inputmode="decimal" placeholder="e.g. 400" value="${val}"></label>
     ${sug != null ? `<div class="sub" style="margin:-2px 0 10px">Suggested: <span class="chip" id="be-sug" role="button" tabindex="0">${moneyAbs(sug)} (3-mo avg)</span></div>` : ''}
     <div class="row">
       <button class="btn small" id="be-save">Save</button>
@@ -1547,6 +1590,19 @@ function wireBudgetEditor(root) {
     sugChip.onclick = fill;
     sugChip.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fill(); } };
   }
+}
+
+// Shrink tile values that would overflow their tile (7-digit net worth) down
+// to a still-readable floor; the CSS overflow-wrap stays as the backstop for
+// anything even longer.
+function fitTileVals(root) {
+  $$('.tile .val', root).forEach(el => {
+    // Measure unwrapped — the CSS overflow-wrap backstop hides the overflow.
+    el.style.whiteSpace = 'nowrap';
+    let fs = parseFloat(getComputedStyle(el).fontSize);
+    while (el.scrollWidth > el.clientWidth && fs > 15) { fs -= 1; el.style.fontSize = fs + 'px'; }
+    el.style.whiteSpace = '';
+  });
 }
 
 // Switch to the Activity view with a category + month filter applied, clearing
@@ -1632,7 +1688,7 @@ function renderTrends(app) {
   html += `<div class="chartwrap" id="trend-chart"></div></div>`;
 
   // table twin — every charted value reachable without hover
-  html += `<div class="card"><h2>By month</h2><div class="preview-scroll" style="border:0"><table class="mini">
+  html += `<div class="card"><h2>By month</h2><div class="preview-scroll flush"><table class="mini">
     <tr><th>Month</th>${series.map(s => `<th class="num">${esc(s.name)}</th>`).join('')}${series.length > 1 ? '<th class="num">Net</th>' : ''}</tr>`;
   for (let i = months.length - 1; i >= 0; i--) {
     html += `<tr><td>${monthShort(months[i])}</td>` +
@@ -1705,6 +1761,14 @@ function drawLineChart(container, months, series) {
     endLabels.sort((a, b) => a.ly - b.ly);
     for (let i = 1; i < endLabels.length; i++) {
       if (endLabels[i].ly - endLabels[i - 1].ly < 14) endLabels[i].ly = endLabels[i - 1].ly + 14;
+    }
+    // The downward pass can push labels past the baseline onto the x-axis month
+    // labels (e.g. two series both ending at $0) — cascade back up from the bottom.
+    if (endLabels.length && endLabels[endLabels.length - 1].ly > padT + ih) {
+      endLabels[endLabels.length - 1].ly = padT + ih;
+      for (let i = endLabels.length - 2; i >= 0; i--) {
+        if (endLabels[i + 1].ly - endLabels[i].ly < 14) endLabels[i].ly = endLabels[i + 1].ly - 14;
+      }
     }
     for (const l of endLabels) {
       paths += `<text x="${x(ms.length - 1) + 8}" y="${l.ly}" text-anchor="start" font-size="12" font-weight="600" fill="var(--text-secondary)" style="font-variant-numeric:tabular-nums">${l.text}</text>`;
@@ -2107,7 +2171,7 @@ function renderSavings(app) {
       `<span class="key"><span class="swatch" style="background:${s.color}"></span>${esc(s.name)}${series.length === 1 ? ` · ${moneyAbs(s.values[s.values.length - 1])}` : ''}</span>`).join('') + `</div>`;
   }
   html += `<div class="chartwrap" id="sv-chart"></div>
-    <div class="preview-scroll" style="border:0;margin-top:8px"><table class="mini">
+    <div class="preview-scroll flush" style="margin-top:8px"><table class="mini">
     <tr><th>Month</th>${series.map(s => `<th class="num">${esc(s.name)}</th>`).join('')}</tr>`;
   for (let i = months.length - 1; i >= 0; i--) {
     html += `<tr><td>${monthShort(months[i])}</td>` +
@@ -2145,6 +2209,7 @@ function renderSavings(app) {
   html += `<div class="sub" style="margin:4px 2px 12px">Transfers into these accounts are excluded from your spending and income numbers, and counted here instead. Balances are stored on this device like everything else.</div>`;
 
   app.innerHTML = html;
+  fitTileVals(app);
   drawLineChart($('#sv-chart'), months, series);
   $$('.bal-save', app).forEach(btn => {
     btn.onclick = () => {
@@ -2254,7 +2319,7 @@ function renderSettings(app) {
       <span style="width:24px;text-align:center">${c.emoji}</span>
       <input type="text" class="cat-name" value="${esc(c.name)}" aria-label="Category name">
       ${c.kind === 'income' ? '<span class="muted" style="font-size:12px">income</span>'
-        : `<span class="moneyfield"><span class="aff">$</span><input type="number" class="budget" min="0" step="1" placeholder="—" value="${c.budget ? (c.budget / 100).toFixed(0) : ''}" aria-label="Monthly budget"><span class="aff">/mo</span></span>`}
+        : `<span class="moneyfield"><span class="aff">$</span><input type="number" class="budget" min="0" step="0.01" placeholder="—" value="${budgetInputVal(c.budget)}" aria-label="Monthly budget"><span class="aff">/mo</span></span>`}
       <button class="iconbtn cat-del" title="Delete category" aria-label="Delete ${esc(c.name)}">✕</button>
     </div>`;
   }
