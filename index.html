@@ -276,14 +276,14 @@ label.fld > span { display: block; margin-bottom: 4px; }
   box-shadow: var(--shadow-2); min-width: 130px;
   display: none;
 }
-.viz-tooltip .t { color: var(--text-muted); font-size: 11.5px; margin-bottom: 4px; }
+.viz-tooltip .t { color: var(--text-muted); font-size: 12px; margin-bottom: 4px; }
 .viz-tooltip .r { display: flex; align-items: center; gap: 7px; margin-top: 2px; }
 .viz-tooltip .r .k { width: 12px; height: 3px; border-radius: 2px; flex: 0 0 auto; }
 .viz-tooltip .r .v { font-weight: 600; font-variant-numeric: tabular-nums; }
 .viz-tooltip .r .n { color: var(--text-secondary); margin-left: auto; padding-left: 10px; }
 
 table.mini { width: 100%; border-collapse: collapse; font-size: 13px; }
-table.mini th { text-align: left; color: var(--text-muted); font-weight: 600; font-size: 11.5px; padding: 5px 6px; border-bottom: 1px solid var(--grid); }
+table.mini th { text-align: left; color: var(--text-muted); font-weight: 600; font-size: 12px; padding: 5px 6px; border-bottom: 1px solid var(--grid); }
 table.mini td { padding: 5px 6px; border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
 table.mini td.num, table.mini th.num { text-align: right; }
 table.mini tr:last-child td { border-bottom: 0; }
@@ -341,12 +341,6 @@ td.badrow { color: var(--critical); }
 a { color: var(--accent); }
 
 /* --- visual refresh (pkg B) --- */
-/* deferred-to-C:
-   - zero-delta copy detail beyond "— same as May" (deltaHtml)
-   - consolidating remaining inline style="margin…" in untouched templates
-   - Savings per-account balance figure still inline 26px (not tokenized)
-   - meter fill width transitions / reduced-motion wrapper
-   - monthpick 44px tap targets, chip min-height, aria-live on #toast */
 
 /* focus rings on every interactive control */
 .btn:focus-visible, .chip:focus-visible, input:focus-visible, select:focus-visible,
@@ -423,6 +417,29 @@ label.fld > .filelike { display: inline-block; padding: 10px 16px; margin-bottom
 .rec-card .rc-name { font-weight: 600; font-size: 14px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .rec-card .rc-meta { font-size: 12.5px; color: var(--text-secondary); margin-top: 3px; font-variant-numeric: tabular-nums; }
 .rec-card .chip { flex: 0 0 auto; min-height: 0; padding: 2px 10px; font-size: 12px; }
+
+/* --- polish (pkg C): a11y tap targets + micro-interactions --- */
+/* comfortable tap targets */
+.monthpick button { width: 44px; height: 44px; }
+.cbar .crow { padding: 8px 4px; }
+.meter[data-cat], .meter.unbudgeted { padding: 6px 4px; }
+.chip { min-height: 36px; }
+/* savings per-account balance, tokenized (was inline 26px) */
+.acct-bal { font-size: var(--fs-stat); font-weight: 650; font-variant-numeric: tabular-nums; }
+/* pace tick needs a touch more presence on the dark meter track */
+@media (prefers-color-scheme: dark) { .pace-tick { opacity: .65; } }
+/* meter fills ease when a width changes in place */
+.meter .fill, .meter .overage { transition: width .35s ease; }
+/* accordions (txn editor, budget editor, unbudgeted list) open softly */
+.editor, .budget-editor, .ub-list { animation: acc-open .16s ease; }
+@keyframes acc-open { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+/* pressed feedback on chips and tappable rows */
+.chip[role="button"]:active { transform: scale(.97); }
+.txn:active, .cbar .crow[role="button"]:active, .meter[data-cat]:active,
+.meter.unbudgeted:active, .rec-card:active { background: var(--wash); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
 </style>
 </head>
 <body>
@@ -430,7 +447,7 @@ label.fld > .filelike { display: inline-block; padding: 10px 16px; margin-bottom
 <nav class="tabbar" id="tabbar"></nav>
 <div class="viz-tooltip" id="viztip"></div>
 <div id="modal-root"></div>
-<div id="toast"></div>
+<div id="toast" aria-live="polite"></div>
 
 <script>
 'use strict';
@@ -1419,10 +1436,10 @@ function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth) {
     html += `<div class="meter ${r.state}" data-cat="${esc(c.id)}" role="button" tabindex="0" aria-label="${esc(c.name)}: ${moneyAbs(r.spent)} of ${moneyAbs(r.budget)} budget — view transactions">
       <div class="top"><span class="nm">${c.emoji} ${esc(c.name)}</span>
         <span class="st">${rem >= 0 ? `${moneyAbs(rem)} left` : `<span style="color:var(--critical)">${moneyAbs(rem)} over</span>`}
-          <span class="muted" style="font-size:12px">${moneyAbs(r.spent)} / ${moneyAbs(r.budget)}</span></span>
+          <span class="muted" style="font-size:12px">${r.state === 'near' ? `· ${Math.round(r.frac * 100)}% used` : `${moneyAbs(r.spent)} / ${moneyAbs(r.budget)}`}</span></span>
         <button class="iconbtn budget-edit" data-cat="${esc(c.id)}" aria-label="Edit ${esc(c.name)} budget">✎</button></div>
       <div class="track" role="meter" aria-valuemin="0" aria-valuemax="${Math.round(r.budget / 100)}" aria-valuenow="${Math.round(r.spent / 100)}" aria-label="${esc(c.name)} budget">${trackInner}</div>
-      ${r.state === 'over' ? `<div class="overnote">⚠️ Over budget by ${moneyAbs(r.spent - r.budget)}</div>` : ''}
+      ${r.state === 'over' ? `<div class="overnote">⚠️ ${moneyAbs(r.spent - r.budget)} over</div>` : ''}
     </div>`;
     if (state.budgetEdit === c.id) html += budgetEditorHtml(c);
   }
@@ -1432,8 +1449,8 @@ function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth) {
     const ubW = bs.totalBudget ? Math.min(100, bs.unbudgetedTotal / bs.totalBudget * 100) : 100;
     html += `<div class="meter unbudgeted" id="ub-toggle" role="button" tabindex="0" aria-expanded="${state.unbudgetedOpen}" aria-label="Everything else: ${moneyAbs(bs.unbudgetedTotal)} across ${nUb} unbudgeted categor${nUb === 1 ? 'y' : 'ies'}">
       <div class="top"><span class="nm">📦 Everything else · ${moneyAbs(bs.unbudgetedTotal)} across ${nUb} categor${nUb === 1 ? 'y' : 'ies'}</span>
-        <span class="st muted">${state.unbudgetedOpen ? '▲' : '▼'}</span></div>
-      <div class="track"><div class="fill" style="width:${ubW}%"></div></div>
+        <span class="st muted" aria-hidden="true">${state.unbudgetedOpen ? '▲' : '▼'}</span></div>
+      <div class="track" aria-hidden="true"><div class="fill" style="width:${ubW}%"></div></div>
     </div>`;
     if (state.unbudgetedOpen) {
       html += `<div class="ub-list">` + bs.unbudgeted.map(u => {
@@ -1569,6 +1586,20 @@ function wireMonthJump() {
 
 /* ---------- trends ---------- */
 function renderTrends(app) {
+  // Trends compare month over month — with fewer than 2 months of activity
+  // there is nothing to compare yet, so point at the CSV import instead.
+  const monthsWithData = new Set(data.transactions.map(t => monthKey(t.date)));
+  if (monthsWithData.size < 2) {
+    app.innerHTML = `<h1>Trends</h1>
+    <div class="card empty"><div class="big">📈</div>
+      <div><strong>Not enough history yet</strong></div>
+      <div class="sub" style="margin:6px 0 14px">Trends need at least two months of activity to compare — import a bank CSV to bring in more history.</div>
+      <button class="btn" id="tr-import">Import CSV</button>
+    </div>`;
+    $('#tr-import').onclick = openImportModal;
+    return;
+  }
+
   const months = lastNMonths(12, curMonth());
   const catSel = state.trendCat;
   const expenseCats = data.categories.filter(c => c.kind !== 'income');
@@ -1595,13 +1626,6 @@ function renderTrends(app) {
         ${expenseCats.map(c => `<option value="${c.id}" ${catSel === c.id ? 'selected' : ''}>${c.emoji} ${esc(c.name)}</option>`).join('')}
       </select>
     </div>`;
-
-  if (!data.transactions.length) {
-    html += `<div class="sub">Nothing to chart yet.</div></div>`;
-    app.innerHTML = html;
-    $('#trend-cat').onchange = e => { state.trendCat = e.target.value; render(); };
-    return;
-  }
 
   html += `<div class="legend">` + series.map(s =>
     `<span class="key"><span class="swatch" style="background:${s.color}"></span>${esc(s.name)}${series.length === 1 ? ` · ${moneyAbs(s.values[s.values.length - 1])}` : ''}</span>`).join('') + `</div>`;
@@ -1836,7 +1860,7 @@ function renderTransactions(app) {
   </div>`;
 
   if (uncatN) {
-    html += `<div style="margin-bottom:10px"><span class="chip ${state.fUncatOnly ? 'on' : ''}" id="chip-uncat">❓ Needs review · ${uncatN}</span></div>`;
+    html += `<div style="margin-bottom:10px"><span class="chip ${state.fUncatOnly ? 'on' : ''}" id="chip-uncat" role="button" tabindex="0" aria-pressed="${state.fUncatOnly}">❓ Needs review · ${uncatN}</span></div>`;
   }
 
   const matches = data.transactions.filter(txnMatchesFilters);
@@ -1857,7 +1881,9 @@ function renderTransactions(app) {
   if (!data.transactions.length) {
     html += emptyState();
   } else if (!matches.length) {
-    html += `<div class="card empty"><div>No transactions match these filters.</div></div>`;
+    html += `<div class="card empty"><div><strong>No matches</strong></div>
+      <div class="sub" style="margin:6px 0 12px">Nothing fits these filters.</div>
+      <button class="btn secondary small" id="clear-filters">Clear filters</button></div>`;
   } else {
     const shown = matches.slice(0, state.showCount);
     let lastDay = '', groupOpen = false;
@@ -1911,7 +1937,17 @@ function renderTransactions(app) {
   $('#f-month').onchange = e => { state.fMonth = e.target.value; render(); };
   $('#f-xfer').onchange = e => { state.fTransfers = e.target.checked; render(); };
   const chip = $('#chip-uncat');
-  if (chip) chip.onclick = () => { state.fUncatOnly = !state.fUncatOnly; render(); };
+  if (chip) {
+    const tog = () => { state.fUncatOnly = !state.fUncatOnly; render(); };
+    chip.onclick = tog;
+    chip.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tog(); } };
+  }
+  const clearF = $('#clear-filters');
+  if (clearF) clearF.onclick = () => {
+    state.fSearch = ''; state.fAccount = 'all'; state.fCategory = 'all'; state.fMonth = 'all';
+    state.fTransfers = false; state.fUncatOnly = false; state.showCount = 100;
+    render();
+  };
   const bulkApply = $('#bulk-apply');
   if (bulkApply) bulkApply.onclick = () => {
     const cat = $('#bulk-cat').value;
@@ -2048,10 +2084,12 @@ function renderSavings(app) {
   const added = savingsFlow(ym, SAVE_TYPES);
   const totalBal = saveAccts.reduce((s, a) => s + acctBalance(a).balance, 0);
   const anySnap = saveAccts.some(a => acctBalance(a).hasSnap);
+  // The "Added" tile only earns its spot when money actually moved this month;
+  // otherwise Total balance takes the full row.
   html += `<div class="tiles">
-    <div class="tile"><div class="lbl">Total balance</div><div class="val">${moneyAbs(totalBal)}</div>
+    <div class="tile${added === 0 ? ' wide' : ''}"><div class="lbl">Total balance</div><div class="val">${moneyAbs(totalBal)}</div>
       ${anySnap ? '' : '<div class="delta muted">from transactions only — set balances below</div>'}</div>
-    <div class="tile"><div class="lbl">Added · ${monthLabel(ym)}</div><div class="val">${added < 0 ? '−' : '+'}${moneyAbs(added)}</div></div>
+    ${added !== 0 ? `<div class="tile"><div class="lbl">Added · ${monthLabel(ym)}</div><div class="val">${added < 0 ? '−' : '+'}${moneyAbs(added)}</div></div>` : ''}
   </div>`;
 
   // 12-month contributions chart (net added per month; withdrawals show in the table)
@@ -2090,7 +2128,7 @@ function renderSavings(app) {
         <h2 style="margin:0">${a.type === 'investment' ? '📈' : '🏦'} ${esc(a.name)}</h2>
         <span class="chip right" style="cursor:default">${ACCT_TYPE_LABELS[a.type] || a.type}</span>
       </div>
-      <div style="font-size:26px;font-weight:650">${b.balance < 0 ? '−' : ''}${moneyAbs(b.balance)}</div>
+      <div class="acct-bal">${b.balance < 0 ? '−' : ''}${moneyAbs(b.balance)}</div>
       <div class="sub" style="margin:2px 0 10px">
         ${b.hasSnap ? `balance set ${dateLabel(b.since)}, plus activity since` : 'from imported activity only — enter today’s balance below for accuracy'}
         · this month ${flowThisMonth < 0 ? '−' : '+'}${moneyAbs(flowThisMonth)}
@@ -2240,7 +2278,7 @@ function renderSettings(app) {
           `<option value="${ty}" ${(a.type === ty || (!ACCT_TYPE_LABELS[a.type] && ty === 'bank')) ? 'selected' : ''}>${ACCT_TYPE_LABELS[ty]}</option>`).join('')}
       </select>
       <span class="muted" style="font-size:12px;flex:0 0 auto">${n} txns</span>
-      <button class="iconbtn acct-del" title="Delete account">✕</button>
+      <button class="iconbtn acct-del" title="Delete account" aria-label="Delete ${esc(a.name)}">✕</button>
       <div class="row" style="flex:1 0 100%;margin-top:4px">
         <label class="fld" style="margin:0;flex:0 0 auto"><span style="display:inline">Starting balance ($)</span>
           <input type="number" class="acct-start budget" step="0.01" value="${(start / 100).toFixed(2)}" aria-label="Starting balance"></label>
@@ -2421,7 +2459,7 @@ let importCtx = null; // { rows, map, accountId }
 function openImportModal() {
   importCtx = { rows: null, map: null };
   const root = $('#modal-root');
-  root.innerHTML = `<div class="overlay" id="ovl"><div class="sheet">
+  root.innerHTML = `<div class="overlay" id="ovl"><div class="sheet" role="dialog" aria-modal="true" aria-label="Import bank CSV">
     <div class="grab" aria-hidden="true"></div>
     <div class="row" style="margin-bottom:8px"><h2 style="margin:0">Import bank CSV</h2>
       <button class="iconbtn right" id="m-close" style="font-size:18px" aria-label="Close">✕</button></div>
@@ -2470,7 +2508,9 @@ function openImportModal() {
     </div>
   </div></div>`;
 
-  const close = () => { root.innerHTML = ''; importCtx = null; };
+  const onEsc = e => { if (e.key === 'Escape') close(); };
+  const close = () => { root.innerHTML = ''; importCtx = null; document.removeEventListener('keydown', onEsc); };
+  document.addEventListener('keydown', onEsc);
   $('#m-close').onclick = close;
   $('#ovl').onclick = e => { if (e.target.id === 'ovl') close(); };
 
