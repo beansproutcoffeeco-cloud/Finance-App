@@ -17,37 +17,55 @@
 :root {
   --page: #f9f9f7;
   --surface-1: #fcfcfb;
+  --surface-2: #ffffff;
   --text-primary: #0b0b0b;
   --text-secondary: #52514e;
-  --text-muted: #898781;
+  --text-muted: #807e78;
+  --text-warning: #9a6a00;
   --grid: #e1e0d9;
   --baseline: #c3c2b7;
   --border: rgba(11,11,11,0.10);
   --series-1: #2a78d6;   /* spending / default */
   --series-2: #1baf7a;   /* income */
-  --meter-track: #cde2fb;
+  --meter-track: color-mix(in srgb, var(--text-primary) 8%, transparent);
   --good-text: #006300;
   --critical: #d03b3b;
+  --danger-wash: color-mix(in srgb, var(--critical) 12%, var(--surface-1));
   --warning: #fab219;
   --accent: #2a78d6;
   --wash: rgba(42,120,214,0.08);
+  --focus: var(--accent);
+  /* spacing */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px;
+  /* radii */
+  --r-s: 8px; --r-m: 12px; --r-l: 16px; --r-xl: 20px;
+  /* type scale */
+  --fs-caption: 12px; --fs-body-s: 13px; --fs-body: 15px; --fs-h2: 16px;
+  --fs-h1: 22px; --fs-stat: 24px; --fs-hero: clamp(32px, 9vw, 40px);
+  /* elevation */
+  --shadow-1: 0 1px 2px rgba(11,11,11,0.05);
+  --shadow-2: 0 8px 30px rgba(11,11,11,0.18);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --page: #0d0d0d;
     --surface-1: #1a1a19;
+    --surface-2: #242423;
     --text-primary: #ffffff;
     --text-secondary: #c3c2b7;
-    --text-muted: #898781;
+    --text-muted: #98968f;
+    --text-warning: #fab219;
     --grid: #2c2c2a;
     --baseline: #383835;
     --border: rgba(255,255,255,0.10);
     --series-1: #3987e5;
     --series-2: #199e70;
-    --meter-track: #104281;
+    --meter-track: rgba(57,135,229,.20);
     --good-text: #0ca30c;
     --accent: #3987e5;
     --wash: rgba(57,135,229,0.14);
+    --shadow-1: none;
+    --shadow-2: 0 8px 30px rgba(0,0,0,0.5);
   }
 }
 * { box-sizing: border-box; }
@@ -56,7 +74,7 @@ body {
   background: var(--page);
   color: var(--text-primary);
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 15px;
+  font-size: var(--fs-body);
   line-height: 1.45;
   -webkit-text-size-adjust: 100%;
 }
@@ -65,17 +83,18 @@ main {
   margin: 0 auto;
   padding: 12px 14px calc(84px + env(safe-area-inset-bottom));
 }
-h1 { font-size: 20px; margin: 8px 2px 12px; }
-h2 { font-size: 15px; font-weight: 600; margin: 0 0 10px; }
-.sub { color: var(--text-secondary); font-size: 13px; }
+h1 { font-size: var(--fs-h1); margin: 8px 2px 12px; }
+h2 { font-size: var(--fs-h2); font-weight: 600; margin: 0 0 10px; }
+.sub { color: var(--text-secondary); font-size: var(--fs-body-s); }
 .muted { color: var(--text-muted); }
 
 .card {
   background: var(--surface-1);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 14px;
+  border-radius: var(--r-l);
+  padding: var(--sp-4);
   margin-bottom: 12px;
+  box-shadow: var(--shadow-1);
 }
 
 /* ---- tab bar ---- */
@@ -89,47 +108,69 @@ nav.tabbar {
 }
 nav.tabbar button {
   flex: 1; border: 0; background: none; cursor: pointer;
-  padding: 8px 0 6px;
-  font: inherit; font-size: 10.5px;
+  padding: 6px 0 5px;
+  font: inherit; font-size: 11px;
   color: var(--text-muted);
   display: flex; flex-direction: column; align-items: center; gap: 2px;
 }
-nav.tabbar button .ico { font-size: 20px; line-height: 1; }
+nav.tabbar button .ico {
+  display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 27px; border-radius: 999px;
+}
+nav.tabbar button .ico svg { display: block; }
 nav.tabbar button.active { color: var(--accent); font-weight: 600; }
+nav.tabbar button.active .ico { background: var(--wash); }
+@media (min-width: 700px) {
+  nav.tabbar {
+    max-width: 720px; margin: 0 auto;
+    border: 1px solid var(--border); border-bottom: 0;
+    border-radius: var(--r-l) var(--r-l) 0 0;
+  }
+}
 
 /* ---- controls ---- */
 input, select, textarea, button { font: inherit; color: inherit; }
 input[type=text], input[type=number], input[type=date], input[type=search], select, textarea {
   background: var(--page);
   border: 1px solid var(--border);
-  border-radius: 9px;
+  border-radius: var(--r-m);
   padding: 8px 10px;
   width: 100%;
   color: var(--text-primary);
 }
+input[type=text], input[type=number], input[type=date], input[type=search], select { min-height: 44px; }
 textarea { resize: vertical; }
 label.fld { display: block; margin-bottom: 10px; font-size: 13px; color: var(--text-secondary); }
 label.fld > span { display: block; margin-bottom: 4px; }
 .btn {
   background: var(--accent); color: #fff; border: 0;
-  border-radius: 10px; padding: 9px 16px; cursor: pointer; font-weight: 600;
+  border-radius: var(--r-m); padding: 9px 16px; cursor: pointer; font-weight: 600;
+  min-height: 44px;
 }
-.btn.secondary { background: none; color: var(--accent); border: 1px solid var(--border); }
+.btn.secondary { background: none; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
 .btn.danger { background: var(--critical); }
-.btn.small { padding: 5px 10px; font-size: 13px; border-radius: 8px; }
+.btn.small { padding: 5px 10px; font-size: 13px; border-radius: var(--r-s); min-height: 36px; }
 .btn:disabled { opacity: .45; cursor: default; }
+.btn:not(.secondary):not(.danger):not(:disabled):hover { background: color-mix(in srgb, var(--accent) 85%, var(--text-primary)); }
+.btn.secondary:not(:disabled):hover { background: var(--wash); }
+.btn.danger:not(:disabled):hover { background: color-mix(in srgb, var(--critical) 85%, var(--text-primary)); }
+.btn:not(:disabled):active { transform: scale(.98); }
 .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .row > .grow { flex: 1; }
 .right { margin-left: auto; }
 
 /* ---- stat tiles ---- */
 .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-.tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; }
+.tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-l); padding: 12px var(--sp-4); box-shadow: var(--shadow-1); }
 .tile .lbl { font-size: 12.5px; color: var(--text-secondary); }
-.tile .val { font-size: 22px; font-weight: 600; margin-top: 2px; }
+.tile .val { font-size: var(--fs-stat); font-weight: 600; margin-top: 2px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
 .tile .delta { font-size: 12px; margin-top: 2px; }
-.tile.hero { grid-column: 1 / -1; }
-.tile.hero .val { font-size: 48px; font-weight: 650; letter-spacing: -0.5px; }
+.tile.hero { grid-column: 1 / -1; background: color-mix(in srgb, var(--accent) 7%, var(--surface-1)); }
+.tile.hero .val { font-size: var(--fs-hero); font-weight: 650; }
+.tile.hero .val .cents { font-size: 60%; color: var(--text-secondary); font-weight: 600; }
+@media (min-width: 700px) {
+  .tiles { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+}
 .delta.good { color: var(--good-text); }
 .delta.bad { color: var(--critical); }
 .tile[data-drill] { cursor: pointer; }
@@ -150,12 +191,12 @@ label.fld > span { display: block; margin-bottom: 4px; }
 
 /* ---- category bar list ---- */
 .cbar { display: flex; flex-direction: column; gap: 4px; }
-.cbar .crow { display: grid; grid-template-columns: minmax(92px, 132px) 1fr auto; gap: 4px 10px; align-items: center; border-radius: 8px; padding: 2px 4px; margin: 0 -4px; }
+.cbar .crow { display: grid; grid-template-columns: minmax(104px, 140px) 1fr auto; gap: 4px 10px; align-items: center; border-radius: 8px; padding: 2px 4px; margin: 0 -4px; }
 .cbar .crow[role="button"] { cursor: pointer; }
 .cbar .crow[role="button"]:hover { background: var(--wash); }
 .cbar .name { font-size: 13px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cbar .trackcell { position: relative; height: 22px; display: flex; align-items: center; }
-.cbar .bar { height: 16px; background: var(--series-1); border-radius: 0 4px 4px 0; min-width: 2px; }
+.cbar .bar { height: 16px; background: var(--series-1); border-radius: 0 4px 4px 0; min-width: 4px; }
 .cbar .amt { font-size: 13px; font-variant-numeric: tabular-nums; text-align: right; }
 
 /* ---- budget meters ---- */
@@ -166,7 +207,7 @@ label.fld > span { display: block; margin-bottom: 4px; }
 .meter .track { height: 10px; border-radius: 5px; background: var(--meter-track); overflow: hidden; }
 .meter .fill { height: 100%; background: var(--series-1); border-radius: 5px 0 0 5px; }
 .meter.over .fill { background: var(--critical); }
-.meter.over .track { background: color-mix(in srgb, var(--critical) 20%, var(--surface-1)); }
+.meter.over .track { background: var(--danger-wash); }
 .meter .overnote { color: var(--critical); font-size: 12px; margin-top: 3px; font-weight: 600; }
 
 /* --- budgets (pkg A) --- */
@@ -213,26 +254,26 @@ label.fld > span { display: block; margin-bottom: 4px; }
 .txn .emoji { font-size: 18px; width: 26px; text-align: center; flex: 0 0 auto; }
 .txn .mid { flex: 1; min-width: 0; }
 .txn .desc { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.txn .meta { font-size: 11.5px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.txn .meta { font-size: 12px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .txn .amt { font-variant-numeric: tabular-nums; font-weight: 600; flex: 0 0 auto; }
 .txn .amt.pos { color: var(--good-text); }
 .txn .amt.xfer { color: var(--text-muted); font-weight: 400; }
 .txn.uncat { border-left: 3px solid var(--warning); }
-.editor { background: var(--surface-1); border: 1px solid var(--accent); border-radius: 12px; padding: 12px; margin: -2px 0 8px; }
+.editor { background: var(--surface-2); border: 1px solid var(--accent); border-radius: var(--r-m); padding: 12px; margin: -2px 0 8px; }
 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 10px; }
 .grid2 label.fld { margin-bottom: 2px; }
 
 /* ---- chart ---- */
 .chartwrap { position: relative; }
 .chartwrap svg { display: block; width: 100%; height: auto; }
-.legend { display: flex; gap: 16px; font-size: 12.5px; color: var(--text-secondary); margin: 2px 2px 8px; }
+.legend { display: flex; gap: 12px; font-size: 12.5px; color: var(--text-secondary); margin: 2px 2px 8px; flex-wrap: wrap; }
 .legend .key { display: inline-flex; align-items: center; gap: 6px; }
-.legend .swatch { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.legend .swatch { width: 12px; height: 12px; border-radius: 4px; display: inline-block; }
 .viz-tooltip {
   position: fixed; z-index: 60; pointer-events: none;
-  background: var(--surface-1); border: 1px solid var(--border);
+  background: var(--surface-2); border: 1px solid var(--border);
   border-radius: 10px; padding: 8px 11px; font-size: 12.5px;
-  box-shadow: 0 4px 16px rgba(0,0,0,.15); min-width: 130px;
+  box-shadow: var(--shadow-2); min-width: 130px;
   display: none;
 }
 .viz-tooltip .t { color: var(--text-muted); font-size: 11.5px; margin-bottom: 4px; }
@@ -252,7 +293,11 @@ table.mini tr:last-child td { border-bottom: 0; }
 .setrow:last-child { border-bottom: 0; }
 .setrow input[type=text] { flex: 1; }
 .setrow input.budget { width: 96px; flex: 0 0 auto; }
-.iconbtn { border: 0; background: none; cursor: pointer; font-size: 15px; color: var(--text-muted); padding: 4px; }
+.iconbtn {
+  border: 0; background: none; cursor: pointer; font-size: 15px; color: var(--text-muted);
+  padding: 4px; min-width: 40px; min-height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
 
 /* ---- modal ---- */
 .overlay {
@@ -260,13 +305,16 @@ table.mini tr:last-child td { border-bottom: 0; }
   display: flex; align-items: flex-end; justify-content: center;
 }
 .sheet {
-  background: var(--page); width: 100%; max-width: 680px;
-  border-radius: 18px 18px 0 0; padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+  background: var(--surface-2); width: 100%; max-width: 680px;
+  border-radius: var(--r-xl) var(--r-xl) 0 0; padding: 10px 16px calc(16px + env(safe-area-inset-bottom));
   max-height: 92vh; overflow-y: auto;
+  box-shadow: var(--shadow-2);
 }
+.sheet .grab { width: 36px; height: 4px; border-radius: 2px; background: var(--border); margin: 0 auto 12px; }
 @media (min-width: 700px) {
   .overlay { align-items: center; }
-  .sheet { border-radius: 18px; max-height: 86vh; }
+  .sheet { border-radius: var(--r-xl); max-height: 86vh; padding-top: 16px; }
+  .sheet .grab { display: none; }
 }
 .sheet h2 { font-size: 17px; }
 .preview-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
@@ -279,6 +327,7 @@ td.badrow { color: var(--critical); }
   background: var(--text-primary); color: var(--page);
   padding: 9px 16px; border-radius: 999px; font-size: 13.5px;
   z-index: 70; display: none; max-width: 90vw; text-align: center;
+  box-shadow: var(--shadow-2);
 }
 #toast .toast-action {
   margin-left: 12px; background: none; border: 0; padding: 0;
@@ -290,6 +339,90 @@ td.badrow { color: var(--critical); }
 .section-title { display: flex; align-items: baseline; gap: 8px; margin: 16px 2px 8px; }
 .section-title h2 { margin: 0; }
 a { color: var(--accent); }
+
+/* --- visual refresh (pkg B) --- */
+/* deferred-to-C:
+   - zero-delta copy detail beyond "— same as May" (deltaHtml)
+   - consolidating remaining inline style="margin…" in untouched templates
+   - Savings per-account balance figure still inline 26px (not tokenized)
+   - meter fill width transitions / reduced-motion wrapper
+   - monthpick 44px tap targets, chip min-height, aria-live on #toast */
+
+/* focus rings on every interactive control */
+.btn:focus-visible, .chip:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible, nav.tabbar button:focus-visible, .iconbtn:focus-visible {
+  outline: 2px solid var(--focus); outline-offset: 2px;
+}
+
+/* money values read as columns of digits */
+.txn .amt, .cbar .amt, .meter .top .st, .viz-tooltip .r .v, table.mini td { font-variant-numeric: tabular-nums; }
+
+/* raised surfaces sit on --surface-2 */
+#bulk-bar, .budget-editor { background: var(--surface-2); }
+
+/* budget meters: over rows show spent-full track with a darker overage
+   segment past the 100%-of-budget tick, so 105% reads different from 150% */
+.meter .overage {
+  position: absolute; top: 0; right: 0; height: 100%;
+  background: color-mix(in srgb, var(--critical) 60%, #000);
+  border-radius: 0 5px 5px 0;
+}
+.meter .cap-tick { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--surface-1); }
+.meter.near .top .st { color: var(--text-warning); }
+.meter .top .iconbtn { min-width: 32px; min-height: 32px; }
+.cbar .amt .pct { font-size: 12px; color: var(--text-muted); }
+
+/* category-list header + budget affix field (Settings) */
+.sethdr { font-size: 12px; color: var(--text-muted); border-bottom: 1px solid var(--grid); padding: 2px 0 5px; }
+.sethdr .grow { flex: 1; }
+.moneyfield {
+  display: flex; align-items: center; flex: 0 0 auto;
+  border: 1px solid var(--border); border-radius: var(--r-m);
+  background: var(--page); padding: 0 8px;
+}
+.moneyfield .aff { font-size: 12px; color: var(--text-muted); flex: 0 0 auto; }
+.setrow .moneyfield input.budget { border: 0; background: none; width: 58px; min-height: 42px; padding: 8px 4px; border-radius: 0; }
+.moneyfield:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
+.setrow .moneyfield input.budget:focus-visible { outline: none; }
+.danger-zone { border-top: 1px solid var(--border); margin-top: var(--sp-5); padding-top: var(--sp-4); }
+
+/* hidden native file input with a styled proxy button */
+.hidden-file { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+label.fld > .filelike { display: inline-block; padding: 10px 16px; margin-bottom: 4px; }
+.hidden-file:focus-visible ~ .filelike { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* form hint under a field label */
+.fld .hint { display: block; margin: 4px 0 0; font-size: 12px; color: var(--text-muted); }
+
+/* transaction list: one card per day, hairline separators between rows */
+.daygroup {
+  background: var(--surface-1); border: 1px solid var(--border);
+  border-radius: var(--r-l); margin-bottom: 8px; overflow: hidden;
+  box-shadow: var(--shadow-1);
+}
+.daygroup .txn { background: none; border: 0; border-bottom: 1px solid var(--grid); border-radius: 0; margin: 0; padding: 10px 12px; }
+.daygroup .txn:last-child { border-bottom: 0; }
+.daygroup .txn.uncat { border-left: 3px solid var(--warning); padding-left: 9px; }
+.daygroup .txn.editing { background: var(--surface-2); border-bottom: 0; }
+.daygroup .editor { border: 0; border-left: 3px solid var(--accent); border-bottom: 1px solid var(--grid); border-radius: 0; margin: 0; }
+.daygroup .editor:last-child { border-bottom: 0; }
+
+/* search takes the full row on narrow screens */
+@media (max-width: 480px) {
+  .filters input[type=search] { flex: 1 1 100%; }
+}
+
+/* recurring: card list under 600px, table above */
+.rec-cards { display: none; }
+@media (max-width: 599px) {
+  .rec-table { display: none; }
+  .rec-cards { display: block; }
+}
+.rec-card { padding: 10px 2px; border-bottom: 1px solid var(--grid); cursor: pointer; }
+.rec-card:last-child { border-bottom: 0; }
+.rec-card .rc-name { font-weight: 600; font-size: 14px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rec-card .rc-meta { font-size: 12.5px; color: var(--text-secondary); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.rec-card .chip { flex: 0 0 auto; min-height: 0; padding: 2px 10px; font-size: 12px; }
 </style>
 </head>
 <body>
@@ -974,13 +1107,18 @@ const state = {
   unbudgetedOpen: false,  // "Everything else" row expanded on the dashboard
 };
 
+// Inline SVG tab icons — 22px, stroke follows the button's currentColor so
+// the active/muted tint comes for free. Kept offline-safe (no external assets).
+const tabIcon = (paths) =>
+  `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+
 const VIEWS = [
-  ['dashboard', '📊', 'Overview'],
-  ['trends', '📈', 'Trends'],
-  ['savings', '🏦', 'Savings'],
-  ['transactions', '🧾', 'Activity'],
-  ['recurring', '🔁', 'Recurring'],
-  ['settings', '⚙️', 'Settings'],
+  ['dashboard', tabIcon('<path d="M5 20v-7"/><path d="M12 20V5"/><path d="M19 20v-10"/><path d="M3 20h18"/>'), 'Overview'],
+  ['trends', tabIcon('<polyline points="3 16 9 10 13 13 21 5"/><polyline points="15 5 21 5 21 11"/>'), 'Trends'],
+  ['savings', tabIcon('<path d="M3 9.5l9-6 9 6"/><path d="M5 10v7"/><path d="M9.7 10v7"/><path d="M14.3 10v7"/><path d="M19 10v7"/><path d="M3 20h18"/>'), 'Savings'],
+  ['transactions', tabIcon('<path d="M9 6h12"/><path d="M9 12h12"/><path d="M9 18h12"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/>'), 'Activity'],
+  ['recurring', tabIcon('<path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 8 16 8"/>'), 'Recurring'],
+  ['settings', tabIcon('<path d="M4 7h4"/><circle cx="11" cy="7" r="2"/><path d="M13 7h7"/><path d="M4 12h9"/><circle cx="15" cy="12" r="2"/><path d="M17 12h3"/><path d="M4 17h1.5"/><circle cx="8.5" cy="17" r="2"/><path d="M10.5 17h9.5"/>'), 'Settings'],
 ];
 
 function renderTabbar() {
@@ -1018,6 +1156,14 @@ function wireEmpty(el) {
 }
 
 /* ---------- dashboard ---------- */
+// moneyAbs with the trailing cents wrapped in a span so hero tiles can
+// de-emphasize them (only styled under .tile.hero — inert elsewhere).
+function moneyAbsHero(cents) {
+  const s = moneyAbs(cents);
+  const m = s.match(/^(.*)([.,]\d{2})$/);
+  return m ? `${m[1]}<span class="cents">${m[2]}</span>` : s;
+}
+
 function renderDashboard(app) {
   const ym = state.dashMonth;
   const t = monthTotals(ym);
@@ -1047,7 +1193,7 @@ function renderDashboard(app) {
   const deltaHtml = (cur, prv, upIsGood) => {
     if (!prv) return '';
     const d = cur - prv;
-    if (d === 0) return `<div class="delta muted">— vs ${monthShort(monthAdd(ym, -1))}</div>`;
+    if (d === 0) return `<div class="delta muted">— same as ${monthShort(monthAdd(ym, -1)).split(' ')[0]}</div>`;
     const good = (d > 0) === upIsGood;
     return `<div class="delta ${good ? 'good' : 'bad'}">${d > 0 ? '▲' : '▼'} ${moneyAbs(d)} vs ${monthShort(monthAdd(ym, -1))}</div>`;
   };
@@ -1061,7 +1207,7 @@ function renderDashboard(app) {
   const heroBudget = hasBudgets && isCurMonth;
 
   const netTileInner = `
-      <div class="val">${t.net < 0 ? '−' : ''}${moneyAbs(t.net)}</div>
+      <div class="val">${t.net < 0 ? '−' : ''}${moneyAbsHero(t.net)}</div>
       ${deltaHtml(t.net, prev.income || prev.spending ? prev.net : 0, true)}`;
   let heroHtml;
   if (heroBudget) {
@@ -1075,7 +1221,7 @@ function renderDashboard(app) {
     const overBit = overCount ? ` · <span style="color:var(--critical)">${overCount} over budget</span>` : '';
     heroHtml = `<div class="tile hero">
       <div class="lbl">Left to spend · ${monthLabel(ym)}</div>
-      <div class="val">${bs.left < 0 ? '−' : ''}${moneyAbs(bs.left)}${bs.left < 0 ? ' <span class="sub" style="font-size:20px">over</span>' : ''}</div>
+      <div class="val">${bs.left < 0 ? '−' : ''}${moneyAbsHero(bs.left)}${bs.left < 0 ? ' <span class="sub" style="font-size:20px">over</span>' : ''}</div>
       <div class="delta muted">of ${moneyAbs(bs.totalBudget)} budgeted · ${paceBit}${overBit}</div>
     </div>`;
   } else {
@@ -1127,12 +1273,15 @@ function renderDashboard(app) {
     html += `<div class="sub">No spending recorded this month.</div>`;
   } else {
     const max = cats[0].amt;
-    html += `<div class="cbar">` + cats.map(({ cat, amt }) => `
+    html += `<div class="cbar">` + cats.map(({ cat, amt }) => {
+      const pct = t.spending ? Math.round(amt / t.spending * 100) : 0;
+      return `
       <div class="crow" role="button" tabindex="0" data-cat="${esc(cat.id)}" aria-label="${esc(cat.name)}: ${moneyAbs(amt)} in ${esc(monthLabel(ym))} — view transactions">
         <div class="name">${cat.emoji} ${esc(cat.name)}</div>
-        <div class="trackcell"><div class="bar" data-tip="${esc(cat.name)}: ${moneyAbs(amt)} (${t.spending ? Math.round(amt / t.spending * 100) : 0}%)" style="width:${Math.max(1, amt / max * 100)}%;background:${catColor(cat)}"></div></div>
-        <div class="amt">${moneyAbs(amt)}</div>
-      </div>`).join('') + `</div>`;
+        <div class="trackcell"><div class="bar" data-tip="${esc(cat.name)}: ${moneyAbs(amt)} (${pct}%)" style="width:${Math.max(1, amt / max * 100)}%;background:${catColor(cat)}"></div></div>
+        <div class="amt">${moneyAbs(amt)} <span class="pct">· ${pct}%</span></div>
+      </div>`;
+    }).join('') + `</div>`;
   }
   html += `</div>`;
 
@@ -1247,7 +1396,7 @@ function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth) {
     <div class="meter overall">
       <div class="top"><span class="nm">${moneyAbs(bs.totalSpent)} of ${moneyAbs(bs.totalBudget)}</span>
         <span class="st">${bs.left >= 0 ? moneyAbs(bs.left) + ' left' : `<span style="color:var(--critical)">${moneyAbs(bs.left)} over</span>`}</span></div>
-      <div class="track"><div class="fill" style="width:${Math.min(100, Math.max(0, overallPct * 100))}%;background:${fillColor}"></div>${isCurMonth ? `<div class="pace-tick" style="left:calc(${(mp.frac * 100).toFixed(1)}% - 1px)"></div>` : ''}</div>
+      <div class="track" role="meter" aria-valuemin="0" aria-valuemax="${Math.round(bs.totalBudget / 100)}" aria-valuenow="${Math.round(bs.totalSpent / 100)}" aria-label="Overall budget"><div class="fill" style="width:${Math.min(100, Math.max(0, overallPct * 100))}%;background:${fillColor}"></div>${isCurMonth ? `<div class="pace-tick" style="left:calc(${(mp.frac * 100).toFixed(1)}% - 1px)"></div>` : ''}</div>
       ${paceLine ? `<div class="sub" style="margin-top:4px">${paceLine}</div>` : ''}
     </div>`;
 
@@ -1257,12 +1406,22 @@ function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth) {
     const c = r.cat;
     const rem = r.budget - r.spent;
     const w = Math.min(100, Math.max(0, r.frac * 100));
+    // Over rows fill the whole track (= everything spent) with a darker
+    // right-anchored overage segment past the 100%-of-budget tick, so 105%
+    // over reads visibly different from 150% over.
+    let trackInner;
+    if (r.state === 'over' && r.spent > 0) {
+      const capPct = Math.max(0, Math.min(100, r.budget / r.spent * 100));
+      trackInner = `<div class="fill" style="width:100%"></div><div class="overage" style="width:${(100 - capPct).toFixed(1)}%"></div><div class="cap-tick" style="left:calc(${capPct.toFixed(1)}% - 1px)"></div>`;
+    } else {
+      trackInner = `<div class="fill" style="width:${w}%${r.state === 'ok' ? `;background:${catColor(c)}` : ''}"></div>`;
+    }
     html += `<div class="meter ${r.state}" data-cat="${esc(c.id)}" role="button" tabindex="0" aria-label="${esc(c.name)}: ${moneyAbs(r.spent)} of ${moneyAbs(r.budget)} budget — view transactions">
       <div class="top"><span class="nm">${c.emoji} ${esc(c.name)}</span>
         <span class="st">${rem >= 0 ? `${moneyAbs(rem)} left` : `<span style="color:var(--critical)">${moneyAbs(rem)} over</span>`}
-          <span class="muted" style="font-size:11.5px">${moneyAbs(r.spent)} / ${moneyAbs(r.budget)}</span></span>
+          <span class="muted" style="font-size:12px">${moneyAbs(r.spent)} / ${moneyAbs(r.budget)}</span></span>
         <button class="iconbtn budget-edit" data-cat="${esc(c.id)}" aria-label="Edit ${esc(c.name)} budget">✎</button></div>
-      <div class="track"><div class="fill" style="width:${w}%${r.state === 'ok' ? `;background:${catColor(c)}` : ''}"></div></div>
+      <div class="track" role="meter" aria-valuemin="0" aria-valuemax="${Math.round(r.budget / 100)}" aria-valuenow="${Math.round(r.spent / 100)}" aria-label="${esc(c.name)} budget">${trackInner}</div>
       ${r.state === 'over' ? `<div class="overnote">⚠️ Over budget by ${moneyAbs(r.spent - r.budget)}</div>` : ''}
     </div>`;
     if (state.budgetEdit === c.id) html += budgetEditorHtml(c);
@@ -1444,10 +1603,8 @@ function renderTrends(app) {
     return;
   }
 
-  if (series.length > 1) {
-    html += `<div class="legend">` + series.map(s =>
-      `<span class="key"><span class="swatch" style="background:${s.color}"></span>${esc(s.name)}</span>`).join('') + `</div>`;
-  }
+  html += `<div class="legend">` + series.map(s =>
+    `<span class="key"><span class="swatch" style="background:${s.color}"></span>${esc(s.name)}${series.length === 1 ? ` · ${moneyAbs(s.values[s.values.length - 1])}` : ''}</span>`).join('') + `</div>`;
   html += `<div class="chartwrap" id="trend-chart"></div></div>`;
 
   // table twin — every charted value reachable without hover
@@ -1473,67 +1630,108 @@ function niceCeil(v) {
 }
 
 function drawLineChart(container, months, series) {
-  const W = 660, H = 260, padL = 46, padR = 30, padT = 12, padB = 26;
-  const iw = W - padL - padR, ih = H - padT - padB;
-  const maxV = niceCeil(Math.max(1, ...series.flatMap(s => s.values)));
-  const x = i => padL + (months.length === 1 ? iw / 2 : i * iw / (months.length - 1));
-  const y = v => padT + ih - (v / maxV) * ih;
-  const TICKS = 4;
-  let g = '';
-  for (let t = 0; t <= TICKS; t++) {
-    const v = maxV * t / TICKS, yy = y(v);
-    g += `<line x1="${padL}" y1="${yy}" x2="${W - padR}" y2="${yy}" stroke="var(--grid)" stroke-width="1"/>`;
-    g += `<text x="${padL - 8}" y="${yy + 4}" text-anchor="end" font-size="10.5" fill="var(--text-muted)" style="font-variant-numeric:tabular-nums">${moneyCompact(v)}</text>`;
-  }
-  // x labels: every other month to avoid collisions
-  let xl = '';
-  months.forEach((m, i) => {
-    if (i % 2 === (months.length % 2 === 0 ? 1 : 0)) {
-      xl += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle" font-size="10.5" fill="var(--text-muted)">${monthShort(m)}</text>`;
-    }
-  });
-  let paths = '';
-  for (const s of series) {
-    const pts = s.values.map((v, i) => `${x(i)},${y(v)}`).join(' ');
-    paths += `<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
-    const li = s.values.length - 1;
-    paths += `<circle cx="${x(li)}" cy="${y(s.values[li])}" r="4" fill="${s.color}" stroke="var(--surface-1)" stroke-width="2"/>`;
-    paths += `<text x="${x(li)}" y="${y(s.values[li]) - 9}" text-anchor="end" font-size="11" font-weight="600" fill="var(--text-secondary)" style="font-variant-numeric:tabular-nums">${moneyCompact(s.values[li])}</text>`;
-  }
-  container.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Monthly trend chart">
-    ${g}
-    <line x1="${padL}" y1="${padT + ih}" x2="${W - padR}" y2="${padT + ih}" stroke="var(--baseline)" stroke-width="1"/>
-    ${xl}${paths}
-    <line id="xh" x1="0" y1="${padT}" x2="0" y2="${padT + ih}" stroke="var(--baseline)" stroke-width="1" style="display:none"/>
-    <rect id="hit" x="${padL}" y="${padT}" width="${iw}" height="${ih}" fill="transparent"/>
-  </svg>`;
+  // Trim leading months where every series is zero — no point charting the
+  // silence before the data starts. Always keep at least 6 points.
+  let off = 0;
+  while (months.length - off > 6 && series.every(s => !(s.values[off]))) off++;
+  const ms = months.slice(off);
+  const sers = series.map(s => ({ name: s.name, color: s.color, values: s.values.slice(off) }));
 
-  const svg = $('svg', container), hit = $('#hit', container), xh = $('#xh', container);
-  const tip = $('#viztip');
-  function onMove(ev) {
-    const r = svg.getBoundingClientRect();
-    const sx = (ev.clientX - r.left) * (W / r.width);
-    let idx = Math.round((sx - padL) / (iw / Math.max(1, months.length - 1)));
-    idx = Math.max(0, Math.min(months.length - 1, idx));
-    const cx = x(idx);
-    xh.setAttribute('x1', cx); xh.setAttribute('x2', cx);
-    xh.style.display = '';
-    tip.innerHTML = '';
-    const t0 = document.createElement('div'); t0.className = 't'; t0.textContent = monthLabel(months[idx]);
-    tip.appendChild(t0);
-    for (const s of series) {
-      const row = document.createElement('div'); row.className = 'r';
-      const k = document.createElement('span'); k.className = 'k'; k.style.background = s.color;
-      const v = document.createElement('span'); v.className = 'v'; v.textContent = moneyAbs(s.values[idx]);
-      const n = document.createElement('span'); n.className = 'n'; n.textContent = s.name;
-      row.append(k, v, n); tip.appendChild(row);
+  // The whole chart is built inside draw() so a resize can rebuild it from the
+  // container's live width; no DOM refs survive between draws.
+  const draw = () => {
+    const W = Math.max(340, container.clientWidth || 0);
+    const H = W < 480 ? 220 : 260;
+    const padL = 52, padR = 56, padT = 14, padB = 26;
+    const iw = W - padL - padR, ih = H - padT - padB;
+    const maxV = niceCeil(Math.max(1, ...sers.flatMap(s => s.values)));
+    const x = i => padL + (ms.length === 1 ? iw / 2 : i * iw / (ms.length - 1));
+    const y = v => padT + ih - (v / maxV) * ih;
+    const TICKS = 4;
+    let g = '';
+    for (let t = 0; t <= TICKS; t++) {
+      const v = maxV * t / TICKS, yy = y(v);
+      g += `<line x1="${padL}" y1="${yy}" x2="${W - padR}" y2="${yy}" stroke="var(--grid)" stroke-width="1"/>`;
+      g += `<text x="${padL - 8}" y="${yy + 4}" text-anchor="end" font-size="12.5" fill="var(--text-secondary)" style="font-variant-numeric:tabular-nums">${moneyCompact(v)}</text>`;
     }
-    showTipAt(ev.clientX, ev.clientY);
-  }
-  hit.addEventListener('pointermove', onMove);
-  hit.addEventListener('pointerdown', onMove);
-  hit.addEventListener('pointerleave', () => { xh.style.display = 'none'; hideTip(); });
+    // x labels: as many as fit at ~52px each, anchored so the last month is
+    // always labeled.
+    const step = Math.max(1, Math.ceil(ms.length / Math.max(1, Math.floor(iw / 52))));
+    let xl = '';
+    ms.forEach((m, i) => {
+      if ((ms.length - 1 - i) % step === 0) {
+        xl += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle" font-size="12.5" fill="var(--text-secondary)">${monthShort(m)}</text>`;
+      }
+    });
+    let paths = '';
+    const endLabels = [];
+    for (const s of sers) {
+      const pts = s.values.map((v, i) => `${x(i)},${y(v)}`).join(' ');
+      paths += `<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+      // Point markers distinguish series even without color (e.g. Savings' two lines).
+      s.values.forEach((v, i) => {
+        const last = i === s.values.length - 1;
+        paths += `<circle cx="${x(i)}" cy="${y(v)}" r="${last ? 4 : 2.5}" fill="${s.color}" stroke="var(--surface-1)" stroke-width="${last ? 2 : 1}"/>`;
+      });
+      const li = s.values.length - 1;
+      endLabels.push({ ly: y(s.values[li]) + 4, text: moneyCompact(s.values[li]) });
+    }
+    // End-label collision: keep labels at least 14px apart vertically.
+    endLabels.forEach(l => { l.ly = Math.max(padT + 10, Math.min(padT + ih, l.ly)); });
+    endLabels.sort((a, b) => a.ly - b.ly);
+    for (let i = 1; i < endLabels.length; i++) {
+      if (endLabels[i].ly - endLabels[i - 1].ly < 14) endLabels[i].ly = endLabels[i - 1].ly + 14;
+    }
+    for (const l of endLabels) {
+      paths += `<text x="${x(ms.length - 1) + 8}" y="${l.ly}" text-anchor="start" font-size="12" font-weight="600" fill="var(--text-secondary)" style="font-variant-numeric:tabular-nums">${l.text}</text>`;
+    }
+    container.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Monthly trend chart">
+      ${g}
+      <line x1="${padL}" y1="${padT + ih}" x2="${W - padR}" y2="${padT + ih}" stroke="var(--baseline)" stroke-width="1"/>
+      ${xl}${paths}
+      <line id="xh" x1="0" y1="${padT}" x2="0" y2="${padT + ih}" stroke="var(--baseline)" stroke-width="1" style="display:none"/>
+      <rect id="hit" x="${padL}" y="${padT}" width="${iw}" height="${ih}" fill="transparent"/>
+    </svg>`;
+
+    const svg = $('svg', container), hit = $('#hit', container), xh = $('#xh', container);
+    const tip = $('#viztip');
+    function onMove(ev) {
+      const r = svg.getBoundingClientRect();
+      const sx = (ev.clientX - r.left) * (W / r.width);
+      let idx = Math.round((sx - padL) / (iw / Math.max(1, ms.length - 1)));
+      idx = Math.max(0, Math.min(ms.length - 1, idx));
+      const cx = x(idx);
+      xh.setAttribute('x1', cx); xh.setAttribute('x2', cx);
+      xh.style.display = '';
+      tip.innerHTML = '';
+      const t0 = document.createElement('div'); t0.className = 't'; t0.textContent = monthLabel(ms[idx]);
+      tip.appendChild(t0);
+      for (const s of sers) {
+        const row = document.createElement('div'); row.className = 'r';
+        const k = document.createElement('span'); k.className = 'k'; k.style.background = s.color;
+        const v = document.createElement('span'); v.className = 'v'; v.textContent = moneyAbs(s.values[idx]);
+        const n = document.createElement('span'); n.className = 'n'; n.textContent = s.name;
+        row.append(k, v, n); tip.appendChild(row);
+      }
+      showTipAt(ev.clientX, ev.clientY);
+    }
+    hit.addEventListener('pointermove', onMove);
+    hit.addEventListener('pointerdown', onMove);
+    hit.addEventListener('pointerleave', () => { xh.style.display = 'none'; hideTip(); });
+  };
+
+  draw();
+  // Latest chart wins the shared redraw slot; a stale container simply fails
+  // the isConnected check after the next render() replaces the view.
+  drawLineChart._redraw = () => { if (container.isConnected) draw(); };
 }
+
+// One debounced window listener redraws whichever chart is currently on
+// screen at its new width (registered once at boot).
+window.addEventListener('resize', () => {
+  clearTimeout(drawLineChart._t);
+  drawLineChart._t = setTimeout(() => { if (drawLineChart._redraw) drawLineChart._redraw(); }, 200);
+});
 
 /* tooltip plumbing (shared) */
 function showTipAt(cx, cy) {
@@ -1627,7 +1825,7 @@ function renderTransactions(app) {
 
   <div class="row" style="margin:14px 0 10px">
     <h2 style="margin:0">Transactions</h2>
-    <button class="btn small right" id="open-import">📥 Import CSV</button>
+    <button class="btn small right" id="open-import">Import CSV</button>
   </div>
   <div class="filters">
     <input type="search" id="f-search" placeholder="Search text or amount (12, 10-50)…" value="${esc(state.fSearch)}">
@@ -1662,12 +1860,18 @@ function renderTransactions(app) {
     html += `<div class="card empty"><div>No transactions match these filters.</div></div>`;
   } else {
     const shown = matches.slice(0, state.showCount);
-    let lastDay = '';
+    let lastDay = '', groupOpen = false;
     for (const t of shown) {
-      if (t.date !== lastDay) { html += `<div class="dayhdr">${dateLabel(t.date)}</div>`; lastDay = t.date; }
+      if (t.date !== lastDay) {
+        if (groupOpen) html += `</div>`;
+        html += `<div class="dayhdr">${dateLabel(t.date)}</div><div class="daygroup">`;
+        groupOpen = true;
+        lastDay = t.date;
+      }
       html += txnRowHtml(t);
       if (state.editingId === t.id) html += txnEditorHtml(t);
     }
+    if (groupOpen) html += `</div>`;
     if (matches.length > shown.length) {
       html += `<div style="text-align:center;margin:12px 0"><button class="btn secondary" id="show-more">Show more (${matches.length - shown.length} left)</button></div>`;
     }
@@ -1743,7 +1947,7 @@ function txnRowHtml(t) {
   const amtCls = t.isTransfer ? 'xfer' : (t.amount > 0 ? 'pos' : '');
   const sign = t.amount > 0 ? '+' : '';
   const label = `${t.desc || 'Transaction'}, ${sign}${money(t.amount)}, ${t.isTransfer ? 'transfer' : c.name} — edit`;
-  return `<div class="txn ${t.categoryId === 'uncat' && !t.isTransfer ? 'uncat' : ''}" data-id="${t.id}" role="button" tabindex="0" aria-label="${esc(label)}">
+  return `<div class="txn${t.categoryId === 'uncat' && !t.isTransfer ? ' uncat' : ''}${state.editingId === t.id ? ' editing' : ''}" data-id="${t.id}" role="button" tabindex="0" aria-label="${esc(label)}">
     <div class="emoji">${t.isTransfer ? '🔀' : c.emoji}</div>
     <div class="mid">
       <div class="desc">${esc(t.desc)}</div>
@@ -1757,7 +1961,7 @@ function txnEditorHtml(t) {
   return `<div class="editor" data-editor="${t.id}">
     <div class="grid2">
       <label class="fld"><span>Date</span><input type="date" id="ed-date" value="${t.date}"></label>
-      <label class="fld"><span>Amount ($, negative = expense)</span><input type="number" step="0.01" id="ed-amt" value="${(t.amount / 100).toFixed(2)}"></label>
+      <label class="fld"><span>Amount ($)</span><input type="number" step="0.01" id="ed-amt" value="${(t.amount / 100).toFixed(2)}"><span class="hint">Negative = expense, positive = money in</span></label>
       <label class="fld"><span>Category</span><select id="ed-cat">${data.categories.map(c => `<option value="${c.id}" ${t.categoryId === c.id ? 'selected' : ''}>${c.emoji} ${esc(c.name)}</option>`).join('')}</select></label>
       <label class="fld"><span>Account</span><select id="ed-acct">${data.accounts.map(a => `<option value="${a.id}" ${t.accountId === a.id ? 'selected' : ''}>${esc(a.name)}</option>`).join('')}</select></label>
       <label class="fld" style="grid-column:1/-1"><span>Description</span><input type="text" id="ed-desc" value="${esc(t.desc)}"></label>
@@ -1860,9 +2064,9 @@ function renderSavings(app) {
     series.push({ name: 'Investments', color: 'var(--series-2)', values: months.map(m => Math.max(0, savingsFlow(m, ['investment']))) });
   }
   html += `<div class="card"><h2>Money added per month</h2>`;
-  if (series.length > 1) {
+  if (series.length) {
     html += `<div class="legend">` + series.map(s =>
-      `<span class="key"><span class="swatch" style="background:${s.color}"></span>${esc(s.name)}</span>`).join('') + `</div>`;
+      `<span class="key"><span class="swatch" style="background:${s.color}"></span>${esc(s.name)}${series.length === 1 ? ` · ${moneyAbs(s.values[s.values.length - 1])}` : ''}</span>`).join('') + `</div>`;
   }
   html += `<div class="chartwrap" id="sv-chart"></div>
     <div class="preview-scroll" style="border:0;margin-top:8px"><table class="mini">
@@ -1964,20 +2168,33 @@ function renderRecurring(app) {
   });
 }
 
-// One recurring table (expenses or income). Income rows get a + sign and are
+// One recurring list (expenses or income). Income rows get a + sign and are
 // tinted green; every row is tappable to drill into its transactions.
+// Renders BOTH a table (≥600px) and a card list (<600px); CSS shows one.
 function recTableHtml(list, isIncome) {
   const col = isIncome ? ' style="color:var(--good-text)"' : '';
   const sign = isIncome ? '+' : '';
-  let h = `<div class="preview-scroll" style="border:0"><table class="mini">
+  let h = `<div class="preview-scroll rec-table" style="border:0"><table class="mini">
   <tr><th>Merchant</th><th>Cadence</th><th class="num">Typical</th><th class="num">/month</th><th class="num">/year</th></tr>`;
   for (const r of list) {
     const c = catById(r.categoryId);
-    h += `<tr class="rec-row" data-merchant="${esc(r.name)}" style="cursor:pointer"><td>${c.emoji} ${esc(r.name)}<div class="muted" style="font-size:11px">last ${dateLabel(r.last)} · ${r.count}×</div></td>
+    h += `<tr class="rec-row" data-merchant="${esc(r.name)}" style="cursor:pointer"><td>${c.emoji} ${esc(r.name)}<div class="muted" style="font-size:12px">last ${dateLabel(r.last)} · ${r.count}×</div></td>
       <td>${r.cadence}</td><td class="num"${col}>${sign}${moneyAbs(r.typical)}</td>
       <td class="num"${col}>${sign}${moneyAbs(r.perMonthCost)}</td><td class="num"${col}>${sign}${moneyAbs(r.perYearCost)}</td></tr>`;
   }
   h += `</table></div>`;
+  // Mobile: one card row per merchant so nothing gets cut off horizontally.
+  h += `<div class="rec-cards">` + list.map(r => {
+    const c = catById(r.categoryId);
+    return `<div class="rec-card rec-row" data-merchant="${esc(r.name)}" role="button" tabindex="0" aria-label="${esc(r.name)}, ${r.cadence}, ${sign}${moneyAbs(r.typical)} typical — view transactions">
+      <div class="row" style="gap:8px;flex-wrap:nowrap">
+        <span class="rc-name">${c.emoji} ${esc(r.name)}</span>
+        <span class="chip" style="cursor:inherit">${r.cadence}</span>
+      </div>
+      <div class="rc-meta"${col}>${sign}${moneyAbs(r.typical)} typical · ${sign}${moneyAbs(r.perMonthCost)}/mo · ${sign}${moneyAbs(r.perYearCost)}/yr</div>
+      <div class="rc-meta muted">last ${dateLabel(r.last)} · ${r.count}×</div>
+    </div>`;
+  }).join('') + `</div>`;
   return h;
 }
 
@@ -1986,15 +2203,21 @@ function renderSettings(app) {
   let html = `<h1>Settings</h1>
 
   <div class="card"><h2>Categories & monthly budgets</h2>
-    <div id="cat-list">`;
+    <div id="cat-list">
+    <div class="setrow sethdr" aria-hidden="true">
+      <span style="width:24px"></span>
+      <span class="grow">Category</span>
+      <span>Budget / month</span>
+      <span style="width:40px"></span>
+    </div>`;
   for (const c of data.categories) {
     if (c.id === 'uncat') continue;
     html += `<div class="setrow" data-cat="${c.id}">
       <span style="width:24px;text-align:center">${c.emoji}</span>
       <input type="text" class="cat-name" value="${esc(c.name)}" aria-label="Category name">
       ${c.kind === 'income' ? '<span class="muted" style="font-size:12px">income</span>'
-        : `<input type="number" class="budget" min="0" step="1" placeholder="Budget $" value="${c.budget ? (c.budget / 100).toFixed(0) : ''}" aria-label="Monthly budget">`}
-      <button class="iconbtn cat-del" title="Delete category">✕</button>
+        : `<span class="moneyfield"><span class="aff">$</span><input type="number" class="budget" min="0" step="1" placeholder="—" value="${c.budget ? (c.budget / 100).toFixed(0) : ''}" aria-label="Monthly budget"><span class="aff">/mo</span></span>`}
+      <button class="iconbtn cat-del" title="Delete category" aria-label="Delete ${esc(c.name)}">✕</button>
     </div>`;
   }
   html += `</div>
@@ -2044,12 +2267,12 @@ function renderSettings(app) {
   <div class="card"><h2>Your data</h2>
     <div class="sub" style="margin-bottom:10px">Everything is stored only in this browser on this device. Export a backup before clearing the browser data, and to move between your phone and computer.</div>
     <div class="row">
-      <button class="btn" id="export-json">⬇️ Export backup</button>
-      <button class="btn secondary" id="import-json">⬆️ Restore backup</button>
-      <button class="btn secondary" id="export-csv">📄 Export CSV</button>
+      <button class="btn" id="export-json">Export backup</button>
+      <button class="btn secondary" id="import-json">Restore backup</button>
+      <button class="btn secondary" id="export-csv">Export CSV</button>
       <input type="file" id="import-json-file" accept=".json,application/json" style="display:none">
     </div>
-    <div class="row" style="margin-top:14px">
+    <div class="danger-zone">
       <button class="btn danger small" id="reset-all">Erase all data</button>
     </div>
   </div>
@@ -2063,8 +2286,8 @@ function renderSettings(app) {
 
   app.innerHTML = html;
 
-  // categories
-  $$('#cat-list .setrow').forEach(row => {
+  // categories (the [data-cat] guard skips the header row)
+  $$('#cat-list .setrow[data-cat]').forEach(row => {
     const id = row.dataset.cat;
     const cat = catById(id);
     $('.cat-name', row).onchange = e => { cat.name = e.target.value.trim() || cat.name; saveData(); };
@@ -2199,8 +2422,9 @@ function openImportModal() {
   importCtx = { rows: null, map: null };
   const root = $('#modal-root');
   root.innerHTML = `<div class="overlay" id="ovl"><div class="sheet">
+    <div class="grab" aria-hidden="true"></div>
     <div class="row" style="margin-bottom:8px"><h2 style="margin:0">Import bank CSV</h2>
-      <button class="iconbtn right" id="m-close" style="font-size:18px">✕</button></div>
+      <button class="iconbtn right" id="m-close" style="font-size:18px" aria-label="Close">✕</button></div>
 
     <label class="fld"><span>Into account</span>
       <select id="m-acct">
@@ -2216,7 +2440,10 @@ function openImportModal() {
         <option value="investment">Investment / brokerage — tracked in the Savings tab</option>
       </select></label>
 
-    <label class="fld"><span>CSV file</span><input type="file" id="m-file" accept=".csv,text/csv,text/plain"></label>
+    <label class="fld"><span>CSV file</span>
+      <input type="file" id="m-file" class="hidden-file" accept=".csv,text/csv,text/plain">
+      <span class="btn secondary filelike">Choose CSV file…</span>
+      <span class="sub" id="m-fname" style="margin-left:8px"></span></label>
     <label class="fld"><span>…or paste CSV text</span><textarea id="m-paste" rows="4" placeholder="Date,Description,Amount&#10;07/01/2026,COFFEE SHOP,-4.50"></textarea></label>
 
     <div id="m-mapping" style="display:none">
@@ -2260,6 +2487,7 @@ function openImportModal() {
   $('#m-file').onchange = e => {
     const f = e.target.files[0];
     if (!f) return;
+    $('#m-fname').textContent = f.name;
     const rd = new FileReader();
     rd.onload = () => loadCsvText(String(rd.result));
     rd.readAsText(f);
