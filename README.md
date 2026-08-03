@@ -37,8 +37,11 @@ with no hosting at all.
 - **Auto-categorization that learns** — imports are categorized by merchant. Anything
   unrecognized lands in a "Needs review" queue; when you correct a category, the app
   learns a rule and applies it to that merchant everywhere, including future imports.
-- **Budgets** — set a monthly limit per category in Settings; the Overview shows
-  progress bars and flags anything over budget.
+- **Budgets** — set monthly limits per category (inline on the Overview, in
+  Settings, or from suggestions based on your 3-month averages — a guided setup
+  card gets you started). The Overview leads with a **"Left to spend"** hero that
+  tracks your pace against a spending curve learned from your own history, plus
+  a budget card with per-category traffic-light meters.
 - **Savings & investments** — mark accounts as Savings or Investment (in Settings,
   or when importing). Their activity stays out of your spending/income numbers and
   powers the Savings tab instead: total balance, money added per month (with a
@@ -70,4 +73,9 @@ storage too.
 | `index.html` | The entire app — self-contained, works from a URL or as a local file |
 | `sw.js` | Service worker so the hosted app works offline |
 | `manifest.webmanifest`, `icon-*.png` | Home-screen install metadata |
-| `.github/workflows/pages.yml` | Auto-deploys to GitHub Pages on every push |
+| `test/smoke.mjs` | Headless-Chromium smoke test (boots the app, drives every view) |
+| `package.json` | Dev-only dependencies for the smoke test (the app has none) |
+| `.github/workflows/pages.yml` | Auto-deploys to GitHub Pages on every push to `main` |
+| `.github/workflows/smoke-test.yml` | Runs the smoke test on PRs and pushes to `main` |
+| `TASKS.md` | Coordination doc for parallel work on the single-file app |
+| `.claude/skills/` | Claude Code skills (e.g. converting bank statements to app-ready CSVs) |

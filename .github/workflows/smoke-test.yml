@@ -2,7 +2,12 @@ name: Smoke Test
 
 on:
   push:
+    branches: [main]
   pull_request:
+
+concurrency:
+  group: smoke-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   smoke:
@@ -15,9 +20,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Install Chromium for Playwright
         run: npx playwright install --with-deps chromium

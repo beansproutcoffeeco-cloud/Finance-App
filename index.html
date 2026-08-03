@@ -544,6 +544,9 @@ function loadData() {
     if (Array.isArray(d.categories)) {
       d.categories.forEach((c, i) => { if (c && !c.color) c.color = CAT_PALETTE[i % CAT_PALETTE.length]; });
     }
+    // Strip the legacy _paired scratch flag that older versions accidentally
+    // persisted (it blocked re-pairing of un-marked transfers).
+    for (const t of d.transactions) if (t && t._paired !== undefined) delete t._paired;
     return d;
   } catch (e) {
     console.error('load failed', e);
@@ -762,15 +765,16 @@ function looksLikeTransfer(desc) {
 function detectTransferPairs(newTxns) {
   let n = 0;
   const all = data.transactions;
+  const paired = new Set(); // ids claimed during this call, so each txn pairs once
   for (const t of newTxns) {
     if (t.isTransfer) continue;
     for (const o of all) {
       if (o.id === t.id || o.accountId === t.accountId) continue;
       if (o.amount !== -t.amount || t.amount === 0) continue;
       if (Math.abs(dayDiff(o.date, t.date)) > 4) continue;
-      if (o._paired) continue;
+      if (paired.has(o.id)) continue;
       t.isTransfer = true; o.isTransfer = true;
-      t._paired = true; o._paired = true;
+      paired.add(t.id); paired.add(o.id);
       n++;
       break;
     }
@@ -1605,12 +1609,13 @@ function fitTileVals(root) {
   });
 }
 
-// Switch to the Activity view with a category + month filter applied, clearing
-// unrelated filters so the drill-down shows exactly what was tapped.
-function drillToActivity(categoryFilter, month) {
+// Switch to the Activity view with a category + month filter (and optional
+// search) applied, clearing all other filters so the drill-down shows exactly
+// what was tapped.
+function drillToActivity(categoryFilter, month, search) {
   state.fCategory = categoryFilter;
   state.fMonth = month;
-  state.fSearch = '';
+  state.fSearch = search || '';
   state.fAccount = 'all';
   state.fUncatOnly = false;
   state.fTransfers = false;
@@ -2260,14 +2265,7 @@ function renderRecurring(app) {
   }
   app.innerHTML = html;
   $$('.rec-row', app).forEach(row => {
-    row.onclick = () => {
-      state.fSearch = row.dataset.merchant;
-      state.fUncatOnly = false;
-      state.showCount = 100;
-      state.view = 'transactions';
-      render();
-      window.scrollTo(0, 0);
-    };
+    row.onclick = () => drillToActivity('all', 'all', row.dataset.merchant);
   });
 }
 

@@ -4,3 +4,7 @@ node_modules/
 # OS / editor cruft
 .DS_Store
 *.log
+
+# Personal financial documents must never be committed
+*.csv
+*.pdf

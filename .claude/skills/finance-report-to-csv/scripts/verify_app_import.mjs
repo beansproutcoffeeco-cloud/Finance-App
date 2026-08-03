@@ -74,9 +74,10 @@ if (bad.length) {
   fail = true;
 }
 if (income > spend) {
+  // Warning only — deposit-heavy statements (payroll accounts, savings) are
+  // legitimately positive-majority, so this must not fail the check.
   console.error('WARNING: more positive rows than negative — sign convention may be flipped ' +
     '(app expects spending NEGATIVE). Double-check before delivering.');
-  fail = true;
 }
 console.log(fail ? '\nRESULT: FAIL' : '\nRESULT: PASS — CSV imports cleanly with no toggles');
 process.exit(fail ? 1 : 0);

@@ -8,6 +8,15 @@
  *
  * Target file can be overridden with the SMOKE_TARGET env var (absolute path);
  * defaults to ../index.html next to this script. Used by the broken-app check.
+ *
+ * App-globals contract this test depends on (script-scope names in index.html
+ * that must stay reachable from page scope — renaming/moving them into a
+ * module breaks this test):
+ *   data, saveData, uid, merchantKey, state, render,
+ *   monthTotals, netWorth, accountBalance
+ * It also assumes the default category ids 'income', 'groceries', 'dining',
+ * 'shopping', 'uncat' exist, and that categories carry a `budget` field
+ * (cents) which drives the dashboard's Left-to-spend hero + budget card.
  */
 import { chromium } from 'playwright';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -20,7 +29,11 @@ const TARGET = process.env.SMOKE_TARGET
 const TARGET_URL = pathToFileURL(TARGET).href;
 
 const VIEWS = ['dashboard', 'trends', 'savings', 'transactions', 'recurring', 'settings'];
-const SEED_MONTH = '2026-06';
+// Seed into the REAL current month: the dashboard's Left-to-spend hero only
+// renders for the current month (when at least one budget is set), so a
+// hardcoded month would silently stop exercising the budgeting UI.
+const NOW = new Date();
+const SEED_MONTH = `${NOW.getFullYear()}-${String(NOW.getMonth() + 1).padStart(2, '0')}`;
 
 const failures = [];
 function check(label, cond, detail) {
@@ -69,6 +82,11 @@ function seedInPage(month) {
   data.balances = [
     { id: uid(), accountId: 'brokerage', date: month + '-14', balance: 1500000 },
   ];
+
+  // Budgets on two categories so the dashboard renders the Left-to-spend hero
+  // and the budget card with per-category meters.
+  const budgets = { groceries: 60000, dining: 15000 };
+  for (const c of data.categories) if (budgets[c.id]) c.budget = budgets[c.id];
 
   saveData();
 }
@@ -119,7 +137,22 @@ async function main() {
       check(`view '${v}' produced meaningful #app content`, len > 50, `length=${len}`);
     }
 
-    // 4) Data invariants.
+    // 4) Budgeting UI: with budgets seeded on the current month, the dashboard
+    // must show the Left-to-spend hero and at least one per-category meter.
+    const dash = await page.evaluate(() => {
+      state.view = 'dashboard';
+      state.editingId = null;
+      render();
+      const app = document.querySelector('#app');
+      return {
+        hasHero: app.textContent.includes('Left to spend'),
+        hasMeter: !!app.querySelector('.meter[data-cat]'),
+      };
+    });
+    check("dashboard shows 'Left to spend' hero (budgets + current month)", dash.hasHero);
+    check('dashboard shows a per-category budget meter', dash.hasMeter);
+
+    // 5) Data invariants.
     const inv = await page.evaluate((month) => {
       const mt = monthTotals(month);
       const nw = netWorth();

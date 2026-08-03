@@ -56,3 +56,8 @@ The real fix is to **split `index.html` into modules** (import, dashboard, setti
 etc.) with a small build step that bundles them back into the single deployable file.
 Then different areas live in different files and most of this coordination pain goes
 away. Until then, this doc is the guardrail.
+
+> **Warning:** `test/smoke.mjs` and `.claude/skills/finance-report-to-csv/scripts/verify_app_import.mjs`
+> depend on script-scope globals (`data`, `saveData`, `state`, `render`, …) and on
+> string-extraction of the CSV functions (`parseCSV` → `extractRows`) from
+> `index.html` — a module split must preserve or migrate those contracts.

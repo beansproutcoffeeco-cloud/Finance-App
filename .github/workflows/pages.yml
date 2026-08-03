@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, claude/repo-access-ogo7v9]
+    branches: [main]
   workflow_dispatch:
 
 permissions:

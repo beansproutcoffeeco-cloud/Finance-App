@@ -20,8 +20,9 @@ transaction copied exactly, every total reconciled, nothing guessed.
   income/refunds/credits POSITIVE.** The app's "Flip signs" import toggle must
   never be required.
 - One CSV per request unless the user says otherwise; sort rows by date.
-- File name: descriptive, e.g. `chase_transactions_1234.csv` — never commit these CSVs to the repo; hand the file to the user or import it directly (institution +
-  account last-4 if known).
+- File name: descriptive (institution + account last-4 if known), e.g.
+  `chase_transactions_1234.csv`. Never commit these CSVs to the repo; hand the
+  file to the user or import it directly.
 
 ## Workflow
 
@@ -96,9 +97,9 @@ the working tree, get it from git (`git show <default-branch>:index.html`).
 
 ### 7. Deliver
 
-- Send the CSV to the user with SendUserFile so they can download it.
-- If working on a git branch per session instructions, commit the CSV to the
-  repo root and push.
+- Send the CSV to the user with SendUserFile so they can download it. Deliver
+  via file only — never commit the CSV to the repo (it contains personal
+  financial data).
 - Summarize: row count per source document, reconciliation results (totals
   checked and matched), the sign convention applied, any refunds/credits, and
   a reminder that the app skips duplicates so re-imports are safe.
