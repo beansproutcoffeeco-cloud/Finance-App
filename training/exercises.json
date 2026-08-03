@@ -1,0 +1,1055 @@
+[
+  {
+    "id": "goblet_squat",
+    "name": "Goblet Squat",
+    "category": "strength",
+    "why_for_snowboarding": "Builds the quad and glute strength that keeps your legs from burning out halfway through a riding day. The upright, front-loaded position mirrors the stacked stance you want over your board.",
+    "setup_and_execution": [
+      "Hold a dumbbell or kettlebell vertically against your chest, elbows tucked, feet shoulder-width with toes slightly out.",
+      "Brace your core, then sit down and back, keeping your chest tall and heels planted.",
+      "Descend until your thighs are at least parallel (elbows can lightly track inside the knees).",
+      "Drive through the whole foot to stand back up, squeezing your glutes at the top."
+    ],
+    "coaching_cues": [
+      "Chest tall, weight glued to your sternum",
+      "Knees track over the toes",
+      "Push the floor away to stand"
+    ],
+    "common_mistakes": [
+      "Heels lifting off the floor",
+      "Knees caving inward on the way up",
+      "Rounding the upper back and letting the weight drift away from the chest"
+    ],
+    "home_alternative": "Home-compatible as-is with any dumbbell, kettlebell, or loaded backpack; if the load is light, add a 3-4-s eccentric and +2-4 reps per set.",
+    "regression": "Bodyweight squat to a box or bench, tapping and standing back up.",
+    "progression": "Heavier goblet squat with a 3-s eccentric, or transition to the barbell back squat.",
+    "video_url": null,
+    "video_backup_query": "how to goblet squat proper form tutorial NASM"
+  },
+  {
+    "id": "back_squat",
+    "name": "Barbell Back Squat",
+    "category": "strength",
+    "why_for_snowboarding": "The biggest driver of overall leg strength, which underpins everything on snow: absorbing chunder, holding a low carve, and having reserve strength late in the day. Stronger legs also protect the knees when landings go sideways.",
+    "setup_and_execution": [
+      "Set the bar on your upper traps, grip just outside shoulder width, and stand out of the rack with feet shoulder-width, toes slightly out.",
+      "Big breath into your belly, brace, then sit down and back with your chest up.",
+      "Descend under control until thighs reach at least parallel, knees tracking over the toes.",
+      "Drive up through the whole foot, exhaling near the top, and re-brace before each rep."
+    ],
+    "coaching_cues": [
+      "Brace like you're about to be poked in the stomach",
+      "Bar travels in a straight line over mid-foot",
+      "Spread the floor with your feet"
+    ],
+    "common_mistakes": [
+      "Cutting depth as the weight gets heavy",
+      "Knees collapsing inward out of the bottom",
+      "Chest dropping forward so the bar drifts over the toes"
+    ],
+    "home_alternative": "Tempo DB goblet squat with a 4-s eccentric, +2-4 reps per set to compensate for the lighter load.",
+    "regression": "Goblet squat, or barbell squat to a box at a comfortable depth.",
+    "progression": "Add load, pause squats (2-s pause in the bottom), or a 3-s eccentric tempo.",
+    "video_url": null,
+    "video_backup_query": "how to barbell back squat perfect technique beginner Squat University"
+  },
+  {
+    "id": "db_rdl",
+    "name": "Dumbbell Romanian Deadlift",
+    "category": "strength",
+    "why_for_snowboarding": "Strengthens hamstrings and glutes, the muscles that stabilize your knees when landing and keep your hips loaded through heelside turns. A strong posterior chain balances all the quad work riding demands.",
+    "setup_and_execution": [
+      "Stand tall holding dumbbells in front of your thighs, feet hip-width, knees softly bent.",
+      "Push your hips straight back, sliding the dumbbells down the front of your legs with a flat back.",
+      "Lower until you feel a strong hamstring stretch (usually mid-shin), without rounding your spine.",
+      "Drive your hips forward to stand, squeezing your glutes at the top."
+    ],
+    "coaching_cues": [
+      "Hips back, not down",
+      "Dumbbells stay shaved against your legs",
+      "Proud chest, long spine"
+    ],
+    "common_mistakes": [
+      "Bending the knees and turning it into a squat",
+      "Rounding the lower back at the bottom",
+      "Hyperextending and leaning back at the top"
+    ],
+    "home_alternative": "Home-compatible as-is with dumbbells or a loaded backpack held in both hands; add a 4-s eccentric and +2-4 reps per set if the load is light.",
+    "regression": "Hip hinge to a box or with a dowel held along the spine to groove the pattern.",
+    "progression": "Heavier dumbbells with a 3-s eccentric, or move to the barbell RDL.",
+    "video_url": null,
+    "video_backup_query": "dumbbell Romanian deadlift proper form technique for beginners"
+  },
+  {
+    "id": "bb_rdl",
+    "name": "Barbell Romanian Deadlift",
+    "category": "strength",
+    "why_for_snowboarding": "Loads the hip hinge heavier than dumbbells allow, building the hamstring and glute strength that absorbs flat landings and protects the knees when you get bucked. Key for balanced legs that hold up over a full season.",
+    "setup_and_execution": [
+      "Stand with the bar in your hands at hip height (from a rack is easiest), grip just outside your thighs, knees softly bent.",
+      "Set your shoulder blades, brace, then push your hips back so the bar slides down your thighs.",
+      "Keep the bar in contact with your legs and your back flat; lower to mid-shin or wherever your hamstrings run out of stretch.",
+      "Stand by driving the hips forward, finishing tall with glutes squeezed."
+    ],
+    "coaching_cues": [
+      "Push your hips to the wall behind you",
+      "Keep the bar dragging up and down your legs",
+      "Lock your ribs down and keep a long, flat back"
+    ],
+    "common_mistakes": [
+      "Letting the bar drift away from the body",
+      "Rounding the lower back to chase depth",
+      "Bending the knees more as the set gets hard"
+    ],
+    "home_alternative": "DB RDL with a 4-s eccentric, +2-4 reps per set to compensate for the lighter load.",
+    "regression": "Dumbbell RDL or a dowel hip hinge to re-groove the pattern.",
+    "progression": "Add load, or use a 3-s eccentric with a 1-s pause at mid-shin.",
+    "video_url": null,
+    "video_backup_query": "barbell Romanian deadlift RDL proper form technique tutorial"
+  },
+  {
+    "id": "box_step_up",
+    "name": "Box Step-Up",
+    "category": "strength",
+    "why_for_snowboarding": "Single-leg strength that transfers directly to skating out of the lift line, absorbing terrain one leg at a time, and evening out the strength differences a directional stance creates.",
+    "setup_and_execution": [
+      "Stand facing a box or bench around knee height (lower is fine to start), dumbbells at your sides if loaded.",
+      "Place your whole foot on the box and shift your weight onto that leg.",
+      "Drive through the top-leg heel to stand up on the box without pushing off the bottom leg.",
+      "Lower yourself back down under control and repeat all reps on one side before switching."
+    ],
+    "coaching_cues": [
+      "Make the top leg do all the work",
+      "Whole foot on the box, knee over toes",
+      "Control the way down — don't drop"
+    ],
+    "common_mistakes": [
+      "Bouncing off the bottom leg to cheat the rep",
+      "Knee diving inward as you stand",
+      "Using a box so high the hips twist to get up"
+    ],
+    "home_alternative": "Home-compatible as-is using stairs or a sturdy low bench/step; hold dumbbells or a loaded backpack, and add +2-4 reps per set if the load is light.",
+    "regression": "Use a lower step (10-20 cm) and bodyweight only; reduce range further if you feel any knee pain, and only add height when reps are pain-free and controlled.",
+    "progression": "Raise the box toward knee height, add dumbbells, or slow the lowering phase to 3 s.",
+    "video_url": null,
+    "video_backup_query": "box step up exercise proper form tutorial single leg"
+  },
+  {
+    "id": "spanish_squat",
+    "name": "Spanish Squat (band)",
+    "category": "strength",
+    "why_for_snowboarding": "Loads the quads hard while keeping shins vertical and knee stress low — near-identical to the constant knee bend of riding. Great for building the quad capacity and tendon resilience that toeside pressure and long groomer runs demand.",
+    "setup_and_execution": [
+      "Anchor a heavy loop band at knee height around a rack or post, and step both legs inside so it sits behind your knees.",
+      "Walk back until the band is taut and your feet are under your shoulders.",
+      "Sit straight down, letting the band hold your shins vertical, torso staying upright, until knees reach about 90 degrees.",
+      "Stand back up, or hold the bottom position as an isometric if programmed that way."
+    ],
+    "coaching_cues": [
+      "Lean back into the band, trust it",
+      "Shins stay vertical the whole rep",
+      "Sit between your heels, chest tall"
+    ],
+    "common_mistakes": [
+      "Standing too close so the band goes slack",
+      "Hinging forward at the hips instead of squatting upright",
+      "Rushing the reps instead of controlled tension"
+    ],
+    "home_alternative": "Home-compatible as-is with a heavy loop band anchored to a door anchor, stair post, or other solid point; if the band is light, slow to a 5-s tempo or hold 30-45-s isometrics.",
+    "regression": "Shallower depth (quarter squat) with the same setup, or a wall sit at a comfortable knee angle.",
+    "progression": "Slow 5-s eccentrics, add a dumbbell held at the chest, or longer isometric holds at 90 degrees.",
+    "video_url": null,
+    "video_backup_query": "Spanish squat band setup how to E3 Rehab"
+  },
+  {
+    "id": "eccentric_step_down",
+    "name": "Slow Eccentric Step-Down",
+    "category": "strength",
+    "why_for_snowboarding": "Trains the quads and knee stabilizers to control your body while lengthening under load — exactly what happens every time you absorb a compression or land slightly back-seat. One of the best knee-proofing drills for riders.",
+    "setup_and_execution": [
+      "Stand on a low step (10-20 cm) on one leg, hands free or on a wall for light balance support.",
+      "Keeping your hips level, slowly bend the standing knee to lower the free heel toward the floor over 3-5 seconds.",
+      "Lightly tap the floor with your heel — don't put weight on it.",
+      "Push back up through the standing leg to the start; finish all reps on one side before switching."
+    ],
+    "coaching_cues": [
+      "Slow motion on the way down",
+      "Knee tracks over the middle toes",
+      "Keep both hips level like headlights"
+    ],
+    "common_mistakes": [
+      "Dropping fast instead of controlling the lowering",
+      "Knee collapsing inward as it bends",
+      "Hiking or dipping the pelvis to reach the floor"
+    ],
+    "home_alternative": "Home-compatible as-is on a stair step; hold a wall or rail for balance and progress height and tempo before adding any load.",
+    "regression": "Use a lower step and shallower knee bend with fingertip support on a wall; reduce the range if you feel any knee pain and build depth back gradually as it stays pain-free.",
+    "progression": "Taller step, 5-s lowering, or hold a light dumbbell at the chest.",
+    "video_url": null,
+    "video_backup_query": "slow eccentric step down exercise knee control tutorial physical therapy"
+  },
+  {
+    "id": "db_bench_press",
+    "name": "Dumbbell Bench Press",
+    "category": "strength",
+    "why_for_snowboarding": "Upper-body pushing strength for pushing yourself up off the snow after falls and bracing during them. Dumbbells also train each arm independently and let the shoulders move freely.",
+    "setup_and_execution": [
+      "Sit on a bench with dumbbells on your thighs, then kick them up one at a time as you lie back.",
+      "Start with dumbbells over your chest, feet planted, shoulder blades pinched into the bench.",
+      "Lower the dumbbells to the sides of your chest with elbows about 45 degrees from your torso.",
+      "Press back up until arms are straight, keeping the dumbbells over your chest, not your face."
+    ],
+    "coaching_cues": [
+      "Squeeze the bench with your shoulder blades",
+      "Elbows at 45 degrees, wrists stacked over elbows",
+      "Push yourself away from the weight"
+    ],
+    "common_mistakes": [
+      "Flaring the elbows straight out to the sides",
+      "Bouncing the dumbbells at the bottom",
+      "Losing shoulder-blade position so the shoulders roll forward"
+    ],
+    "home_alternative": "Push-up variations: elevate feet or wear a loaded backpack to match difficulty, with a 3-s eccentric and reps taken within 1-2 of failure.",
+    "regression": "Lighter dumbbells or floor press (lying on the floor shortens the range).",
+    "progression": "Heavier load, a 3-s eccentric, or slight incline.",
+    "video_url": null,
+    "video_backup_query": "dumbbell bench press proper form technique tutorial"
+  },
+  {
+    "id": "push_up",
+    "name": "Push-Up",
+    "category": "strength",
+    "why_for_snowboarding": "Builds pushing strength and a rigid plank position at once — the same combination you use to pop up off the snow and to brace on your hands when falls happen.",
+    "setup_and_execution": [
+      "Start in a plank with hands slightly wider than shoulders, body in a straight line from head to heels.",
+      "Brace your core and squeeze your glutes so your hips don't sag.",
+      "Lower your chest toward the floor with elbows about 45 degrees from your body.",
+      "Press back up to a full lockout without letting the hips lead or lag."
+    ],
+    "coaching_cues": [
+      "One straight line, head to heels",
+      "Screw your hands into the floor",
+      "Chest leads down, body moves as one piece"
+    ],
+    "common_mistakes": [
+      "Hips sagging or piking up",
+      "Half range — chest never approaches the floor",
+      "Elbows flaring wide at 90 degrees"
+    ],
+    "home_alternative": "Home-compatible as-is; scale difficulty with hand elevation (easier) or feet elevation and a 3-s eccentric (harder).",
+    "regression": "Hands elevated on a bench, table, or wall — the higher the hands, the easier.",
+    "progression": "Feet elevated, backpack loaded, or 3-s eccentric with a 1-s pause at the bottom.",
+    "video_url": null,
+    "video_backup_query": "how to do a push-up proper form technique NASM"
+  },
+  {
+    "id": "one_arm_db_row",
+    "name": "One-Arm Dumbbell Row",
+    "category": "strength",
+    "why_for_snowboarding": "Balances all the pushing and riding posture with upper-back pulling strength, keeping shoulders healthy and giving you a strong base for arm drive in rotations and for hauling yourself around on flats.",
+    "setup_and_execution": [
+      "Place your left knee and left hand on a bench, right foot on the floor, back flat and roughly parallel to the ground.",
+      "Hold a dumbbell in your right hand, arm hanging straight down.",
+      "Pull the dumbbell toward your hip, driving the elbow up and back without twisting your torso.",
+      "Lower under control to a full stretch; finish the set, then switch sides."
+    ],
+    "coaching_cues": [
+      "Pull with your elbow, not your hand",
+      "Keep your torso quiet — no twisting",
+      "Full stretch at the bottom, squeeze at the top"
+    ],
+    "common_mistakes": [
+      "Yanking the weight with momentum and torso rotation",
+      "Shrugging the shoulder toward the ear",
+      "Cutting the range short at the bottom"
+    ],
+    "home_alternative": "Home-compatible as-is with a dumbbell, kettlebell, or loaded backpack braced on a chair or sofa arm; add a 3-s eccentric and +2-4 reps per set if the load is light.",
+    "regression": "Lighter weight, or chest-supported two-arm row lying on an incline surface.",
+    "progression": "Heavier dumbbell with a 2-s pause at the top of each rep.",
+    "video_url": null,
+    "video_backup_query": "one arm dumbbell row proper form tutorial"
+  },
+  {
+    "id": "db_overhead_press",
+    "name": "Dumbbell Overhead Press",
+    "category": "strength",
+    "why_for_snowboarding": "Strong, stable shoulders take the sting out of hands-first falls and support arm swing for balance and rotation. Standing pressing also trains the trunk to stay braced under load.",
+    "setup_and_execution": [
+      "Stand with feet hip-width, dumbbells at shoulder height, palms facing forward or slightly in.",
+      "Brace your core and squeeze your glutes so your ribs stay stacked over your pelvis.",
+      "Press the dumbbells straight up until your arms are locked out overhead, biceps near your ears.",
+      "Lower under control back to the shoulders and repeat."
+    ],
+    "coaching_cues": [
+      "Ribs down, glutes tight — no leaning back",
+      "Press up and slightly back, finish over your ears",
+      "Reach tall at the top"
+    ],
+    "common_mistakes": [
+      "Arching the lower back to press bigger weights",
+      "Stopping short of full lockout",
+      "Using leg drive when strict pressing is the goal"
+    ],
+    "home_alternative": "Home-compatible as-is with dumbbells, or press bands from under the feet; add a 3-4-s lowering phase and +2-4 reps per set if the load is light.",
+    "regression": "Seated press with back support, or half-kneeling single-arm press.",
+    "progression": "Heavier load, or single-arm pressing to add a trunk-stability challenge.",
+    "video_url": null,
+    "video_backup_query": "standing dumbbell overhead press proper form tutorial"
+  },
+  {
+    "id": "sl_glute_bridge",
+    "name": "Single-Leg Glute Bridge",
+    "category": "strength",
+    "why_for_snowboarding": "Wakes up and strengthens each glute independently, evening out stance-related imbalances and giving your hips the drive they need for pop and heelside pressure.",
+    "setup_and_execution": [
+      "Lie on your back, knees bent, feet flat and close to your glutes.",
+      "Extend one leg straight or hug that knee to your chest.",
+      "Drive through the planted heel to lift your hips until your body is a straight line from shoulder to knee.",
+      "Squeeze the working glute for 1-2 seconds at the top, lower with control, finish the set, then switch legs."
+    ],
+    "coaching_cues": [
+      "Push the floor away with your heel",
+      "Squeeze the glute, don't arch the back",
+      "Keep hips level side to side"
+    ],
+    "common_mistakes": [
+      "Arching the lower back instead of extending the hips",
+      "Letting the pelvis tilt toward the unsupported side",
+      "Pushing through the toes so the hamstring cramps"
+    ],
+    "home_alternative": "Home-compatible as-is; slow to a 3-s lowering or add a backpack across the hips when 15+ reps get easy.",
+    "regression": "Two-leg glute bridge with a 2-s squeeze at the top.",
+    "progression": "Foot elevated on a low step, or add load across the hips.",
+    "video_url": null,
+    "video_backup_query": "single leg glute bridge exercise proper form tutorial"
+  },
+  {
+    "id": "hip_thrust",
+    "name": "Hip Thrust",
+    "category": "strength",
+    "why_for_snowboarding": "The heaviest way to load the glutes, building the hip drive behind ollies, pop off lips, and powerful edge-to-edge transitions, while sparing the lower back.",
+    "setup_and_execution": [
+      "Sit on the floor with your upper back against a bench, barbell or dumbbell over the crease of your hips (use a pad).",
+      "Plant your feet hip-width so your shins are vertical at the top of the movement.",
+      "Drive through your heels and squeeze your glutes to lift your hips until your torso is parallel to the floor.",
+      "Hold the top for a beat with chin tucked and ribs down, then lower under control."
+    ],
+    "coaching_cues": [
+      "Chin tucked, ribs down — look ahead, not at the ceiling",
+      "Full lockout: knees, hips, shoulders in one line",
+      "Squeeze the glutes like you're cracking a walnut"
+    ],
+    "common_mistakes": [
+      "Arching the lower back instead of finishing with the glutes",
+      "Feet too far forward so hamstrings take over",
+      "Bouncing reps without reaching lockout"
+    ],
+    "home_alternative": "Single-leg glute bridge with a 3-s top squeeze, +2-4 reps per set to compensate for the lighter load.",
+    "regression": "Bodyweight glute bridge from the floor, or bodyweight hip thrust off a sofa.",
+    "progression": "Add load, pause 3 s at lockout, or single-leg hip thrust.",
+    "video_url": null,
+    "video_backup_query": "barbell hip thrust proper form setup tutorial Bret Contreras"
+  },
+  {
+    "id": "calf_raise",
+    "name": "Standing Calf Raise",
+    "category": "strength",
+    "why_for_snowboarding": "Strong calves drive toeside edge pressure through the boot and help control ankle position on landings, and they take a surprising beating in deep snow and moguls.",
+    "setup_and_execution": [
+      "Stand with the balls of your feet on a step, heels hanging off, fingertips on a wall for balance (hold a dumbbell to load).",
+      "Lower your heels below the step until you feel a full calf stretch.",
+      "Pause a beat at the bottom — no bouncing.",
+      "Drive up as high as you can onto the balls of your feet and squeeze at the top for 1-2 seconds."
+    ],
+    "coaching_cues": [
+      "Full stretch at the bottom, full squeeze at the top",
+      "Push through the big-toe side of the foot",
+      "Slow and smooth — no bouncing"
+    ],
+    "common_mistakes": [
+      "Short, bouncy partial reps",
+      "Rolling onto the outside edge of the foot",
+      "Bending the knees to cheat the range"
+    ],
+    "home_alternative": "Home-compatible as-is on a stair step; when 15-20 easy reps are reached, move to single-leg calf raises with a 3-s eccentric.",
+    "regression": "Two-leg raises from flat floor with wall support.",
+    "progression": "Single-leg calf raise with added dumbbell, 3-s lowering phase.",
+    "video_url": null,
+    "video_backup_query": "standing calf raise proper form full range tutorial"
+  },
+  {
+    "id": "pogo_hop",
+    "name": "Pogo Hops",
+    "category": "power",
+    "why_for_snowboarding": "Trains the ankles and calves to act like springs — fast, stiff, repeated ground contact that carries over to ollies, hopping through traverses, and staying lively over choppy terrain.",
+    "setup_and_execution": [
+      "Stand tall with feet hip-width, hands relaxed or on hips.",
+      "Keeping your knees nearly straight, bounce off the ground using mainly your ankles and calves.",
+      "Land on the balls of your feet and rebound immediately — think short, springy contacts.",
+      "Perform sets of 10-20 rhythmic hops, staying tall throughout."
+    ],
+    "coaching_cues": [
+      "Be a pogo stick — stiff ankles, quick ground touches",
+      "Stay tall, hips over ankles",
+      "Land quietly on the balls of the feet"
+    ],
+    "common_mistakes": [
+      "Bending the knees deeply and turning them into small squats",
+      "Sinking into the floor instead of bouncing off it",
+      "Letting heels slam down between hops"
+    ],
+    "home_alternative": "Home-compatible as-is; needs only a firm surface. Keep sets short (10-15 contacts) and crisp.",
+    "regression": "Small, low-amplitude bounces or double-foot rope skipping.",
+    "progression": "Higher pogos for height, or single-leg pogo hops.",
+    "video_url": null,
+    "video_backup_query": "pogo hops plyometric exercise tutorial ankle stiffness"
+  },
+  {
+    "id": "drop_to_stick",
+    "name": "Box Drop-to-Stick Landing",
+    "category": "power",
+    "why_for_snowboarding": "Teaches your legs to absorb impact silently and in a stacked position — the exact skill of landing a jump. Building this before bigger plyos makes every future landing, on snow or in the gym, safer.",
+    "setup_and_execution": [
+      "Stand on a low box (20-30 cm) with feet hip-width.",
+      "Step off — don't jump — and drop to the floor.",
+      "Land on both feet simultaneously, absorbing into a quarter-squat athletic position with knees over toes.",
+      "Stick and hold the landing for 2-3 seconds, perfectly still, then reset."
+    ],
+    "coaching_cues": [
+      "Land like a ninja — silent feet",
+      "Absorb into a quarter squat, chest over mid-foot",
+      "Freeze on impact: no wobbles, no extra steps"
+    ],
+    "common_mistakes": [
+      "Landing stiff-legged with a loud slap",
+      "Knees caving inward on impact",
+      "Landing one foot at a time or stumbling forward"
+    ],
+    "home_alternative": "Snap-down landing (no box needed): same stick position, same 2-3-s hold, add 2-3 reps per set since impact is lower.",
+    "regression": "Drop from a lower step (10-15 cm), or rehearse the landing position in place first.",
+    "progression": "Slightly higher box (up to ~45 cm), or drop to a single-leg stick on the low box.",
+    "video_url": null,
+    "video_backup_query": "box drop landing mechanics stick drill tutorial"
+  },
+  {
+    "id": "snap_down",
+    "name": "Snap-Down Landing",
+    "category": "power",
+    "why_for_snowboarding": "Drills fast arm drive and an instant, stable landing position from standing — the fundamental pattern behind absorbing landings and setting up for the next feature.",
+    "setup_and_execution": [
+      "Stand tall on the balls of your feet with arms reaching overhead.",
+      "In one quick motion, snap your arms down and back while dropping your hips.",
+      "Land in a quarter-squat athletic position, feet flat, knees over toes, chest slightly forward.",
+      "Hold the landing dead-still for 2 seconds, then reset and repeat."
+    ],
+    "coaching_cues": [
+      "Snap the arms down hard — they drive the movement",
+      "Freeze in your landing like the camera's on you",
+      "Hips back, knees out, chest proud"
+    ],
+    "common_mistakes": [
+      "Dropping too deep into a full squat",
+      "Soft, slow arm action instead of a real snap",
+      "Knees drifting inward at impact"
+    ],
+    "home_alternative": "Home-compatible as-is; needs no equipment, just enough ceiling to reach overhead.",
+    "regression": "Slow-motion rehearsal: step into the landing position and hold it.",
+    "progression": "Snap-down into an immediate vertical jump, sticking the second landing.",
+    "video_url": null,
+    "video_backup_query": "snap down landing drill plyometric athletes tutorial"
+  },
+  {
+    "id": "broad_jump_stick",
+    "name": "Broad Jump to Stick",
+    "category": "power",
+    "why_for_snowboarding": "Builds horizontal explosiveness plus the ability to kill that momentum on landing — the same forward-travel-then-absorb pattern as jumping off lips and knuckles.",
+    "setup_and_execution": [
+      "Stand with feet hip-width at a line, arms reaching overhead.",
+      "Swing your arms back as you load your hips into a quarter squat.",
+      "Explode forward and up, driving your arms, and jump for distance.",
+      "Land on both feet in a quarter squat and stick it silently for 2 seconds — only jump as far as you can stick."
+    ],
+    "coaching_cues": [
+      "Big arm swing — throw yourself forward",
+      "Land in the same stance you took off from",
+      "Stick it silent and still"
+    ],
+    "common_mistakes": [
+      "Jumping farther than you can land, stumbling forward",
+      "Landing with straight legs or on the heels",
+      "Knees collapsing inward on takeoff or landing"
+    ],
+    "home_alternative": "Home-compatible as-is with a few metres of clear floor; reduce distance indoors and prioritize a perfect stick.",
+    "regression": "Shorter sub-maximal jumps, or snap-down landings to groove the finish first.",
+    "progression": "Maximal-distance jumps, or consecutive broad jumps with a stick on the final rep.",
+    "video_url": null,
+    "video_backup_query": "broad jump stick the landing drill tutorial"
+  },
+  {
+    "id": "box_jump",
+    "name": "Box Jump",
+    "category": "power",
+    "why_for_snowboarding": "Develops vertical pop — the ingredient behind ollies and getting off the ground for side hits — while keeping landing forces low because the box catches you near the top of the jump.",
+    "setup_and_execution": [
+      "Stand an arm's length from a sturdy box at a height you can land on in a quarter squat (start low).",
+      "Load quickly: hips back, arms swing behind you.",
+      "Explode up, driving the arms, and land softly on the middle of the box with both feet flat.",
+      "Stand fully on top, then step down one foot at a time — never jump down."
+    ],
+    "coaching_cues": [
+      "Land in a quarter squat, not a deep fold",
+      "Quiet feet on the box",
+      "Step down every rep"
+    ],
+    "common_mistakes": [
+      "Chasing box height and landing in a deep, ugly squat",
+      "Jumping back down off the box (needless impact)",
+      "Landing on the edge of the box with the heels hanging off"
+    ],
+    "home_alternative": "Broad jump or tuck jump to a stuck landing, matched set-for-set; hold each landing 2 s to keep quality high.",
+    "regression": "Lower box, or step-up jump (drive off one leg from a low step).",
+    "progression": "Modestly higher box with the same crisp quarter-squat landing, or seated box jump from a pause.",
+    "video_url": null,
+    "video_backup_query": "how to box jump properly soft landing tutorial"
+  },
+  {
+    "id": "lateral_bound",
+    "name": "Lateral Bound",
+    "category": "power",
+    "why_for_snowboarding": "Trains explosive side-to-side push-off and one-leg landings — the closest gym match to driving your board edge to edge and recovering when you get knocked sideways.",
+    "setup_and_execution": [
+      "Stand on one leg in a quarter squat, opposite foot off the floor.",
+      "Push off sideways, driving with the standing leg and swinging the arms across.",
+      "Land on the opposite foot, absorbing into the hip with the knee tracking over the toes.",
+      "Stick the landing for 1-2 seconds, then bound back the other way."
+    ],
+    "coaching_cues": [
+      "Push the ground away sideways",
+      "Land soft, hip loaded, knee over toes",
+      "Stick each landing before the next bound"
+    ],
+    "common_mistakes": [
+      "Knee collapsing inward on the landing leg",
+      "Upright, stiff landings with no hip bend",
+      "Rushing continuous bounds before single landings are solid"
+    ],
+    "home_alternative": "Home-compatible as-is; start with short bounds on a non-slip floor and grow width before speed.",
+    "regression": "Small side hops landing on two feet, or step-and-stick sideways without a jump.",
+    "progression": "Longer bounds, continuous rhythm without pauses, or add a small forward angle (45-degree bounds).",
+    "video_url": null,
+    "video_backup_query": "lateral bound skater jump stick landing tutorial"
+  },
+  {
+    "id": "jump_squat",
+    "name": "Jump Squat (BW to light load)",
+    "category": "power",
+    "why_for_snowboarding": "Converts squat strength into fast, two-footed vertical pop with a built-in absorb-and-repeat cycle — the engine for ollies and pumping through transitions.",
+    "setup_and_execution": [
+      "Stand feet shoulder-width, bodyweight only or holding light dumbbells at your sides.",
+      "Dip quickly into a quarter squat with an arm swing (arms stay down if holding load).",
+      "Explode straight up as high as you can.",
+      "Land softly into a quarter squat, settle, and repeat — quality over speed between reps."
+    ],
+    "coaching_cues": [
+      "Fast dip, faster drive",
+      "Jump through the ceiling",
+      "Land like a spring, not a plank"
+    ],
+    "common_mistakes": [
+      "Sinking into a slow, deep squat before jumping",
+      "Hard, flat-footed landings",
+      "Grinding out tired reps once jump height drops"
+    ],
+    "home_alternative": "Home-compatible as-is; bodyweight only, keep sets to 3-6 crisp jumps and stop while they're still snappy.",
+    "regression": "Countermovement jump with a full reset between reps, or snap-downs.",
+    "progression": "Light dumbbells or loaded backpack (stay explosive), or continuous rhythmic jump squats.",
+    "video_url": null,
+    "video_backup_query": "jump squat bodyweight proper landing technique tutorial"
+  },
+  {
+    "id": "depth_jump",
+    "name": "Depth Jump (low box)",
+    "category": "power",
+    "why_for_snowboarding": "Teaches the legs to absorb impact and instantly re-explode — the reactive strength you use landing one feature and immediately popping the next, or recovering off a knuckle. Novice dose: low box, few reps.",
+    "setup_and_execution": [
+      "Stand on a low box (20-30 cm maximum to start).",
+      "Step off and drop, landing on both feet in a shallow athletic position.",
+      "The instant you touch down, explode into a maximal vertical jump — minimal ground time.",
+      "Stick the second landing softly, rest fully, and keep total reps low (10-15 per session)."
+    ],
+    "coaching_cues": [
+      "Ground is lava — touch and go",
+      "Big jump out of a small dip",
+      "Stick the final landing quietly"
+    ],
+    "common_mistakes": [
+      "Sinking deep and pausing before the jump",
+      "Using a box that's too high for a fast rebound",
+      "Doing too many reps once legs are fatigued"
+    ],
+    "home_alternative": "Low-step depth drop to stick, or snap-down + immediate vertical jump; match sets and keep reps low and explosive.",
+    "regression": "Drop-to-stick only (no rebound) until landings are silent and stable.",
+    "progression": "Slightly higher box (stay under ~45 cm for this program), or depth jump to a target reach.",
+    "video_url": null,
+    "video_backup_query": "depth jump low box reactive plyometric tutorial"
+  },
+  {
+    "id": "mb_rotational_throw",
+    "name": "Med-Ball Rotational Scoop Toss",
+    "category": "power",
+    "why_for_snowboarding": "Trains the hips-then-trunk rotation sequence explosively — the power source for spins, strong turn initiation, and whipping the board around in tight spots.",
+    "setup_and_execution": [
+      "Stand side-on to a solid wall, 1-2 m away, holding a medicine ball at waist height in an athletic stance.",
+      "Load by rotating your hips and shoulders away from the wall, weight into the back hip.",
+      "Drive the back hip toward the wall, letting hips lead shoulders, and scoop-throw the ball into the wall.",
+      "Catch the rebound or pick it up, reset fully, and complete all reps before switching sides."
+    ],
+    "coaching_cues": [
+      "Hips fire first, arms come along for the ride",
+      "Throw hard — this is a power drill, not a toss",
+      "Pivot the back foot like squashing a bug"
+    ],
+    "common_mistakes": [
+      "All arms, no hip rotation",
+      "Standing tall and losing the athletic stance",
+      "Slow, careful throws instead of maximal intent"
+    ],
+    "home_alternative": "Band rotational chop performed fast: explosive concentric, controlled return, +3-5 reps per set to offset the lighter resistance.",
+    "regression": "Lighter ball, or slow rehearsal of the hip-lead rotation without a throw.",
+    "progression": "Heavier ball (still fast), or add a step toward the wall into the throw.",
+    "video_url": null,
+    "video_backup_query": "rotational medicine ball scoop toss technique tutorial"
+  },
+  {
+    "id": "mb_slam",
+    "name": "Med-Ball Slam",
+    "category": "power",
+    "why_for_snowboarding": "Full-body power finishing through the trunk — links hips, core, and arms in one violent action, building the aggressive whole-body snap that carries into ollies and spin set-ups, plus conditioning as a bonus.",
+    "setup_and_execution": [
+      "Stand feet shoulder-width with a non-bouncing medicine ball, ball at waist height.",
+      "Rise tall onto your toes, bringing the ball overhead with arms extended.",
+      "Slam the ball into the floor as hard as possible, folding through hips and trunk — follow all the way through.",
+      "Pick it up with a flat back and repeat rhythmically."
+    ],
+    "coaching_cues": [
+      "Throw the ball through the floor",
+      "Whole body cracks like a whip",
+      "Flat back every pickup"
+    ],
+    "common_mistakes": [
+      "Only using the arms with no hip hinge",
+      "Hyperextending the lower back at the top",
+      "Lazy, low-effort slams — power work needs intent"
+    ],
+    "home_alternative": "Fast band chop or DB woodchop: maximal-speed concentric, controlled return, +3-5 reps per set to offset the lighter load.",
+    "regression": "Lighter ball, or hinge-and-reach rehearsal without the slam.",
+    "progression": "Heavier slam ball, or slam into a burpee-style pickup for conditioning blocks.",
+    "video_url": null,
+    "video_backup_query": "medicine ball slam proper form full body power tutorial"
+  },
+  {
+    "id": "band_rotational_chop",
+    "name": "Band Rotational Chop",
+    "category": "power",
+    "why_for_snowboarding": "Rotational power and control with just a band — trains the trunk to transfer force between hips and shoulders for spins, and doubles as anti-rotation control when done slow.",
+    "setup_and_execution": [
+      "Anchor a band at chest height (door anchor or post) and stand side-on, feet shoulder-width, holding the band with both hands.",
+      "Step away until there's tension, arms extended toward the anchor.",
+      "Rotate hips and trunk to drive your hands across your body in a fast, flat chop, pivoting the back foot.",
+      "Control the band slowly back to the start; finish the set, then face the other way."
+    ],
+    "coaching_cues": [
+      "Fast out, slow back",
+      "Turn with your belt buckle, not just your arms",
+      "Stay tall and braced — no side lean"
+    ],
+    "common_mistakes": [
+      "Arms swinging while hips stay frozen",
+      "Letting the band yank you back to the start",
+      "Standing too close so there's no tension at the start"
+    ],
+    "home_alternative": "Home-compatible as-is with a door anchor; if the band is light, add speed and +3-5 reps per set.",
+    "regression": "Slow, controlled chops with lighter tension, or half-kneeling chops for more stability.",
+    "progression": "Heavier band, add a step into the chop, or high-to-low diagonal chops.",
+    "video_url": null,
+    "video_backup_query": "resistance band rotational chop exercise standing tutorial"
+  },
+  {
+    "id": "wall_sit",
+    "name": "Wall Sit",
+    "category": "endurance",
+    "why_for_snowboarding": "The classic snowboard-leg builder: an isometric quad burn in exactly the bent-knee position you hold all day on the hill. Trains your legs and mind to tolerate the burn of long runs.",
+    "setup_and_execution": [
+      "Stand with your back flat against a wall and walk your feet out about half a metre.",
+      "Slide down until your thighs are parallel to the floor (or higher to start), knees over ankles.",
+      "Press your whole back into the wall, weight through your heels, hands off your thighs.",
+      "Breathe steadily and hold for the programmed time."
+    ],
+    "coaching_cues": [
+      "Knees stacked over ankles, shins vertical",
+      "Whole back glued to the wall",
+      "Keep breathing — don't hold your breath"
+    ],
+    "common_mistakes": [
+      "Feet too close so knees drift past the toes",
+      "Propping hands on the thighs to unload the quads",
+      "Sliding up out of position as the burn builds"
+    ],
+    "home_alternative": "Home-compatible as-is; any wall works. Extend hold time or hold a book/backpack at the chest to progress.",
+    "regression": "Higher seat position (45-60 degrees of knee bend) or shorter holds with more sets.",
+    "progression": "Longer holds, a weight held at the chest, or single-leg wall sit for short bouts.",
+    "video_url": null,
+    "video_backup_query": "wall sit exercise proper form how long tutorial"
+  },
+  {
+    "id": "split_squat_iso",
+    "name": "Split-Squat Isometric Hold",
+    "category": "endurance",
+    "why_for_snowboarding": "Builds single-leg static endurance in a staggered stance that mirrors riding — front and back leg doing different jobs — plus hip stability that keeps your knees tracking on long traverses.",
+    "setup_and_execution": [
+      "Take a long stride into a split stance, back heel up, torso tall.",
+      "Lower until your front thigh approaches parallel and your back knee hovers above the floor (or higher to start).",
+      "Hold that bottom position, weight mostly through the front heel.",
+      "Breathe steadily for the programmed time, then switch legs."
+    ],
+    "coaching_cues": [
+      "Front knee over the laces, not past the toes",
+      "Torso tall, hips square to the front",
+      "Drive the front heel into the floor"
+    ],
+    "common_mistakes": [
+      "Stance too short so the front knee drives far forward",
+      "Leaning the torso over the front thigh",
+      "Wobbling side to side instead of staying locked in"
+    ],
+    "home_alternative": "Home-compatible as-is; add dumbbells or a backpack, or lengthen the hold, once 30-40-s bodyweight holds are steady.",
+    "regression": "Hold a shallower position (higher hips, less knee bend) with fingertip support on a wall or chair; reduce the range if you feel any knee pain and deepen gradually as it stays pain-free.",
+    "progression": "Deeper hold with the back knee 2-3 cm off the floor, add load, or elevate the rear foot.",
+    "video_url": null,
+    "video_backup_query": "split squat isometric hold exercise tutorial"
+  },
+  {
+    "id": "bike_z2",
+    "name": "Stationary Bike — Zone 2",
+    "category": "endurance",
+    "why_for_snowboarding": "Builds the aerobic base that lets you ride all day, recover between runs, and handle altitude — all with zero impact on the legs you're also training in the gym.",
+    "setup_and_execution": [
+      "Set saddle height so your knee keeps a slight bend at the bottom of the pedal stroke.",
+      "Warm up 3-5 minutes easy.",
+      "Settle into a steady pace where you can speak in full sentences but singing would be hard (roughly 60-70% max heart rate).",
+      "Hold that effort for the programmed duration (typically 30-60 minutes), cadence around 80-95 rpm."
+    ],
+    "coaching_cues": [
+      "Conversational pace — check by talking out loud",
+      "Smooth circles, steady cadence",
+      "It should feel almost too easy for the first 20 minutes"
+    ],
+    "common_mistakes": [
+      "Riding too hard and turning base work into a moderate grind",
+      "Saddle too low, adding needless knee stress",
+      "Skipping sessions because they feel 'too easy' to matter"
+    ],
+    "home_alternative": "Home aerobic circuit (step-ups, marching, stairs) at the same conversational effort for the same duration.",
+    "regression": "Shorter duration (15-20 minutes) at the same easy effort.",
+    "progression": "Extend duration before adding any intensity.",
+    "video_url": null,
+    "video_backup_query": "zone 2 training stationary bike explained heart rate"
+  },
+  {
+    "id": "bike_intervals",
+    "name": "Bike Intervals 4x4",
+    "category": "endurance",
+    "why_for_snowboarding": "Raises your engine's ceiling (VO2max) so hard runs, hikes to features, and deep-snow battles leave you breathing hard but recovering fast — big-mountain fitness from one short session a week.",
+    "setup_and_execution": [
+      "Warm up 8-10 minutes, building effort gradually.",
+      "Ride 4 minutes hard — breathing heavily, able to speak only a few words at a time.",
+      "Recover 3 minutes at a very easy spin.",
+      "Repeat for 4 total work intervals, then cool down 5 minutes easy."
+    ],
+    "coaching_cues": [
+      "Pace interval 1 so interval 4 is possible at the same effort",
+      "Hard but controlled — not an all-out sprint",
+      "Keep the recovery spins genuinely easy"
+    ],
+    "common_mistakes": [
+      "Starting the first interval too hard and dying by the third",
+      "Recovering at too high an effort so the next interval suffers",
+      "Skipping the warm-up and cooling down"
+    ],
+    "home_alternative": "Home step intervals: 4 minutes of continuous fast step-ups (swap lead leg each minute), 3 minutes easy marching, repeated 4 times.",
+    "regression": "3x3 minutes, or reduce interval effort until all intervals can be completed evenly.",
+    "progression": "Build to 5-6 intervals, or hold slightly higher power at the same heart rate.",
+    "video_url": null,
+    "video_backup_query": "4x4 interval training bike VO2max Norwegian protocol how to"
+  },
+  {
+    "id": "home_aerobic_circuit",
+    "name": "Home Aerobic Circuit (step-up/march)",
+    "category": "endurance",
+    "why_for_snowboarding": "No-equipment aerobic base work: keeps the all-day-riding engine growing on days you can't get to a bike, using low-impact leg patterns that complement the strength program.",
+    "setup_and_execution": [
+      "Set a timer and rotate stations continuously: 2 minutes easy step-ups on a stair, 2 minutes marching or light jogging in place, 2 minutes step-touch side to side.",
+      "Keep the effort conversational throughout — you should be able to speak in full sentences.",
+      "Swap the leading leg every minute on step-ups.",
+      "Continue the rotation for 20-45 minutes without stopping."
+    ],
+    "coaching_cues": [
+      "Steady rhythm you could hold for an hour",
+      "Soft, quiet foot contacts",
+      "Alternate lead legs to share the work"
+    ],
+    "common_mistakes": [
+      "Turning it into an interval workout by going too hard",
+      "Stopping and starting instead of continuous movement",
+      "Using a step so high it becomes strength work"
+    ],
+    "home_alternative": "Home-compatible as-is — this is the home option; brisk outdoor walking with hills is an equal swap.",
+    "regression": "Shorter total time (10-15 minutes) or marching only.",
+    "progression": "Extend duration, or wear a light backpack while keeping the effort conversational.",
+    "video_url": null,
+    "video_backup_query": "low impact aerobic home workout step ups marching zone 2"
+  },
+  {
+    "id": "home_intervals",
+    "name": "Home Step Intervals",
+    "category": "endurance",
+    "why_for_snowboarding": "The no-bike version of 4x4s: repeated hard bouts of stepping push your top-end fitness so you can hike, lap, and battle powder without redlining for the rest of the run.",
+    "setup_and_execution": [
+      "Warm up 5-8 minutes with easy stepping and marching.",
+      "Work 4 minutes: continuous fast step-ups on a stair or low step, driving the arms, swapping lead leg each minute.",
+      "Recover 3 minutes of easy marching.",
+      "Repeat for 4 rounds, then cool down 5 minutes easy."
+    ],
+    "coaching_cues": [
+      "Few-words-at-a-time effort during work bouts",
+      "Whole foot on the step, drive tall",
+      "Even pacing across all four rounds"
+    ],
+    "common_mistakes": [
+      "Sprinting round one and crawling round four",
+      "Letting step height or sloppy foot placement cause tripping when tired",
+      "Cutting recovery short so quality drops"
+    ],
+    "home_alternative": "Home-compatible as-is; stairs, a sturdy step, or fast uphill walking repeats all work.",
+    "regression": "3x3 minutes, a lower step, or slower stepping cadence.",
+    "progression": "Build to 5-6 rounds, raise cadence, or wear a light backpack.",
+    "video_url": null,
+    "video_backup_query": "step up interval workout home cardio 4 minute intervals"
+  },
+  {
+    "id": "sl_rdl",
+    "name": "Single-Leg Romanian Deadlift",
+    "category": "balance",
+    "why_for_snowboarding": "Combines single-leg balance with hip-hinge strength, training the foot, ankle, and hip to stabilize together — what keeps you on your feet through skidded landings, flat light, and one-footed skating.",
+    "setup_and_execution": [
+      "Stand on one leg with a soft knee, dumbbell in the opposite hand (or none to start).",
+      "Hinge at the hip, extending the free leg straight behind you as your torso tips forward.",
+      "Lower until your torso and rear leg approach parallel to the floor, keeping hips square.",
+      "Drive the standing hip forward to return to tall standing without touching down."
+    ],
+    "coaching_cues": [
+      "Hips stay level — point the back heel to the wall behind you",
+      "Long line from head to rear heel",
+      "Grip the floor with the standing foot"
+    ],
+    "common_mistakes": [
+      "Opening the hips so the rear leg swings out",
+      "Rounding the back to reach lower",
+      "Locking the standing knee straight"
+    ],
+    "home_alternative": "Home-compatible as-is with a dumbbell, kettlebell, or backpack; add a 3-s lowering and +2-4 reps per set if the load is light.",
+    "regression": "Fingertips on a wall or chair for balance, or a kickstand (rear toe lightly down) RDL.",
+    "progression": "Heavier load, eyes-forward slow tempo, or barefoot for extra foot challenge.",
+    "video_url": null,
+    "video_backup_query": "single leg Romanian deadlift tutorial balance form"
+  },
+  {
+    "id": "sl_balance",
+    "name": "Single-Leg Balance Series",
+    "category": "balance",
+    "why_for_snowboarding": "Sharpens ankle proprioception and quiet-foot control — the low-level system that constantly corrects your edge in variable snow and saves you from small catches before they become falls.",
+    "setup_and_execution": [
+      "Stand on one leg, soft knee, tall posture, and hold for 30-60 seconds.",
+      "Progress within the series: eyes open, then arms crossed, then head turns, then eyes closed.",
+      "Add controlled reaches: tap the free foot forward, sideways, and behind while the standing leg stays quiet.",
+      "Switch legs and repeat; do a little of this daily rather than a lot once a week."
+    ],
+    "coaching_cues": [
+      "Grip the floor with all corners of the foot",
+      "Quiet ankle — small corrections, not big wobbles",
+      "Stand tall like a string pulls your head up"
+    ],
+    "common_mistakes": [
+      "Locking the knee and balancing off the joint",
+      "Staring at the floor instead of ahead",
+      "Progressing to eyes-closed before eyes-open is quiet"
+    ],
+    "home_alternative": "Home-compatible as-is; brushing-teeth balance time counts. A folded towel or pillow adds an unstable-surface option.",
+    "regression": "Fingertip wall support, or shorter holds.",
+    "progression": "Eyes closed, foam/pillow surface, or catch-and-toss a ball while balancing.",
+    "video_url": null,
+    "video_backup_query": "single leg balance exercise progression proprioception tutorial"
+  },
+  {
+    "id": "sl_hop_stick",
+    "name": "Single-Leg Hop to Stick",
+    "category": "balance",
+    "why_for_snowboarding": "One-leg landing control under real impact — builds the ankle, knee, and hip stability to save sketchy single-weighted landings and absorb hits that load one leg more than the other.",
+    "setup_and_execution": [
+      "Stand on one leg in a quarter-squat athletic position.",
+      "Hop forward a short distance off that leg.",
+      "Land on the same leg, absorbing softly into the hip, knee over toes.",
+      "Stick and hold for 2-3 seconds, perfectly still, then reset; finish the set, then switch legs."
+    ],
+    "coaching_cues": [
+      "Small hop, perfect landing",
+      "Knee tracks over the middle toes",
+      "Freeze until you're stone-still"
+    ],
+    "common_mistakes": [
+      "Hopping farther than you can stick",
+      "Knee caving inward on landing",
+      "Touching the free foot down to save wobbles"
+    ],
+    "home_alternative": "Home-compatible as-is on a firm, non-slip surface; keep hops short indoors.",
+    "regression": "Hop-to-stick landing on two feet, or single-leg mini hops in place.",
+    "progression": "Longer hops, lateral or diagonal directions, or hop over a small object.",
+    "video_url": null,
+    "video_backup_query": "single leg hop and stick landing drill tutorial"
+  },
+  {
+    "id": "pallof_press",
+    "name": "Pallof Press",
+    "category": "core",
+    "why_for_snowboarding": "Anti-rotation core strength: teaches your trunk to resist being twisted, which is what keeps your upper and lower body connected mid-spin, in chop, and when an edge grabs unexpectedly.",
+    "setup_and_execution": [
+      "Anchor a band at chest height, stand side-on to the anchor, and hold the band with both hands at your sternum.",
+      "Step away until there's solid tension, feet shoulder-width, knees soft.",
+      "Press your hands straight out in front of your chest, refusing to let the band rotate you toward the anchor.",
+      "Hold 2-3 seconds with arms extended, return to your chest, finish the set, then face the other way."
+    ],
+    "coaching_cues": [
+      "Don't let the band win — zero twist",
+      "Ribs stacked over hips, glutes on",
+      "Press straight out, not toward the anchor"
+    ],
+    "common_mistakes": [
+      "Letting the hands drift toward the anchor as arms extend",
+      "Leaning away from the band instead of bracing",
+      "Standing so close there's no real tension"
+    ],
+    "home_alternative": "Band Pallof with a door anchor; if no anchor point is available, substitute dead bugs with a slow 5-s tempo.",
+    "regression": "Stand closer for lighter tension, or half-kneeling Pallof press.",
+    "progression": "Heavier band, longer holds, or Pallof press with a slow overhead raise.",
+    "video_url": null,
+    "video_backup_query": "band Pallof press anti-rotation core exercise tutorial"
+  },
+  {
+    "id": "side_plank",
+    "name": "Side Plank",
+    "category": "core",
+    "why_for_snowboarding": "Builds the lateral core and hip wall that holds your body stacked over an edge — direct support for carving, sideslipping steeps, and resisting folding at the waist in rough snow.",
+    "setup_and_execution": [
+      "Lie on your side with your elbow directly under your shoulder, forearm on the floor, legs stacked.",
+      "Brace and lift your hips until your body forms one straight line from head to feet.",
+      "Reach the top arm to the ceiling or rest it on your hip.",
+      "Hold for the programmed time breathing steadily, then switch sides."
+    ],
+    "coaching_cues": [
+      "One straight line — no sag, no pike",
+      "Push the floor away with the forearm",
+      "Squeeze the bottom-side glute"
+    ],
+    "common_mistakes": [
+      "Hips sagging toward the floor",
+      "Rolling the chest toward the ceiling",
+      "Shoulder creeping up toward the ear"
+    ],
+    "home_alternative": "Home-compatible as-is; progress with time, a top-leg raise, or feet elevated on a step.",
+    "regression": "Knees-bent side plank (weight on knees instead of feet).",
+    "progression": "Feet-elevated side plank, top-leg raised, or add hip dips for reps.",
+    "video_url": null,
+    "video_backup_query": "side plank proper form technique tutorial"
+  },
+  {
+    "id": "dead_bug",
+    "name": "Dead Bug",
+    "category": "core",
+    "why_for_snowboarding": "Teaches your core to hold a stable trunk while arms and legs move independently — the same job it does when your legs absorb terrain while your upper body stays calm and centered over the board.",
+    "setup_and_execution": [
+      "Lie on your back with arms reaching to the ceiling and hips and knees bent to 90 degrees.",
+      "Press your lower back gently into the floor and brace.",
+      "Slowly lower one arm overhead and the opposite leg toward the floor without letting your back arch.",
+      "Return to the start and repeat on the other side, alternating with control."
+    ],
+    "coaching_cues": [
+      "Lower back stays glued to the floor",
+      "Slow motion — 3 seconds out, 3 seconds back",
+      "Exhale as the limbs reach away"
+    ],
+    "common_mistakes": [
+      "Lower back arching off the floor as the leg lowers",
+      "Rushing reps with momentum",
+      "Holding the breath instead of breathing through the brace"
+    ],
+    "home_alternative": "Home-compatible as-is; needs only floor space. Slow the tempo or hold a light weight in the hands to progress.",
+    "regression": "Move only the legs (heel taps) with arms reaching to the ceiling.",
+    "progression": "Extend limbs fully and hover longer, add light dumbbells, or press hands into a band for tension.",
+    "video_url": null,
+    "video_backup_query": "dead bug core exercise proper form NASM tutorial"
+  },
+  {
+    "id": "suitcase_carry",
+    "name": "Suitcase Carry",
+    "category": "core",
+    "why_for_snowboarding": "Anti-lean core and grip work: walking with a one-sided load forces the lateral core and hips to keep you level — the strength that keeps your torso quiet when the snow tries to fold you sideways.",
+    "setup_and_execution": [
+      "Deadlift a single dumbbell or kettlebell to your side with a flat back, like picking up a suitcase.",
+      "Stand perfectly tall — shoulders level, ribs stacked, no lean toward or away from the weight.",
+      "Walk slowly and deliberately for the programmed distance or time.",
+      "Set the weight down with a flat back, switch hands, and repeat."
+    ],
+    "coaching_cues": [
+      "Walk like you're balancing a book on your head",
+      "Shoulders level — don't let the weight tip you",
+      "Slow steps, tall posture"
+    ],
+    "common_mistakes": [
+      "Leaning away from the weight to counterbalance",
+      "Shrugging the loaded shoulder",
+      "Walking fast and letting the weight swing"
+    ],
+    "home_alternative": "Home-compatible as-is with a heavy dumbbell, loaded backpack, water jug, or actual suitcase; extend carry time if the load is light.",
+    "regression": "Lighter load, or a stationary suitcase hold working up to walking.",
+    "progression": "Heavier load, longer distance, or march with high knees while carrying.",
+    "video_url": null,
+    "video_backup_query": "suitcase carry exercise proper form core tutorial"
+  },
+  {
+    "id": "band_lateral_walk",
+    "name": "Band Lateral Walk",
+    "category": "core",
+    "why_for_snowboarding": "Fires up the glute med — the muscle that stops your knees collapsing inward when you land, carve toeside, or hold a traverse. Great as activation before riding or leg sessions.",
+    "setup_and_execution": [
+      "Place a loop band just above your knees (or around the ankles for more challenge).",
+      "Sit into a quarter-squat athletic position, feet shoulder-width so the band is taut.",
+      "Step sideways with one foot, then follow with the other, keeping tension the whole time.",
+      "Take 8-12 steps one way, then lead back with the other leg without standing up between."
+    ],
+    "coaching_cues": [
+      "Stay low the whole trip",
+      "Knees pushed out against the band",
+      "Steady tension — never let the band go slack"
+    ],
+    "common_mistakes": [
+      "Standing up taller with each step",
+      "Dragging the trailing foot so feet come together and tension dies",
+      "Rocking the torso side to side"
+    ],
+    "home_alternative": "Home-compatible as-is with a mini band; no band? Use side-lying leg raises with a 2-s hold, +5 reps per set.",
+    "regression": "Lighter band above the knees with smaller steps.",
+    "progression": "Heavier band, band at the ankles, or a lower squat position throughout.",
+    "video_url": null,
+    "video_backup_query": "lateral band walk glute activation proper form tutorial"
+  }
+]
