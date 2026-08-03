@@ -60,8 +60,10 @@ Total logging overhead: about 2–3 minutes per session.
 | **Contrast pair** | Heavy strength set followed by explosive jumps — power development |
 | **Spanish squat** | Squat with a band anchored behind the knees — big quad work, minimal knee stress |
 | **Snap-down** | Landing drill from standing — the home swap for box drops |
-| **Sets Done** (session) | How many Set Log rows you've ticked Done for that session |
+| **Sets Done** (session) | How many Set Log rows you've ticked Done for that session — only checked rows count |
 | **Session Volume** | Sum of weight × reps across the session's logged sets |
+| **Last Logged** (exercise) | When you last completed a set of it. Shows a 1969/1970 date until the first set is checked Done — that's the "never logged yet" placeholder |
+| **Done / Done At** | The checkbox that marks a set complete, and the timestamp behind it. Pre-filled rows don't count anywhere until Done is ticked |
 
 ## How progression works (the whole system in one paragraph)
 
@@ -95,7 +97,9 @@ counts and still progresses.
 
 1. **Weekly Volume** chart — is it climbing gently, dipping on deload weeks?
 2. **Weekly Jump Contacts** chart — should follow the planned ramp.
-3. **e1RM Trend** (Set Log) — filter to your main lifts; the line should drift up.
+3. **e1RM Trend** (Sessions) — best estimated 1RM per program week; the line
+   should drift up. **Best e1RM by Exercise** (Set Log) shows strongest lift
+   per movement.
 4. Any knee pain during step-ups, Spanish squats, or split-squat holds that
    isn't going away → book a physio before the jump-heavy blocks (week 9+).
    Reduce depth or swap to extra wall-sit time in the meantime.

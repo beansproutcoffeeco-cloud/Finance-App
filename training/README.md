@@ -46,7 +46,11 @@ pain during single-leg work especially (see the knee notes on circuit stations).
 The Set Log is **pre-seeded**: every planned gym set already exists as a row
 ("goblet squat — set 1/3 (8-10)", Session and Exercise pre-linked, Set # and
 Location=Gym filled). So mid-workout logging is: open the session page → tap
-the **Set Log** relation → tap the row → type Weight and Reps. Done.
+the **Set Log** relation → tap the row → type Weight and Reps → tick **Done**.
+Only Done-checked rows count toward Sets Done, Last Logged, and the charts —
+untouched seed rows are invisible to every total. The full walkthrough lives
+in the Notion **"How to Use This Tracker — Start Here"** page (also at
+`docs/notion-guide.md`).
 
 - **Ghost values** ("what did I lift last time?"): open the exercise's page in
   the Exercise Library — its related Set Log rows show your history, plus the
