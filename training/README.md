@@ -35,11 +35,40 @@ pain during single-leg work especially (see the knee notes on circuit stations).
 
 ## How to log a session (Notion)
 
-1. Open today's page in **Sessions** (calendar or This Week view).
+1. Open today's page in **Sessions** (Calendar or **Up Next** view — Up Next
+   shows every not-yet-done session sorted by date, so today is always on top).
 2. Set **Location** = Gym or Home — the page body shows both prescriptions.
-3. For each working set add a **Set Log** row: Exercise, Set #, Reps, Weight,
-   RPE, Location. The row's Volume/e1RM compute themselves.
+3. Log your sets (see the fast flow below).
 4. Set Status = Done, fill Duration and Session RPE. Two minutes, tops.
+
+### Logging fast on a phone
+
+The Set Log is **pre-seeded**: every planned gym set already exists as a row
+("goblet squat — set 1/3 (8-10)", Session and Exercise pre-linked, Set # and
+Location=Gym filled). So mid-workout logging is: open the session page → tap
+the **Set Log** relation → tap the row → type Weight and Reps. Done.
+
+- **Ghost values** ("what did I lift last time?"): open the exercise's page in
+  the Exercise Library — its related Set Log rows show your history, plus the
+  PR Weight / Best e1RM / Last Logged rollups. Or peek at last week's session.
+- **Extra or home sets:** add rows from the session page's Set Log relation —
+  the Session link fills itself; pick the Exercise, set Location=Home if
+  applicable. Even faster: duplicate an existing row and edit the numbers.
+- **Home days:** the seeded rows assume the gym prescription. Where home swaps
+  the movement (e.g. snap-down for box drop), just repoint the row's Exercise —
+  or ignore seeds and log fresh rows with Location=Home.
+- **Skipped sessions:** the leftover empty seed rows are harmless — Volume and
+  e1RM stay blank and don't pollute rollups (max/sum ignore empties). Delete
+  them if you like tidy, or don't.
+
+### Progress views
+
+- **Sessions → Weekly Volume / Weekly Jump Contacts** charts: logged volume and
+  the planned plyo ramp summed per program week (the >10%-jump rule and the
+  contact ramp are defined weekly — these are the views that show them).
+- **Sessions → By Block**: grouped table for block-level review.
+- **Set Log → e1RM Trend**: best estimated 1RM per day; filter by Exercise to
+  see a single lift's trend.
 
 ## How progression is decided
 
@@ -99,3 +128,18 @@ python3 training/push_to_notion.py
 
 One manual step (the API can't create views): on **Sessions**, add a Calendar
 view by Date and a "This Week" table filtered to `Date is within → this week`.
+
+## Known gaps
+
+- **Video URLs are all null** in `exercises.json`/Notion: the build environment
+  blocked YouTube, so no link could be verified and unverified links were not
+  shipped. Each exercise has a specific `video_backup_query`; from an
+  unrestricted machine, verify candidates and fill the `Video` property (and
+  `exercises.json`, then re-push).
+- **"Last weight used" per exercise** isn't a native Notion rollup (no
+  "latest value of another column" function). The working substitutes: the
+  exercise page's related Set Log rows (newest visible), Last Logged, and the
+  e1RM Trend chart.
+- **Rest-period rationale** lives in `docs/phase1-design-proposal.md` (strength
+  120–180 s for full recovery; power 60–120 s to protect intent; circuits
+  15 s/90 s where incomplete recovery *is* the stimulus; accessories 45–60 s).
