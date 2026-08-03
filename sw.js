@@ -1,6 +1,6 @@
 /* Finance Tracker service worker — cache-first with background refresh,
    so the app works offline after the first visit and quietly picks up updates. */
-const CACHE = 'finance-tracker-v8';
+const CACHE = 'finance-tracker-v9';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-512.png'];
 
 self.addEventListener('install', (e) => {

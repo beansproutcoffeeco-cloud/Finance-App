@@ -555,6 +555,59 @@ function saveData() {
   }
 }
 
+// Validate + normalize a parsed backup BEFORE it replaces live data: backfill
+// missing top-level keys like loadData() does, coerce per-record fields, and
+// drop records that can't be repaired. Returns the cleaned object, or null
+// when the file is structurally unusable — the caller must then keep the
+// existing data untouched (never replace-then-crash).
+function sanitizeBackup(d) {
+  if (!d || typeof d !== 'object' || d.version !== 1) return null;
+  if (!Array.isArray(d.transactions) || !Array.isArray(d.categories)) return null;
+  const base = defaultData();
+  for (const k of Object.keys(base)) if (d[k] === undefined) d[k] = base[k];
+  const str = v => typeof v === 'string';
+  const dateOk = v => str(v) && /^\d{4}-\d{2}-\d{2}$/.test(v);
+  const intOr = (v, alt) => (typeof v === 'number' && isFinite(v)) ? Math.round(v) : alt;
+
+  d.accounts = (Array.isArray(d.accounts) ? d.accounts : []).filter(a => a && str(a.id) && str(a.name));
+  for (const a of d.accounts) {
+    if (!ACCT_TYPE_LABELS[a.type]) a.type = 'bank';
+    a.startingBalance = intOr(a.startingBalance, 0);
+  }
+  if (!d.accounts.length) d.accounts = base.accounts; // e.g. backup missing accounts
+
+  d.categories = d.categories.filter(c => c && str(c.id) && str(c.name));
+  d.categories.forEach((c, i) => {
+    if (!str(c.emoji)) c.emoji = '🏷️';
+    if (!str(c.color) || !SAFE_COLOR_RE.test(c.color)) c.color = CAT_PALETTE[i % CAT_PALETTE.length];
+    if (c.kind !== 'income') c.kind = 'expense';
+    c.budget = c.budget == null ? null : intOr(c.budget, null);
+  });
+  if (!d.categories.some(c => c.id === 'uncat')) d.categories.push({ ...UNCAT_SEED });
+
+  d.transactions = d.transactions.filter(t => t && dateOk(t.date) && typeof t.amount === 'number' && isFinite(t.amount));
+  for (const t of d.transactions) {
+    t.amount = Math.round(t.amount);
+    if (!str(t.desc)) t.desc = '';
+    if (!str(t.id)) t.id = uid();
+    if (!str(t.merchantKey)) t.merchantKey = merchantKey(t.desc);
+    if (!str(t.accountId)) t.accountId = d.accounts[0].id;
+    if (!str(t.categoryId)) t.categoryId = 'uncat';
+    t.isTransfer = !!t.isTransfer;
+  }
+
+  d.balances = (Array.isArray(d.balances) ? d.balances : [])
+    .filter(b => b && str(b.accountId) && dateOk(b.date) && typeof b.balance === 'number' && isFinite(b.balance));
+  for (const b of d.balances) { b.balance = Math.round(b.balance); if (!str(b.id)) b.id = uid(); }
+
+  if (!d.rules || typeof d.rules !== 'object' || Array.isArray(d.rules)) d.rules = {};
+  for (const k of Object.keys(d.rules)) if (!str(d.rules[k])) delete d.rules[k];
+  if (!d.csvMappings || typeof d.csvMappings !== 'object' || Array.isArray(d.csvMappings)) d.csvMappings = {};
+  if (!d.settings || typeof d.settings !== 'object' || Array.isArray(d.settings)) d.settings = {};
+  if (d.settings.currency !== undefined && !str(d.settings.currency)) delete d.settings.currency;
+  return d;
+}
+
 /* ---------- helpers ---------- */
 // Currency formatter derived from settings.currency; rebuilt via
 // buildFormatter() whenever the setting changes.
@@ -621,7 +674,14 @@ function catById(id) {
     || { ...UNCAT_SEED };
 }
 // A category's display color, tolerating old records with no color set.
-function catColor(cat) { return (cat && cat.color) || 'var(--series-1)'; }
+// Only a hex color or an app-issued var(--…) token passes — anything else
+// (e.g. from a tampered backup) could escape a style="…" attribute, so it
+// falls back to the default series hue instead.
+const SAFE_COLOR_RE = /^(#[0-9a-fA-F]{3,8}|var\(--[a-zA-Z0-9-]+\))$/;
+function catColor(cat) {
+  const c = cat && cat.color;
+  return (c && SAFE_COLOR_RE.test(c)) ? c : 'var(--series-1)';
+}
 function acctById(id) { return data.accounts.find(a => a.id === id); }
 function esc(s) {
   return (s == null ? '' : String(s))
@@ -767,17 +827,28 @@ function looksLikeTransfer(desc) {
 }
 
 // Pair-match: opposite amount in a different account within 4 days.
+// Candidates are indexed by amount so a big import stays O(n) instead of
+// rescanning every transaction per row; array order is preserved per bucket,
+// so the first-match tie-break is the same as the old linear scan.
 function detectTransferPairs(newTxns) {
   let n = 0;
-  const all = data.transactions;
   const paired = new Set(); // ids claimed during this call, so each txn pairs once
+  const byAmount = new Map(); // amount -> candidates, in data.transactions order
+  for (const o of data.transactions) {
+    // Skip txns already marked as transfers (e.g. paired during an earlier
+    // import) — a counterpart can only be claimed once, ever.
+    if (o.isTransfer) continue;
+    const list = byAmount.get(o.amount);
+    if (list) list.push(o); else byAmount.set(o.amount, [o]);
+  }
   for (const t of newTxns) {
-    if (t.isTransfer) continue;
-    for (const o of all) {
+    if (t.isTransfer || t.amount === 0) continue;
+    const cands = byAmount.get(-t.amount);
+    if (!cands) continue;
+    for (const o of cands) {
       if (o.id === t.id || o.accountId === t.accountId) continue;
-      if (o.amount !== -t.amount || t.amount === 0) continue;
+      if (o.isTransfer || paired.has(o.id)) continue; // claimed mid-call
       if (Math.abs(dayDiff(o.date, t.date)) > 4) continue;
-      if (paired.has(o.id)) continue;
       t.isTransfer = true; o.isTransfer = true;
       paired.add(t.id); paired.add(o.id);
       n++;
@@ -842,7 +913,22 @@ function parseAmountStr(s) {
   if (/^\(.*\)$/.test(s)) { neg = true; s = s.slice(1, -1); }
   if (/DR$/i.test(s)) { neg = true; s = s.replace(/DR$/i, ''); }
   if (/CR$/i.test(s)) { s = s.replace(/CR$/i, ''); }
-  s = s.replace(/[$,\s]/g, '');
+  s = s.replace(/[$€£¥\s]/g, '');
+  // Separator detection. Dot-only inputs keep their US reading ('1.234' is a
+  // decimal); commas are thousands separators unless they read as a European
+  // decimal: with both present the LAST separator is the decimal point, and a
+  // lone comma is decimal only when followed by 1–2 trailing digits.
+  if (s.includes(',')) {
+    const lc = s.lastIndexOf(',');
+    if (s.includes('.')) {
+      if (lc > s.lastIndexOf('.')) s = s.replace(/\./g, '').replace(',', '.'); // 1.234,56
+      else s = s.replace(/,/g, '');                                            // 1,234.56
+    } else if (/^\d{1,2}$/.test(s.slice(lc + 1))) {
+      s = s.slice(0, lc).replace(/,/g, '') + '.' + s.slice(lc + 1);            // 1234,56
+    } else {
+      s = s.replace(/,/g, '');                                                 // 1,234
+    }
+  }
   if (s === '' || s === '-') return null;
   const v = Number(s);
   if (!isFinite(v)) return null;
@@ -1236,7 +1322,7 @@ function render() {
 // the sub margins and second-button spacing live in the .empty CSS rules.
 function emptyCard(emoji, title, subHtml, buttonsHtml) {
   return `<div class="card empty">
-    ${emoji ? `<div class="big">${emoji}</div>` : ''}
+    ${emoji ? `<div class="big">${esc(emoji)}</div>` : ''}
     <div><strong>${title}</strong></div>
     ${subHtml ? `<div class="sub">${subHtml}</div>` : ''}
     ${buttonsHtml || ''}
@@ -1386,7 +1472,7 @@ function renderDashboard(app) {
       const pctBit = amt > 0 && t.spending ? `${pct}%` : amt < 0 ? 'net refund' : '';
       return `
       <div class="crow" role="button" tabindex="0" data-cat="${esc(cat.id)}" aria-label="${esc(cat.name)}: ${moneyAbs(amt)}${amt < 0 ? ' net refund' : ''} in ${esc(monthLabel(ym))} — view transactions">
-        <div class="name">${cat.emoji} ${esc(cat.name)}</div>
+        <div class="name">${esc(cat.emoji)} ${esc(cat.name)}</div>
         <div class="trackcell"><div class="bar" data-tip="${esc(cat.name)}: ${moneyAbs(amt)}${pctBit ? ` (${pctBit})` : ''}" style="width:${Math.max(1, amt / max * 100)}%;background:${catColor(cat)}"></div></div>
         <div class="amt">${moneyAbs(amt)}${pctBit ? ` <span class="pct">· ${pctBit}</span>` : ''}</div>
       </div>`;
@@ -1516,7 +1602,7 @@ function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth, pace) {
       trackInner = `<div class="fill" style="width:${w}%"></div>`;
     }
     html += `<div class="meter ${r.state}" data-cat="${esc(c.id)}" role="button" tabindex="0" aria-label="${esc(c.name)}: ${moneyAbs(r.spent)} of ${moneyAbs(r.budget)} budget — view transactions">
-      <div class="top"><span class="nm">${c.emoji} ${esc(c.name)}</span>
+      <div class="top"><span class="nm">${esc(c.emoji)} ${esc(c.name)}</span>
         <span class="st">${rem >= 0 ? `${moneyAbs(rem)} left` : `<span style="color:var(--critical)">${moneyAbs(rem)} over</span>`}
           <span class="muted fs-cap">${r.state === 'near' ? `· ${Math.round(r.frac * 100)}% used` : `${moneyAbs(r.spent)} / ${moneyAbs(r.budget)}`}</span></span>
         <button class="iconbtn budget-edit" data-cat="${esc(c.id)}" aria-label="Edit ${esc(c.name)} budget">✎</button></div>
@@ -1536,7 +1622,7 @@ function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth, pace) {
     </div>`;
     if (state.unbudgetedOpen) {
       html += `<div class="ub-list">` + bs.unbudgeted.map(u => {
-        let h = `<div class="ub-row"><span>${u.cat.emoji} ${esc(u.cat.name)}</span>
+        let h = `<div class="ub-row"><span>${esc(u.cat.emoji)} ${esc(u.cat.name)}</span>
           <span class="amt">${moneyAbs(u.amt)}</span>
           <span class="chip ub-set" role="button" tabindex="0" data-cat="${esc(u.cat.id)}">Set budget</span></div>`;
         if (state.budgetEdit === u.cat.id) h += budgetEditorHtml(u.cat);
@@ -1572,7 +1658,7 @@ function budgetSetupCardHtml() {
   return `<div class="card budget-setup"><h2>Start budgeting</h2>
     <div class="sub" style="margin-bottom:8px">We drafted these from your last 3 months of spending — adjust or untick, then start.</div>
     ${cand.map(x => `<div class="bsrow">
-      <label class="chk"><input type="checkbox" class="bs-chk" data-cat="${esc(x.cat.id)}" checked> ${x.cat.emoji} ${esc(x.cat.name)}</label>
+      <label class="chk"><input type="checkbox" class="bs-chk" data-cat="${esc(x.cat.id)}" checked> ${esc(x.cat.emoji)} ${esc(x.cat.name)}</label>
       <input type="number" class="bs-amt" min="0" step="1" inputmode="decimal" data-cat="${esc(x.cat.id)}" value="${((x.sug != null ? x.sug : roundBudgetUp(x.avg)) / 100).toFixed(0)}" aria-label="Monthly budget for ${esc(x.cat.name)}">
     </div>`).join('')}
     <div class="row" style="margin-top:10px">
@@ -1588,7 +1674,7 @@ function budgetEditorHtml(c) {
   const sug = suggestBudget(c.id);
   const val = c.budget ? budgetInputVal(c.budget) : (sug != null ? (sug / 100).toFixed(0) : '');
   return `<div class="budget-editor" data-cat="${esc(c.id)}">
-    <label class="fld"><span>${c.emoji} ${esc(c.name)} budget ($ / month)</span>
+    <label class="fld"><span>${esc(c.emoji)} ${esc(c.name)} budget (${esc(curSymbol)} / month)</span>
       <input type="number" id="be-amt" min="0" step="0.01" inputmode="decimal" placeholder="e.g. 400" value="${val}"></label>
     ${sug != null ? `<div class="sub" style="margin:-2px 0 10px">Suggested: <span class="chip" id="be-sug" role="button" tabindex="0">${moneyAbs(sug)} (3-mo avg)</span></div>` : ''}
     <div class="row">
@@ -1717,7 +1803,7 @@ function renderTrends(app) {
       <h2>Last 12 months</h2>
       <select id="trend-cat" class="right" style="width:auto">
         <option value="all">Income vs spending</option>
-        ${expenseCats.map(c => `<option value="${c.id}" ${catSel === c.id ? 'selected' : ''}>${c.emoji} ${esc(c.name)}</option>`).join('')}
+        ${expenseCats.map(c => `<option value="${c.id}" ${catSel === c.id ? 'selected' : ''}>${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}
       </select>
     </div>`;
 
@@ -1954,10 +2040,10 @@ function renderTransactions(app) {
     </div>
     <form id="quickadd" style="margin-top:12px;${state.addOpen ? '' : 'display:none'}">
       <div class="grid2">
-        <label class="fld"><span>Amount ($)</span><input type="number" step="0.01" min="0" inputmode="decimal" id="qa-amt" required placeholder="12.50"></label>
+        <label class="fld"><span>Amount (${esc(curSymbol)})</span><input type="number" step="0.01" min="0" inputmode="decimal" id="qa-amt" required placeholder="12.50"></label>
         <label class="fld"><span>Type</span><select id="qa-type"><option value="expense">Expense</option><option value="income">Income</option></select></label>
         <label class="fld"><span>Date</span><input type="date" id="qa-date" value="${todayStr()}" required></label>
-        <label class="fld"><span>Category</span><select id="qa-cat">${data.categories.filter(c => c.id !== 'uncat').map(c => `<option value="${c.id}">${c.emoji} ${esc(c.name)}</option>`).join('')}</select></label>
+        <label class="fld"><span>Category</span><select id="qa-cat">${data.categories.filter(c => c.id !== 'uncat').map(c => `<option value="${c.id}">${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}</select></label>
         <label class="fld" style="grid-column:1/-1"><span>Description</span><input type="text" id="qa-desc" placeholder="e.g. Farmers market" required></label>
         <label class="fld"><span>Account</span><select id="qa-acct">${data.accounts.map(a => `<option value="${a.id}">${esc(a.name)}</option>`).join('')}</select></label>
         <div style="display:flex;align-items:flex-end;padding-bottom:2px"><button class="btn" style="width:100%">Add</button></div>
@@ -1972,7 +2058,7 @@ function renderTransactions(app) {
   <div class="filters">
     <input type="search" id="f-search" placeholder="Search text or amount (12, 10-50)…" value="${esc(state.fSearch)}">
     <select id="f-acct"><option value="all">All accounts</option>${data.accounts.map(a => `<option value="${a.id}" ${state.fAccount === a.id ? 'selected' : ''}>${esc(a.name)}</option>`).join('')}</select>
-    <select id="f-cat"><option value="all">All categories</option><option value="__expense__" ${state.fCategory === '__expense__' ? 'selected' : ''}>All expenses</option><option value="__income__" ${state.fCategory === '__income__' ? 'selected' : ''}>All income</option>${data.categories.map(c => `<option value="${c.id}" ${state.fCategory === c.id ? 'selected' : ''}>${c.emoji} ${esc(c.name)}</option>`).join('')}</select>
+    <select id="f-cat"><option value="all">All categories</option><option value="__expense__" ${state.fCategory === '__expense__' ? 'selected' : ''}>All expenses</option><option value="__income__" ${state.fCategory === '__income__' ? 'selected' : ''}>All income</option>${data.categories.map(c => `<option value="${c.id}" ${state.fCategory === c.id ? 'selected' : ''}>${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}</select>
     <select id="f-month"><option value="all">All months</option>${monthsPresent.map(m => `<option value="${m}" ${state.fMonth === m ? 'selected' : ''}>${monthLabel(m)}</option>`).join('')}</select>
     <label class="chk"><input type="checkbox" id="f-xfer" ${state.fTransfers ? 'checked' : ''}> Show transfers</label>
   </div>`;
@@ -2033,7 +2119,7 @@ function renderTransactions(app) {
       html += `<div class="card" id="bulk-bar" style="padding:10px 12px;margin-bottom:10px">
         <div class="row">
           <span class="sub" style="flex:0 0 auto">Set category for all ${matches.length} shown:</span>
-          <select id="bulk-cat" class="grow" style="flex:1 1 140px">${data.categories.filter(c => c.id !== 'uncat').map(c => `<option value="${c.id}">${c.emoji} ${esc(c.name)}</option>`).join('')}</select>
+          <select id="bulk-cat" class="grow" style="flex:1 1 140px">${data.categories.filter(c => c.id !== 'uncat').map(c => `<option value="${c.id}">${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}</select>
           <button class="btn small" id="bulk-apply">Apply to all shown</button>
         </div>
         <label class="chk" style="margin:8px 0 0">
@@ -2104,7 +2190,7 @@ function txnRowHtml(t) {
   const sign = t.amount > 0 ? '+' : '';
   const label = `${t.desc || 'Transaction'}, ${sign}${money(t.amount)}, ${t.isTransfer ? 'transfer' : c.name} — edit`;
   return `<div class="txn${t.categoryId === 'uncat' && !t.isTransfer ? ' uncat' : ''}${state.editingId === t.id ? ' editing' : ''}" data-id="${t.id}" role="button" tabindex="0" aria-label="${esc(label)}">
-    <div class="emoji">${t.isTransfer ? '🔀' : c.emoji}</div>
+    <div class="emoji">${t.isTransfer ? '🔀' : esc(c.emoji)}</div>
     <div class="mid">
       <div class="desc">${esc(t.desc)}</div>
       <div class="meta">${t.isTransfer ? 'Transfer · ' : esc(c.name) + ' · '}${acct ? esc(acct.name) : ''}</div>
@@ -2117,8 +2203,8 @@ function txnEditorHtml(t) {
   return `<div class="editor" data-editor="${t.id}">
     <div class="grid2">
       <label class="fld"><span>Date</span><input type="date" id="ed-date" value="${t.date}"></label>
-      <label class="fld"><span>Amount ($)</span><input type="number" step="0.01" id="ed-amt" value="${(t.amount / 100).toFixed(2)}"><span class="hint">Negative = expense, positive = money in</span></label>
-      <label class="fld"><span>Category</span><select id="ed-cat">${data.categories.map(c => `<option value="${c.id}" ${t.categoryId === c.id ? 'selected' : ''}>${c.emoji} ${esc(c.name)}</option>`).join('')}</select></label>
+      <label class="fld"><span>Amount (${esc(curSymbol)})</span><input type="number" step="0.01" id="ed-amt" value="${(t.amount / 100).toFixed(2)}"><span class="hint">Negative = expense, positive = money in</span></label>
+      <label class="fld"><span>Category</span><select id="ed-cat">${data.categories.map(c => `<option value="${c.id}" ${t.categoryId === c.id ? 'selected' : ''}>${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}</select></label>
       <label class="fld"><span>Account</span><select id="ed-acct">${data.accounts.map(a => `<option value="${a.id}" ${t.accountId === a.id ? 'selected' : ''}>${esc(a.name)}</option>`).join('')}</select></label>
       <label class="fld" style="grid-column:1/-1"><span>Description</span><input type="text" id="ed-desc" value="${esc(t.desc)}"></label>
     </div>
@@ -2244,7 +2330,7 @@ function renderSavings(app) {
       ${gains ? `<div class="sub" style="margin-bottom:10px">📊 Market ${gains.gain >= 0 ? 'gain' : 'loss'} since ${dateLabel(gains.from)}: <strong style="color:${gains.gain >= 0 ? 'var(--good-text)' : 'var(--critical)'}">${gains.gain >= 0 ? '+' : '−'}${moneyAbs(gains.gain)}</strong> (balance change minus money you added)</div>`
         : (a.type === 'investment' ? `<div class="sub" style="margin-bottom:10px">Update the balance now and again after your next statement — the difference minus contributions = your market gains.</div>` : '')}
       <div class="row">
-        <input type="number" step="0.01" min="0" inputmode="decimal" class="bal-input grow" data-acct="${a.id}" placeholder="Current balance ($)">
+        <input type="number" step="0.01" min="0" inputmode="decimal" class="bal-input grow" data-acct="${a.id}" placeholder="Current balance (${esc(curSymbol)})">
         <button class="btn small bal-save" data-acct="${a.id}">Update balance</button>
       </div>
     </div>`;
@@ -2260,7 +2346,7 @@ function renderSavings(app) {
       const id = btn.dataset.acct;
       const input = $(`.bal-input[data-acct="${id}"]`, app);
       const v = parseFloat(input.value);
-      if (!isFinite(v) || v < 0) { toast('Enter the account’s current balance in dollars'); return; }
+      if (!isFinite(v) || v < 0) { toast('Enter the account’s current balance'); return; }
       const today = todayStr();
       data.balances = (data.balances || []).filter(s => !(s.accountId === id && s.date === today));
       data.balances.push({ id: uid(), accountId: id, date: today, balance: Math.round(v * 100) });
@@ -2319,7 +2405,7 @@ function recTableHtml(list, isIncome) {
   <tr><th>Merchant</th><th>Cadence</th><th class="num">Typical</th><th class="num">/month</th><th class="num">/year</th></tr>`;
   for (const r of list) {
     const c = catById(r.categoryId);
-    h += `<tr class="rec-row" data-merchant="${esc(r.name)}" style="cursor:pointer"><td>${c.emoji} ${esc(r.name)}<div class="muted fs-cap">last ${dateLabel(r.last)} · ${r.count}×</div></td>
+    h += `<tr class="rec-row" data-merchant="${esc(r.name)}" style="cursor:pointer"><td>${esc(c.emoji)} ${esc(r.name)}<div class="muted fs-cap">last ${dateLabel(r.last)} · ${r.count}×</div></td>
       <td>${r.cadence}</td><td class="num"${col}>${sign}${moneyAbs(r.typical)}</td>
       <td class="num"${col}>${sign}${moneyAbs(r.perMonthCost)}</td><td class="num"${col}>${sign}${moneyAbs(r.perYearCost)}</td></tr>`;
   }
@@ -2329,7 +2415,7 @@ function recTableHtml(list, isIncome) {
     const c = catById(r.categoryId);
     return `<div class="rec-card rec-row" data-merchant="${esc(r.name)}" role="button" tabindex="0" aria-label="${esc(r.name)}, ${r.cadence}, ${sign}${moneyAbs(r.typical)} typical — view transactions">
       <div class="row" style="gap:8px;flex-wrap:nowrap">
-        <span class="rc-name">${c.emoji} ${esc(r.name)}</span>
+        <span class="rc-name">${esc(c.emoji)} ${esc(r.name)}</span>
         <span class="chip" style="cursor:inherit">${r.cadence}</span>
       </div>
       <div class="rc-meta"${col}>${sign}${moneyAbs(r.typical)} typical · ${sign}${moneyAbs(r.perMonthCost)}/mo · ${sign}${moneyAbs(r.perYearCost)}/yr</div>
@@ -2354,10 +2440,10 @@ function renderSettings(app) {
   for (const c of data.categories) {
     if (c.id === 'uncat') continue;
     html += `<div class="setrow" data-cat="${c.id}">
-      <span style="width:24px;text-align:center">${c.emoji}</span>
+      <span style="width:24px;text-align:center">${esc(c.emoji)}</span>
       <input type="text" class="cat-name" value="${esc(c.name)}" aria-label="Category name">
       ${c.kind === 'income' ? '<span class="muted fs-cap">income</span>'
-        : `<span class="moneyfield"><span class="aff">$</span><input type="number" class="budget" min="0" step="0.01" placeholder="—" value="${budgetInputVal(c.budget)}" aria-label="Monthly budget"><span class="aff">/mo</span></span>`}
+        : `<span class="moneyfield"><span class="aff">${esc(curSymbol)}</span><input type="number" class="budget" min="0" step="0.01" placeholder="—" value="${budgetInputVal(c.budget)}" aria-label="Monthly budget"><span class="aff">/mo</span></span>`}
       <button class="iconbtn cat-del" title="Delete category" aria-label="Delete ${esc(c.name)}">✕</button>
     </div>`;
   }
@@ -2376,14 +2462,14 @@ function renderSettings(app) {
     const start = Number.isFinite(a.startingBalance) ? a.startingBalance : 0;
     html += `<div class="setrow" data-acct="${a.id}" style="flex-wrap:wrap">
       <input type="text" class="acct-name" value="${esc(a.name)}" aria-label="Account name">
-      <select class="acct-type" aria-label="Account type" style="width:auto;flex:0 0 auto;padding:6px 8px;font-size:12.5px">
+      <select class="acct-type" aria-label="Account type" style="width:auto;flex:0 0 auto;padding:6px 8px;font-size:var(--fs-caption)">
         ${['bank', 'cash', 'savings', 'investment'].map(ty =>
           `<option value="${ty}" ${(a.type === ty || (!ACCT_TYPE_LABELS[a.type] && ty === 'bank')) ? 'selected' : ''}>${ACCT_TYPE_LABELS[ty]}</option>`).join('')}
       </select>
       <span class="muted fs-cap" style="flex:0 0 auto">${n} txns</span>
       <button class="iconbtn acct-del" title="Delete account" aria-label="Delete ${esc(a.name)}">✕</button>
       <div class="row" style="flex:1 0 100%;margin-top:4px">
-        <label class="fld" style="margin:0;flex:0 0 auto"><span style="display:inline">Starting balance ($)</span>
+        <label class="fld" style="margin:0;flex:0 0 auto"><span style="display:inline">Starting balance (${esc(curSymbol)})</span>
           <input type="number" class="acct-start budget" step="0.01" value="${(start / 100).toFixed(2)}" aria-label="Starting balance"></label>
         <span class="muted right fs-cap">Balance: <strong style="color:var(--text-primary)">${bal < 0 ? '−' : ''}${moneyAbs(bal)}</strong></span>
       </div>
@@ -2526,8 +2612,10 @@ function renderSettings(app) {
     const rd = new FileReader();
     rd.onload = () => {
       try {
-        const d = JSON.parse(rd.result);
-        if (!d || d.version !== 1 || !Array.isArray(d.transactions) || !Array.isArray(d.categories)) throw new Error('bad');
+        // Validate + normalize fully before touching `data` — a bad file must
+        // be rejected here, with the existing data left intact.
+        const d = sanitizeBackup(JSON.parse(rd.result));
+        if (!d) throw new Error('bad');
         if (!confirm(`Restore backup with ${d.transactions.length} transactions? This replaces everything currently here.`)) return;
         data = d; buildFormatter(); saveData(); render(); toast('Backup restored');
       } catch (err) { toast('⚠️ Not a valid backup file'); }

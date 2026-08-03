@@ -13,7 +13,7 @@
  * that must stay reachable from page scope — renaming/moving them into a
  * module breaks this test):
  *   data, saveData, uid, merchantKey, state, render,
- *   monthTotals, netWorth, accountBalance
+ *   monthTotals, netWorth, accountBalance, importRows, parseAmountStr
  * It also assumes the default category ids 'income', 'groceries', 'dining',
  * 'shopping', 'uncat' exist, and that categories carry a `budget` field
  * (cents) which drives the dashboard's Left-to-spend hero + budget card.
@@ -163,6 +163,43 @@ async function main() {
     check(`monthTotals('${SEED_MONTH}').income > 0`, inv.income > 0, `income=${inv.income}`);
     check('netWorth() === sum of accountBalance() over accounts',
       inv.netWorth === inv.sumBalances, `netWorth=${inv.netWorth} sum=${inv.sumBalances}`);
+
+    // 6) Transfer pairing regression: a counterpart consumed by an earlier
+    // import must never be claimed again by a later one — the unrelated
+    // same-amount expense in the second import must NOT become a transfer.
+    const pairing = await page.evaluate((month) => {
+      data.accounts = [
+        { id: 'p1', name: 'P1', type: 'bank', startingBalance: 0 },
+        { id: 'p2', name: 'P2', type: 'bank', startingBalance: 0 },
+        { id: 'p3', name: 'P3', type: 'bank', startingBalance: 0 },
+      ];
+      data.transactions = [];
+      // stage 1: a transfer pair across p1/p2, matched by amount+date pairing
+      // (descriptions deliberately avoid TRANSFER_RE so only pairing marks them)
+      importRows([{ ok: true, date: month + '-10', amount: -50000, desc: 'SENT TO SAVINGS' }], 'p1');
+      importRows([{ ok: true, date: month + '-10', amount: 50000, desc: 'DEPOSIT RECEIVED' }], 'p2');
+      const pairMarked = data.transactions.every((t) => t.isTransfer);
+      // stage 2: an unrelated real expense of the same magnitude into p3
+      importRows([{ ok: true, date: month + '-12', amount: -50000, desc: 'RENT PAYMENT LANDLORD' }], 'p3');
+      const rent = data.transactions.find((t) => t.accountId === 'p3');
+      return { pairMarked, rentMarkedTransfer: rent.isTransfer };
+    }, SEED_MONTH);
+    check('transfer pair across two imports is detected', pairing.pairMarked);
+    check('already-paired counterpart is not double-claimed (rent stays a real expense)',
+      pairing.rentMarkedTransfer === false, `rentMarkedTransfer=${pairing.rentMarkedTransfer}`);
+
+    // 7) parseAmountStr: US formats stay as-is, European separators parse.
+    const amtCases = [
+      ['1,234.56', 123456], ['1.234,56', 123456], ['1234,56', 123456],
+      ['1,234', 123400], ['1.234', 123],
+      ['-29.35', -2935], ['(29.35)', -2935], ['29.35 CR', 2935],
+      ['$-29.35', -2935], ['€1.234,56', 123456],
+    ];
+    const amtGot = await page.evaluate((cases) => cases.map(([s]) => parseAmountStr(s)), amtCases);
+    for (let i = 0; i < amtCases.length; i++) {
+      check(`parseAmountStr(${JSON.stringify(amtCases[i][0])}) === ${amtCases[i][1]}`,
+        amtGot[i] === amtCases[i][1], `got ${amtGot[i]}`);
+    }
 
     check('no uncaught page errors overall', pageErrors.length === 0,
       pageErrors.map((e) => e.message).join(' | '));

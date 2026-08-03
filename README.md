@@ -29,6 +29,7 @@ with no hosting at all.
 - **Import bank CSVs** — download a CSV from your bank's website and import it.
   Column layout is auto-detected (including separate debit/credit columns and
   credit-card files where purchases are positive — use the "flip signs" toggle).
+  Ambiguous slash dates like 03/04/2026 are read as MM/DD (US order).
   Re-importing the same or overlapping files is safe: duplicates are skipped automatically.
 - **Transfers understood** — payments between your own accounts (credit-card payments,
   moves to savings) are detected by description patterns and by matching opposite
