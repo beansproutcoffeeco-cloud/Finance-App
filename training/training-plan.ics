@@ -26,7 +26,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260824T173000
 DTEND;TZID=America/Chicago:20260824T182500
 SUMMARY:W01 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 1 | gym ≈54.2 min (home variant ≈38.5 min)\nMain: goblet squat 3×8-10\; db rdl 3×8-10\; box step up 3×8/leg\; db bench press 3×8-12\; pallof press 3×10/side\; wall sit 3×30 s
+DESCRIPTION:A — Lower Strength + Core | Block 1 | gym ≈54.2 min (home variant ≈38.5 min)\nMain: goblet squat 3×8-10\; db rdl 3×8-10\; box step up 3×8/leg\; db bench press 3×8-12\; pallof press 3×10/side\; wall sit 3×30 s\nNotion: https://www.notion.so/3b1235aab08981d99a30d7159db6d8ab
 END:VEVENT
 BEGIN:VEVENT
 UID:W01D2@snowboard-preseason-2026
@@ -34,7 +34,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260826T173000
 DTEND;TZID=America/Chicago:20260826T182500
 SUMMARY:W01 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 1 | gym ≈50.6 min (home variant ≈34.5 min)\nMain: drop to stick 4×4\; pogo hop 3×10\; broad jump stick 3×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; sl balance 3×30 s/leg\; calf raise 3×15
+DESCRIPTION:B — Power + Balance | Block 1 | gym ≈50.6 min (home variant ≈34.5 min)\nMain: drop to stick 4×4\; pogo hop 3×10\; broad jump stick 3×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; sl balance 3×30 s/leg\; calf raise 3×15\nNotion: https://www.notion.so/3b1235aab08981b3a9eed1df0148aefc
 END:VEVENT
 BEGIN:VEVENT
 UID:W01D3@snowboard-preseason-2026
@@ -42,7 +42,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260829T090000
 DTEND;TZID=America/Chicago:20260829T095000
 SUMMARY:W01 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 1 | gym ≈46.0 min (home variant ≈37.0 min)\nMain: goblet squat 3×10\; wall sit 3×30 s\; box step up 3×8/leg\; spanish squat 3×12\; band lateral walk 3×10/side\; side plank 3×20 s/side\; bike z2 1×12 min steady
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 1 | gym ≈46.0 min (home variant ≈37.0 min)\nMain: goblet squat 3×10\; wall sit 3×30 s\; box step up 3×8/leg\; spanish squat 3×12\; band lateral walk 3×10/side\; side plank 3×20 s/side\; bike z2 1×12 min steady\nNotion: https://www.notion.so/3b1235aab089810591eff7bf12dcb9e6
 END:VEVENT
 BEGIN:VEVENT
 UID:W02D1@snowboard-preseason-2026
@@ -50,7 +50,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260831T173000
 DTEND;TZID=America/Chicago:20260831T182500
 SUMMARY:W02 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 1 | gym ≈54.5 min (home variant ≈38.8 min)\nMain: goblet squat 3×8-10\; db rdl 3×8-10\; box step up 3×8/leg\; db bench press 3×8-12\; pallof press 3×10/side\; wall sit 3×35 s
+DESCRIPTION:A — Lower Strength + Core | Block 1 | gym ≈54.5 min (home variant ≈38.8 min)\nMain: goblet squat 3×8-10\; db rdl 3×8-10\; box step up 3×8/leg\; db bench press 3×8-12\; pallof press 3×10/side\; wall sit 3×35 s\nNotion: https://www.notion.so/3b1235aab0898172aa0ef8c97bf6279f
 END:VEVENT
 BEGIN:VEVENT
 UID:W02D2@snowboard-preseason-2026
@@ -58,7 +58,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260902T173000
 DTEND;TZID=America/Chicago:20260902T182500
 SUMMARY:W02 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 1 | gym ≈51.9 min (home variant ≈35.6 min)\nMain: drop to stick 4×4\; pogo hop 4×10\; broad jump stick 3×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; sl balance 3×30 s/leg\; calf raise 3×15
+DESCRIPTION:B — Power + Balance | Block 1 | gym ≈51.9 min (home variant ≈35.6 min)\nMain: drop to stick 4×4\; pogo hop 4×10\; broad jump stick 3×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; sl balance 3×30 s/leg\; calf raise 3×15\nNotion: https://www.notion.so/3b1235aab089819287b2f5d351649c20
 END:VEVENT
 BEGIN:VEVENT
 UID:W02D3@snowboard-preseason-2026
@@ -66,7 +66,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260905T090000
 DTEND;TZID=America/Chicago:20260905T095000
 SUMMARY:W02 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 1 | gym ≈48.2 min (home variant ≈37.2 min)\nMain: goblet squat 3×10\; wall sit 3×35 s\; box step up 3×8/leg\; spanish squat 3×12\; band lateral walk 3×10/side\; side plank 3×20 s/side\; bike z2 1×14 min steady
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 1 | gym ≈48.2 min (home variant ≈37.2 min)\nMain: goblet squat 3×10\; wall sit 3×35 s\; box step up 3×8/leg\; spanish squat 3×12\; band lateral walk 3×10/side\; side plank 3×20 s/side\; bike z2 1×14 min steady\nNotion: https://www.notion.so/3b1235aab08981a794aad15b49d522b1
 END:VEVENT
 BEGIN:VEVENT
 UID:W03D1@snowboard-preseason-2026
@@ -74,7 +74,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260907T173000
 DTEND;TZID=America/Chicago:20260907T183000
 SUMMARY:W03 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 1 | gym ≈57.6 min (home variant ≈39.0 min)\nMain: goblet squat 4×8-10\; db rdl 3×8-10\; box step up 3×8/leg\; db bench press 3×8-12\; pallof press 3×10/side\; wall sit 3×40 s
+DESCRIPTION:A — Lower Strength + Core | Block 1 | gym ≈57.6 min (home variant ≈39.0 min)\nMain: goblet squat 4×8-10\; db rdl 3×8-10\; box step up 3×8/leg\; db bench press 3×8-12\; pallof press 3×10/side\; wall sit 3×40 s\nNotion: https://www.notion.so/3b1235aab08981168b6bdcec469191f1
 END:VEVENT
 BEGIN:VEVENT
 UID:W03D2@snowboard-preseason-2026
@@ -82,7 +82,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260909T173000
 DTEND;TZID=America/Chicago:20260909T182500
 SUMMARY:W03 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 1 | gym ≈54.2 min (home variant ≈37.6 min)\nMain: drop to stick 4×4\; pogo hop 4×12\; broad jump stick 4×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; sl balance 3×30 s/leg\; calf raise 3×15
+DESCRIPTION:B — Power + Balance | Block 1 | gym ≈54.2 min (home variant ≈37.6 min)\nMain: drop to stick 4×4\; pogo hop 4×12\; broad jump stick 4×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; sl balance 3×30 s/leg\; calf raise 3×15\nNotion: https://www.notion.so/3b1235aab0898147b1a2c3c39628259c
 END:VEVENT
 BEGIN:VEVENT
 UID:W03D3@snowboard-preseason-2026
@@ -90,7 +90,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260912T090000
 DTEND;TZID=America/Chicago:20260912T095500
 SUMMARY:W03 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 1 | gym ≈50.5 min (home variant ≈37.5 min)\nMain: goblet squat 3×10\; wall sit 3×40 s\; box step up 3×8/leg\; spanish squat 3×12\; band lateral walk 3×10/side\; side plank 3×20 s/side\; bike z2 1×16 min steady
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 1 | gym ≈50.5 min (home variant ≈37.5 min)\nMain: goblet squat 3×10\; wall sit 3×40 s\; box step up 3×8/leg\; spanish squat 3×12\; band lateral walk 3×10/side\; side plank 3×20 s/side\; bike z2 1×16 min steady\nNotion: https://www.notion.so/3b1235aab08981a29fade192ef451d7c
 END:VEVENT
 BEGIN:VEVENT
 UID:W04D1@snowboard-preseason-2026
@@ -98,7 +98,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260914T173000
 DTEND;TZID=America/Chicago:20260914T181500
 SUMMARY:W04 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 1 | DELOAD | gym ≈40.5 min (home variant ≈31.3 min)\nMain: goblet squat 2×8-10\; db rdl 2×8-10\; box step up 2×8/leg\; db bench press 2×8-12\; pallof press 2×10/side\; wall sit 2×30 s
+DESCRIPTION:A — Lower Strength + Core | Block 1 | DELOAD | gym ≈40.5 min (home variant ≈31.3 min)\nMain: goblet squat 2×8-10\; db rdl 2×8-10\; box step up 2×8/leg\; db bench press 2×8-12\; pallof press 2×10/side\; wall sit 2×30 s\nNotion: https://www.notion.so/3b1235aab08981c48afecb3db553e916
 END:VEVENT
 BEGIN:VEVENT
 UID:W04D2@snowboard-preseason-2026
@@ -106,7 +106,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260916T173000
 DTEND;TZID=America/Chicago:20260916T181000
 SUMMARY:W04 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 1 | DELOAD | gym ≈39.9 min (home variant ≈31.8 min)\nMain: drop to stick 3×3\; pogo hop 2×10\; broad jump stick 3×3\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; sl balance 2×30 s/leg\; calf raise 2×15
+DESCRIPTION:B — Power + Balance | Block 1 | DELOAD | gym ≈39.9 min (home variant ≈31.8 min)\nMain: drop to stick 3×3\; pogo hop 2×10\; broad jump stick 3×3\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; sl balance 2×30 s/leg\; calf raise 2×15\nNotion: https://www.notion.so/3b1235aab08981d4a0b4f6bf50051791
 END:VEVENT
 BEGIN:VEVENT
 UID:W04D3@snowboard-preseason-2026
@@ -114,7 +114,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260919T090000
 DTEND;TZID=America/Chicago:20260919T094000
 SUMMARY:W04 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 1 | DELOAD | gym ≈36.3 min (home variant ≈27.8 min)\nMain: goblet squat 2×10\; wall sit 2×25 s\; box step up 2×8/leg\; spanish squat 2×12\; band lateral walk 2×10/side\; side plank 2×20 s/side\; bike z2 1×10 min steady
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 1 | DELOAD | gym ≈36.3 min (home variant ≈27.8 min)\nMain: goblet squat 2×10\; wall sit 2×25 s\; box step up 2×8/leg\; spanish squat 2×12\; band lateral walk 2×10/side\; side plank 2×20 s/side\; bike z2 1×10 min steady\nNotion: https://www.notion.so/3b1235aab08981948a9df8537527559c
 END:VEVENT
 BEGIN:VEVENT
 UID:W05D1@snowboard-preseason-2026
@@ -122,7 +122,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260921T173000
 DTEND;TZID=America/Chicago:20260921T182500
 SUMMARY:W05 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 2 | gym ≈52.1 min (home variant ≈37.9 min)\nMain: back squat 3×5-6\; bb rdl 3×6-8\; box step up 2×8/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side
+DESCRIPTION:A — Lower Strength + Core | Block 2 | gym ≈52.1 min (home variant ≈37.9 min)\nMain: back squat 3×5-6\; bb rdl 3×6-8\; box step up 2×8/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side\nNotion: https://www.notion.so/3b1235aab0898187bb36d8310c060281
 END:VEVENT
 BEGIN:VEVENT
 UID:W05D2@snowboard-preseason-2026
@@ -130,7 +130,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260923T173000
 DTEND;TZID=America/Chicago:20260923T182500
 SUMMARY:W05 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 2 | gym ≈52.6 min (home variant ≈37.9 min)\nMain: box jump 4×4\; pogo hop 4×10\; drop to stick 3×4\; broad jump stick 4×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; calf raise 3×12
+DESCRIPTION:B — Power + Balance | Block 2 | gym ≈52.6 min (home variant ≈37.9 min)\nMain: box jump 4×4\; pogo hop 4×10\; drop to stick 3×4\; broad jump stick 4×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; calf raise 3×12\nNotion: https://www.notion.so/3b1235aab089811d81f9d05e8c7ffe11
 END:VEVENT
 BEGIN:VEVENT
 UID:W05D3@snowboard-preseason-2026
@@ -138,7 +138,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260926T090000
 DTEND;TZID=America/Chicago:20260926T095500
 SUMMARY:W05 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 2 | gym ≈53.5 min (home variant ≈38.5 min)\nMain: goblet squat 3×8\; wall sit 3×45 s\; eccentric step down 3×6/leg\; spanish squat 3×12\; split squat iso 3×20 s/side\; side plank 3×30 s/side\; bike z2 1×16 min steady
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 2 | gym ≈53.5 min (home variant ≈38.5 min)\nMain: goblet squat 3×8\; wall sit 3×45 s\; eccentric step down 3×6/leg\; spanish squat 3×12\; split squat iso 3×20 s/side\; side plank 3×30 s/side\; bike z2 1×16 min steady\nNotion: https://www.notion.so/3b1235aab08981a2880cd14362de0ae3
 END:VEVENT
 BEGIN:VEVENT
 UID:W06D1@snowboard-preseason-2026
@@ -146,7 +146,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260928T173000
 DTEND;TZID=America/Chicago:20260928T183000
 SUMMARY:W06 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 2 | gym ≈55.2 min (home variant ≈37.9 min)\nMain: back squat 4×5-6\; bb rdl 3×6-8\; box step up 2×8/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side
+DESCRIPTION:A — Lower Strength + Core | Block 2 | gym ≈55.2 min (home variant ≈37.9 min)\nMain: back squat 4×5-6\; bb rdl 3×6-8\; box step up 2×8/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side\nNotion: https://www.notion.so/3b1235aab08981beb802c0045f588247
 END:VEVENT
 BEGIN:VEVENT
 UID:W06D2@snowboard-preseason-2026
@@ -154,7 +154,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20260930T173000
 DTEND;TZID=America/Chicago:20260930T182500
 SUMMARY:W06 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 2 | gym ≈53.9 min (home variant ≈39.0 min)\nMain: box jump 4×4\; pogo hop 5×10\; drop to stick 3×4\; broad jump stick 4×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; calf raise 3×12
+DESCRIPTION:B — Power + Balance | Block 2 | gym ≈53.9 min (home variant ≈39.0 min)\nMain: box jump 4×4\; pogo hop 5×10\; drop to stick 3×4\; broad jump stick 4×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; calf raise 3×12\nNotion: https://www.notion.so/3b1235aab08981feb716cc5e5b37eee7
 END:VEVENT
 BEGIN:VEVENT
 UID:W06D3@snowboard-preseason-2026
@@ -162,7 +162,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261003T090000
 DTEND;TZID=America/Chicago:20261003T100000
 SUMMARY:W06 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 2 | gym ≈55.8 min (home variant ≈38.8 min)\nMain: goblet squat 3×8\; wall sit 3×50 s\; eccentric step down 3×6/leg\; spanish squat 3×12\; split squat iso 3×20 s/side\; side plank 3×30 s/side\; bike z2 1×18 min steady
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 2 | gym ≈55.8 min (home variant ≈38.8 min)\nMain: goblet squat 3×8\; wall sit 3×50 s\; eccentric step down 3×6/leg\; spanish squat 3×12\; split squat iso 3×20 s/side\; side plank 3×30 s/side\; bike z2 1×18 min steady\nNotion: https://www.notion.so/3b1235aab08981349a17de7c628d5ab4
 END:VEVENT
 BEGIN:VEVENT
 UID:W07D1@snowboard-preseason-2026
@@ -170,7 +170,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261005T173000
 DTEND;TZID=America/Chicago:20261005T183000
 SUMMARY:W07 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 2 | gym ≈55.2 min (home variant ≈37.9 min)\nMain: back squat 4×5-6\; bb rdl 3×6-8\; box step up 2×8/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side
+DESCRIPTION:A — Lower Strength + Core | Block 2 | gym ≈55.2 min (home variant ≈37.9 min)\nMain: back squat 4×5-6\; bb rdl 3×6-8\; box step up 2×8/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side\nNotion: https://www.notion.so/3b1235aab089816c8a04ec3adf38368d
 END:VEVENT
 BEGIN:VEVENT
 UID:W07D2@snowboard-preseason-2026
@@ -178,7 +178,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261007T173000
 DTEND;TZID=America/Chicago:20261007T182500
 SUMMARY:W07 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 2 | gym ≈54.0 min (home variant ≈39.1 min)\nMain: box jump 5×4\; pogo hop 5×12\; drop to stick 3×4\; broad jump stick 3×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; calf raise 3×12
+DESCRIPTION:B — Power + Balance | Block 2 | gym ≈54.0 min (home variant ≈39.1 min)\nMain: box jump 5×4\; pogo hop 5×12\; drop to stick 3×4\; broad jump stick 3×3\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; calf raise 3×12\nNotion: https://www.notion.so/3b1235aab08981fab405e5c0803fd216
 END:VEVENT
 BEGIN:VEVENT
 UID:W07D3@snowboard-preseason-2026
@@ -186,7 +186,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261010T090000
 DTEND;TZID=America/Chicago:20261010T100000
 SUMMARY:W07 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 2 | gym ≈58.2 min (home variant ≈39.2 min)\nMain: goblet squat 3×8\; wall sit 3×60 s\; eccentric step down 3×6/leg\; spanish squat 3×12\; split squat iso 3×20 s/side\; side plank 3×30 s/side\; bike z2 1×20 min steady
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 2 | gym ≈58.2 min (home variant ≈39.2 min)\nMain: goblet squat 3×8\; wall sit 3×60 s\; eccentric step down 3×6/leg\; spanish squat 3×12\; split squat iso 3×20 s/side\; side plank 3×30 s/side\; bike z2 1×20 min steady\nNotion: https://www.notion.so/3b1235aab0898105bc31c5cbae92927b
 END:VEVENT
 BEGIN:VEVENT
 UID:W08D1@snowboard-preseason-2026
@@ -194,7 +194,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261012T173000
 DTEND;TZID=America/Chicago:20261012T181500
 SUMMARY:W08 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 2 | DELOAD | gym ≈40.8 min (home variant ≈30.1 min)\nMain: back squat 2×5-6\; bb rdl 2×6-8\; box step up 2×8/leg\; db bench press 2×8-10\; one arm db row 2×8-10/arm\; pallof press 2×10/side
+DESCRIPTION:A — Lower Strength + Core | Block 2 | DELOAD | gym ≈40.8 min (home variant ≈30.1 min)\nMain: back squat 2×5-6\; bb rdl 2×6-8\; box step up 2×8/leg\; db bench press 2×8-10\; one arm db row 2×8-10/arm\; pallof press 2×10/side\nNotion: https://www.notion.so/3b1235aab08981d4b5f3d042da436787
 END:VEVENT
 BEGIN:VEVENT
 UID:W08D2@snowboard-preseason-2026
@@ -202,7 +202,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261014T173000
 DTEND;TZID=America/Chicago:20261014T181000
 SUMMARY:W08 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 2 | DELOAD | gym ≈37.3 min (home variant ≈29.6 min)\nMain: box jump 3×3\; pogo hop 3×10\; broad jump stick 3×3\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12
+DESCRIPTION:B — Power + Balance | Block 2 | DELOAD | gym ≈37.3 min (home variant ≈29.6 min)\nMain: box jump 3×3\; pogo hop 3×10\; broad jump stick 3×3\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12\nNotion: https://www.notion.so/3b1235aab0898126b739e9741e5aad9b
 END:VEVENT
 BEGIN:VEVENT
 UID:W08D3@snowboard-preseason-2026
@@ -210,7 +210,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261017T090000
 DTEND;TZID=America/Chicago:20261017T094500
 SUMMARY:W08 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 2 | DELOAD | gym ≈40.7 min (home variant ≈30.2 min)\nMain: goblet squat 2×8\; wall sit 2×40 s\; eccentric step down 2×6/leg\; spanish squat 2×12\; split squat iso 2×20 s/side\; side plank 2×30 s/side\; bike z2 1×12 min steady
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 2 | DELOAD | gym ≈40.7 min (home variant ≈30.2 min)\nMain: goblet squat 2×8\; wall sit 2×40 s\; eccentric step down 2×6/leg\; spanish squat 2×12\; split squat iso 2×20 s/side\; side plank 2×30 s/side\; bike z2 1×12 min steady\nNotion: https://www.notion.so/3b1235aab089817f9b4fc14dd2844905
 END:VEVENT
 BEGIN:VEVENT
 UID:W09D1@snowboard-preseason-2026
@@ -218,7 +218,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261019T173000
 DTEND;TZID=America/Chicago:20261019T182500
 SUMMARY:W09 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 3 | gym ≈55.0 min (home variant ≈39.2 min)\nMain: back squat 4×4-6\; bb rdl 3×6-8\; hip thrust 2×8-10\; db overhead press 3×6-8\; one arm db row 3×8-10/arm\; suitcase carry 2×30 s/side
+DESCRIPTION:A — Lower Strength + Core | Block 3 | gym ≈55.0 min (home variant ≈39.2 min)\nMain: back squat 4×4-6\; bb rdl 3×6-8\; hip thrust 2×8-10\; db overhead press 3×6-8\; one arm db row 3×8-10/arm\; suitcase carry 2×30 s/side\nNotion: https://www.notion.so/3b1235aab08981cab56cc5f45f2f96ab
 END:VEVENT
 BEGIN:VEVENT
 UID:W09D2@snowboard-preseason-2026
@@ -226,7 +226,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261021T173000
 DTEND;TZID=America/Chicago:20261021T182500
 SUMMARY:W09 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 3 | gym ≈54.2 min (home variant ≈35.4 min)\nMain: jump squat 4×5\; lateral bound 4×3/side\; pogo hop 4×10\; box jump 4×4\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; calf raise 3×12
+DESCRIPTION:B — Power + Balance | Block 3 | gym ≈54.2 min (home variant ≈35.4 min)\nMain: jump squat 4×5\; lateral bound 4×3/side\; pogo hop 4×10\; box jump 4×4\; mb rotational throw 3×5/side\; sl rdl 3×6/leg\; calf raise 3×12\nNotion: https://www.notion.so/3b1235aab0898189a78df11e2979af96
 END:VEVENT
 BEGIN:VEVENT
 UID:W09D3@snowboard-preseason-2026
@@ -234,7 +234,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261024T090000
 DTEND;TZID=America/Chicago:20261024T100000
 SUMMARY:W09 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 3 | gym ≈57.5 min (home variant ≈38.7 min)\nMain: goblet squat 3×10\; wall sit 3×65 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×30 s/side\; band lateral walk 3×12/side\; bike intervals 4×4×3 min hard / 2 min easy
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 3 | gym ≈57.5 min (home variant ≈38.7 min)\nMain: goblet squat 3×10\; wall sit 3×65 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×30 s/side\; band lateral walk 3×12/side\; bike intervals 4×4×3 min hard / 2 min easy\nNotion: https://www.notion.so/3b1235aab0898146b062de25f452269b
 END:VEVENT
 BEGIN:VEVENT
 UID:W10D1@snowboard-preseason-2026
@@ -242,7 +242,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261026T173000
 DTEND;TZID=America/Chicago:20261026T182500
 SUMMARY:W10 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 3 | gym ≈55.0 min (home variant ≈39.2 min)\nMain: back squat 4×4-6\; bb rdl 3×6-8\; hip thrust 2×8-10\; db overhead press 3×6-8\; one arm db row 3×8-10/arm\; suitcase carry 2×30 s/side
+DESCRIPTION:A — Lower Strength + Core | Block 3 | gym ≈55.0 min (home variant ≈39.2 min)\nMain: back squat 4×4-6\; bb rdl 3×6-8\; hip thrust 2×8-10\; db overhead press 3×6-8\; one arm db row 3×8-10/arm\; suitcase carry 2×30 s/side\nNotion: https://www.notion.so/3b1235aab08981f7b973c7a45f9586d6
 END:VEVENT
 BEGIN:VEVENT
 UID:W10D2@snowboard-preseason-2026
@@ -250,7 +250,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261028T173000
 DTEND;TZID=America/Chicago:20261028T182500
 SUMMARY:W10 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 3 | gym ≈52.2 min (home variant ≈38.3 min)\nMain: jump squat 5×5\; lateral bound 4×3/side\; pogo hop 4×10\; box jump 5×4\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12
+DESCRIPTION:B — Power + Balance | Block 3 | gym ≈52.2 min (home variant ≈38.3 min)\nMain: jump squat 5×5\; lateral bound 4×3/side\; pogo hop 4×10\; box jump 5×4\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12\nNotion: https://www.notion.so/3b1235aab08981df9eecc219f9456b04
 END:VEVENT
 BEGIN:VEVENT
 UID:W10D3@snowboard-preseason-2026
@@ -258,7 +258,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261031T090000
 DTEND;TZID=America/Chicago:20261031T100000
 SUMMARY:W10 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 3 | gym ≈58.0 min (home variant ≈39.0 min)\nMain: goblet squat 3×10\; wall sit 3×75 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×30 s/side\; band lateral walk 3×12/side\; bike intervals 4×4×3 min hard / 2 min easy
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 3 | gym ≈58.0 min (home variant ≈39.0 min)\nMain: goblet squat 3×10\; wall sit 3×75 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×30 s/side\; band lateral walk 3×12/side\; bike intervals 4×4×3 min hard / 2 min easy\nNotion: https://www.notion.so/3b1235aab08981b28bfee2753876ae45
 END:VEVENT
 BEGIN:VEVENT
 UID:W11D1@snowboard-preseason-2026
@@ -266,7 +266,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261102T173000
 DTEND;TZID=America/Chicago:20261102T182500
 SUMMARY:W11 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 3 | gym ≈55.0 min (home variant ≈39.2 min)\nMain: back squat 4×4-6\; bb rdl 3×6-8\; hip thrust 2×8-10\; db overhead press 3×6-8\; one arm db row 3×8-10/arm\; suitcase carry 2×30 s/side
+DESCRIPTION:A — Lower Strength + Core | Block 3 | gym ≈55.0 min (home variant ≈39.2 min)\nMain: back squat 4×4-6\; bb rdl 3×6-8\; hip thrust 2×8-10\; db overhead press 3×6-8\; one arm db row 3×8-10/arm\; suitcase carry 2×30 s/side\nNotion: https://www.notion.so/3b1235aab08981949308f352098550d4
 END:VEVENT
 BEGIN:VEVENT
 UID:W11D2@snowboard-preseason-2026
@@ -274,7 +274,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261104T173000
 DTEND;TZID=America/Chicago:20261104T182500
 SUMMARY:W11 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 3 | gym ≈52.6 min (home variant ≈38.8 min)\nMain: jump squat 5×5\; lateral bound 5×3/side\; pogo hop 4×12\; box jump 4×4\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12
+DESCRIPTION:B — Power + Balance | Block 3 | gym ≈52.6 min (home variant ≈38.8 min)\nMain: jump squat 5×5\; lateral bound 5×3/side\; pogo hop 4×12\; box jump 4×4\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12\nNotion: https://www.notion.so/3b1235aab0898165b42fcdff149c6553
 END:VEVENT
 BEGIN:VEVENT
 UID:W11D3@snowboard-preseason-2026
@@ -282,7 +282,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261107T090000
 DTEND;TZID=America/Chicago:20261107T100000
 SUMMARY:W11 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 3 | gym ≈58.8 min (home variant ≈39.5 min)\nMain: goblet squat 3×10\; wall sit 3×90 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×30 s/side\; band lateral walk 3×12/side\; bike intervals 4×4×3 min hard / 2 min easy
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 3 | gym ≈58.8 min (home variant ≈39.5 min)\nMain: goblet squat 3×10\; wall sit 3×90 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×30 s/side\; band lateral walk 3×12/side\; bike intervals 4×4×3 min hard / 2 min easy\nNotion: https://www.notion.so/3b1235aab08981c4bebeef79eac4e1d0
 END:VEVENT
 BEGIN:VEVENT
 UID:W12D1@snowboard-preseason-2026
@@ -290,7 +290,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261109T173000
 DTEND;TZID=America/Chicago:20261109T181500
 SUMMARY:W12 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 3 | DELOAD | gym ≈41.5 min (home variant ≈31.4 min)\nMain: back squat 2×4-6\; bb rdl 2×6-8\; hip thrust 2×8-10\; db overhead press 2×6-8\; one arm db row 2×8-10/arm\; suitcase carry 2×30 s/side
+DESCRIPTION:A — Lower Strength + Core | Block 3 | DELOAD | gym ≈41.5 min (home variant ≈31.4 min)\nMain: back squat 2×4-6\; bb rdl 2×6-8\; hip thrust 2×8-10\; db overhead press 2×6-8\; one arm db row 2×8-10/arm\; suitcase carry 2×30 s/side\nNotion: https://www.notion.so/3b1235aab089819aade1dc224b9e31fa
 END:VEVENT
 BEGIN:VEVENT
 UID:W12D2@snowboard-preseason-2026
@@ -298,7 +298,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261111T173000
 DTEND;TZID=America/Chicago:20261111T181000
 SUMMARY:W12 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 3 | DELOAD | gym ≈37.3 min (home variant ≈25.8 min)\nMain: jump squat 3×4\; pogo hop 3×10\; lateral bound 3×3/side\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12
+DESCRIPTION:B — Power + Balance | Block 3 | DELOAD | gym ≈37.3 min (home variant ≈25.8 min)\nMain: jump squat 3×4\; pogo hop 3×10\; lateral bound 3×3/side\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12\nNotion: https://www.notion.so/3b1235aab089815b9b0ef68aceb687ae
 END:VEVENT
 BEGIN:VEVENT
 UID:W12D3@snowboard-preseason-2026
@@ -306,7 +306,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261114T090000
 DTEND;TZID=America/Chicago:20261114T094500
 SUMMARY:W12 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 3 | DELOAD | gym ≈42.0 min (home variant ≈31.5 min)\nMain: goblet squat 2×10\; wall sit 2×60 s\; eccentric step down 2×8/leg\; spanish squat 2×15\; split squat iso 2×30 s/side\; band lateral walk 2×12/side\; bike z2 1×12 min steady
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 3 | DELOAD | gym ≈42.0 min (home variant ≈31.5 min)\nMain: goblet squat 2×10\; wall sit 2×60 s\; eccentric step down 2×8/leg\; spanish squat 2×15\; split squat iso 2×30 s/side\; band lateral walk 2×12/side\; bike z2 1×12 min steady\nNotion: https://www.notion.so/3b1235aab08981308c7bf4b667cecb6f
 END:VEVENT
 BEGIN:VEVENT
 UID:W13D1@snowboard-preseason-2026
@@ -314,7 +314,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261116T173000
 DTEND;TZID=America/Chicago:20261116T182500
 SUMMARY:W13 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 4 | gym ≈52.6 min (home variant ≈37.8 min)\nMain: back squat 3×4-5\; box jump 3×3\; bb rdl 3×6-8\; sl glute bridge 2×10/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side
+DESCRIPTION:A — Lower Strength + Core | Block 4 | gym ≈52.6 min (home variant ≈37.8 min)\nMain: back squat 3×4-5\; box jump 3×3\; bb rdl 3×6-8\; sl glute bridge 2×10/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side\nNotion: https://www.notion.so/3b1235aab089817ea0d6d5b23fdd805e
 END:VEVENT
 BEGIN:VEVENT
 UID:W13D2@snowboard-preseason-2026
@@ -322,7 +322,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261118T173000
 DTEND;TZID=America/Chicago:20261118T182500
 SUMMARY:W13 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 4 | gym ≈50.1 min (home variant ≈36.8 min)\nMain: depth jump 4×4\; sl hop stick 4×4/leg\; lateral bound 4×3/side\; pogo hop 4×10\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12
+DESCRIPTION:B — Power + Balance | Block 4 | gym ≈50.1 min (home variant ≈36.8 min)\nMain: depth jump 4×4\; sl hop stick 4×4/leg\; lateral bound 4×3/side\; pogo hop 4×10\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12\nNotion: https://www.notion.so/3b1235aab0898128b470f19a88e511bf
 END:VEVENT
 BEGIN:VEVENT
 UID:W13D3@snowboard-preseason-2026
@@ -330,7 +330,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261121T090000
 DTEND;TZID=America/Chicago:20261121T100000
 SUMMARY:W13 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 4 | gym ≈55.5 min (home variant ≈35.7 min)\nMain: goblet squat 3×10\; wall sit 3×90 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×40 s/side\; calf raise 3×15\; bike intervals 3×3×3 min hard / 2 min easy
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 4 | gym ≈55.5 min (home variant ≈35.7 min)\nMain: goblet squat 3×10\; wall sit 3×90 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×40 s/side\; calf raise 3×15\; bike intervals 3×3×3 min hard / 2 min easy\nNotion: https://www.notion.so/3b1235aab08981da9afae18e92c9645d
 END:VEVENT
 BEGIN:VEVENT
 UID:W14D1@snowboard-preseason-2026
@@ -338,7 +338,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261123T173000
 DTEND;TZID=America/Chicago:20261123T182500
 SUMMARY:W14 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 4 | gym ≈52.6 min (home variant ≈37.8 min)\nMain: back squat 3×4-5\; box jump 3×3\; bb rdl 3×6-8\; sl glute bridge 2×10/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side
+DESCRIPTION:A — Lower Strength + Core | Block 4 | gym ≈52.6 min (home variant ≈37.8 min)\nMain: back squat 3×4-5\; box jump 3×3\; bb rdl 3×6-8\; sl glute bridge 2×10/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side\nNotion: https://www.notion.so/3b1235aab089818cb508fbdd0dd620ed
 END:VEVENT
 BEGIN:VEVENT
 UID:W14D2@snowboard-preseason-2026
@@ -346,7 +346,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261125T173000
 DTEND;TZID=America/Chicago:20261125T182500
 SUMMARY:W14 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 4 | gym ≈51.8 min (home variant ≈38.2 min)\nMain: depth jump 4×4\; sl hop stick 4×4/leg\; lateral bound 5×3/side\; pogo hop 4×10\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12
+DESCRIPTION:B — Power + Balance | Block 4 | gym ≈51.8 min (home variant ≈38.2 min)\nMain: depth jump 4×4\; sl hop stick 4×4/leg\; lateral bound 5×3/side\; pogo hop 4×10\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12\nNotion: https://www.notion.so/3b1235aab089812c939ce1ab1c6c75d8
 END:VEVENT
 BEGIN:VEVENT
 UID:W14D3@snowboard-preseason-2026
@@ -354,7 +354,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261128T090000
 DTEND;TZID=America/Chicago:20261128T100000
 SUMMARY:W14 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 4 | gym ≈56.2 min (home variant ≈36.2 min)\nMain: goblet squat 3×10\; wall sit 3×105 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×40 s/side\; calf raise 3×15\; bike intervals 3×3×3 min hard / 2 min easy
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 4 | gym ≈56.2 min (home variant ≈36.2 min)\nMain: goblet squat 3×10\; wall sit 3×105 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×40 s/side\; calf raise 3×15\; bike intervals 3×3×3 min hard / 2 min easy\nNotion: https://www.notion.so/3b1235aab0898192bad6fc5fa4fc4aab
 END:VEVENT
 BEGIN:VEVENT
 UID:W15D1@snowboard-preseason-2026
@@ -362,7 +362,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261130T173000
 DTEND;TZID=America/Chicago:20261130T182500
 SUMMARY:W15 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 4 | gym ≈52.6 min (home variant ≈37.8 min)\nMain: back squat 3×4-5\; box jump 3×3\; bb rdl 3×6-8\; sl glute bridge 2×10/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side
+DESCRIPTION:A — Lower Strength + Core | Block 4 | gym ≈52.6 min (home variant ≈37.8 min)\nMain: back squat 3×4-5\; box jump 3×3\; bb rdl 3×6-8\; sl glute bridge 2×10/leg\; db bench press 3×8-10\; one arm db row 3×8-10/arm\; pallof press 3×10/side\nNotion: https://www.notion.so/3b1235aab0898104860bc1ffb2f0c5ed
 END:VEVENT
 BEGIN:VEVENT
 UID:W15D2@snowboard-preseason-2026
@@ -370,7 +370,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261202T173000
 DTEND;TZID=America/Chicago:20261202T182000
 SUMMARY:W15 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 4 | gym ≈49.2 min (home variant ≈39.8 min)\nMain: depth jump 5×4\; sl hop stick 4×4/leg\; lateral bound 5×3/side\; pogo hop 4×10\; mb rotational throw 2×5/side\; calf raise 2×12
+DESCRIPTION:B — Power + Balance | Block 4 | gym ≈49.2 min (home variant ≈39.8 min)\nMain: depth jump 5×4\; sl hop stick 4×4/leg\; lateral bound 5×3/side\; pogo hop 4×10\; mb rotational throw 2×5/side\; calf raise 2×12\nNotion: https://www.notion.so/3b1235aab08981bebb64cefe99940c53
 END:VEVENT
 BEGIN:VEVENT
 UID:W15D3@snowboard-preseason-2026
@@ -378,7 +378,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261205T090000
 DTEND;TZID=America/Chicago:20261205T100000
 SUMMARY:W15 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 4 | gym ≈57.0 min (home variant ≈36.7 min)\nMain: goblet squat 3×10\; wall sit 3×120 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×40 s/side\; calf raise 3×15\; bike intervals 3×3×3 min hard / 2 min easy
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 4 | gym ≈57.0 min (home variant ≈36.7 min)\nMain: goblet squat 3×10\; wall sit 3×120 s\; eccentric step down 3×8/leg\; spanish squat 3×15\; split squat iso 3×40 s/side\; calf raise 3×15\; bike intervals 3×3×3 min hard / 2 min easy\nNotion: https://www.notion.so/3b1235aab0898139b19be2ba857320c5
 END:VEVENT
 BEGIN:VEVENT
 UID:W16D1@snowboard-preseason-2026
@@ -386,7 +386,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261207T173000
 DTEND;TZID=America/Chicago:20261207T180500
 SUMMARY:W16 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 4 | DELOAD | gym ≈34.5 min (home variant ≈26.6 min)\nMain: back squat 2×5\; bb rdl 2×6-8\; db bench press 2×8-10\; one arm db row 2×8-10/arm\; pallof press 2×10/side
+DESCRIPTION:A — Lower Strength + Core | Block 4 | DELOAD | gym ≈34.5 min (home variant ≈26.6 min)\nMain: back squat 2×5\; bb rdl 2×6-8\; db bench press 2×8-10\; one arm db row 2×8-10/arm\; pallof press 2×10/side\nNotion: https://www.notion.so/3b1235aab08981cf8dcae762d6f9db6b
 END:VEVENT
 BEGIN:VEVENT
 UID:W16D2@snowboard-preseason-2026
@@ -394,7 +394,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261209T173000
 DTEND;TZID=America/Chicago:20261209T181000
 SUMMARY:W16 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 4 | DELOAD | gym ≈36.8 min (home variant ≈25.2 min)\nMain: box jump 3×3\; sl hop stick 3×3/leg\; pogo hop 3×10\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12
+DESCRIPTION:B — Power + Balance | Block 4 | DELOAD | gym ≈36.8 min (home variant ≈25.2 min)\nMain: box jump 3×3\; sl hop stick 3×3/leg\; pogo hop 3×10\; mb rotational throw 2×5/side\; sl rdl 2×6/leg\; calf raise 2×12\nNotion: https://www.notion.so/3b1235aab08981f1aa4adbce25bcff05
 END:VEVENT
 BEGIN:VEVENT
 UID:W16D3@snowboard-preseason-2026
@@ -402,7 +402,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261212T090000
 DTEND;TZID=America/Chicago:20261212T094500
 SUMMARY:W16 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 4 | DELOAD | gym ≈41.7 min (home variant ≈33.2 min)\nMain: goblet squat 2×10\; wall sit 2×75 s\; eccentric step down 2×8/leg\; spanish squat 2×15\; split squat iso 2×40 s/side\; calf raise 2×15\; bike z2 1×10 min steady
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 4 | DELOAD | gym ≈41.7 min (home variant ≈33.2 min)\nMain: goblet squat 2×10\; wall sit 2×75 s\; eccentric step down 2×8/leg\; spanish squat 2×15\; split squat iso 2×40 s/side\; calf raise 2×15\; bike z2 1×10 min steady\nNotion: https://www.notion.so/3b1235aab089814f8ac3e795e8a2c9a2
 END:VEVENT
 BEGIN:VEVENT
 UID:W17D1@snowboard-preseason-2026
@@ -410,7 +410,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261214T173000
 DTEND;TZID=America/Chicago:20261214T181500
 SUMMARY:W17 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 5 | gym ≈41.7 min (home variant ≈31.1 min)\nMain: back squat 2×4-5\; box jump 2×3\; db rdl 2×6-8\; db bench press 2×8-10\; one arm db row 2×8-10/arm\; sl balance 3×30 s/leg\; pallof press 2×10/side
+DESCRIPTION:A — Lower Strength + Core | Block 5 | gym ≈41.7 min (home variant ≈31.1 min)\nMain: back squat 2×4-5\; box jump 2×3\; db rdl 2×6-8\; db bench press 2×8-10\; one arm db row 2×8-10/arm\; sl balance 3×30 s/leg\; pallof press 2×10/side\nNotion: https://www.notion.so/3b1235aab08981258815fd6698bf81de
 END:VEVENT
 BEGIN:VEVENT
 UID:W17D2@snowboard-preseason-2026
@@ -418,7 +418,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261216T173000
 DTEND;TZID=America/Chicago:20261216T182000
 SUMMARY:W17 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 5 | gym ≈45.8 min (home variant ≈37.5 min)\nMain: box jump 4×3\; sl hop stick 3×4/leg\; pogo hop 3×10\; jump squat 3×4\; sl balance 3×30 s/leg\; mb rotational throw 2×5/side\; calf raise 2×12
+DESCRIPTION:B — Power + Balance | Block 5 | gym ≈45.8 min (home variant ≈37.5 min)\nMain: box jump 4×3\; sl hop stick 3×4/leg\; pogo hop 3×10\; jump squat 3×4\; sl balance 3×30 s/leg\; mb rotational throw 2×5/side\; calf raise 2×12\nNotion: https://www.notion.so/3b1235aab08981bcae42da7c5b570d84
 END:VEVENT
 BEGIN:VEVENT
 UID:W17D3@snowboard-preseason-2026
@@ -426,7 +426,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261219T090000
 DTEND;TZID=America/Chicago:20261219T094500
 SUMMARY:W17 D3 — Quad Endurance + Aerobic
-DESCRIPTION:C — Quad Endurance + Aerobic | Block 5 | gym ≈42.0 min (home variant ≈33.5 min)\nMain: goblet squat 2×8\; wall sit 2×90 s\; spanish squat 2×12\; split squat iso 2×30 s/side\; calf raise 2×12\; sl balance 2×30 s/leg\; bike z2 1×12 min steady
+DESCRIPTION:C — Quad Endurance + Aerobic | Block 5 | gym ≈42.0 min (home variant ≈33.5 min)\nMain: goblet squat 2×8\; wall sit 2×90 s\; spanish squat 2×12\; split squat iso 2×30 s/side\; calf raise 2×12\; sl balance 2×30 s/leg\; bike z2 1×12 min steady\nNotion: https://www.notion.so/3b1235aab089811fad4ada39cfaaa031
 END:VEVENT
 BEGIN:VEVENT
 UID:W18D1@snowboard-preseason-2026
@@ -434,7 +434,7 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261221T173000
 DTEND;TZID=America/Chicago:20261221T181000
 SUMMARY:W18 D1 — Lower Strength + Core
-DESCRIPTION:A — Lower Strength + Core | Block 5 | gym ≈35.5 min (home variant ≈28.2 min)\nMain: back squat 2×4-5\; box jump 2×3\; db rdl 2×6-8\; sl balance 3×30 s/leg\; pallof press 2×10/side
+DESCRIPTION:A — Lower Strength + Core | Block 5 | gym ≈35.5 min (home variant ≈28.2 min)\nMain: back squat 2×4-5\; box jump 2×3\; db rdl 2×6-8\; sl balance 3×30 s/leg\; pallof press 2×10/side\nNotion: https://www.notion.so/3b1235aab08981508138ee2ed0b48cb0
 END:VEVENT
 BEGIN:VEVENT
 UID:W18D2@snowboard-preseason-2026
@@ -442,6 +442,6 @@ DTSTAMP:20260803T120000Z
 DTSTART;TZID=America/Chicago:20261223T173000
 DTEND;TZID=America/Chicago:20261223T180500
 SUMMARY:W18 D2 — Power + Balance
-DESCRIPTION:B — Power + Balance | Block 5 | gym ≈34.2 min (home variant ≈30.2 min)\nMain: box jump 3×3\; sl hop stick 3×3/leg\; pogo hop 3×10\; sl balance 3×30 s/leg\; calf raise 2×12
+DESCRIPTION:B — Power + Balance | Block 5 | gym ≈34.2 min (home variant ≈30.2 min)\nMain: box jump 3×3\; sl hop stick 3×3/leg\; pogo hop 3×10\; sl balance 3×30 s/leg\; calf raise 2×12\nNotion: https://www.notion.so/3b1235aab089812f95c8ecb7ac4b4f44
 END:VEVENT
 END:VCALENDAR
