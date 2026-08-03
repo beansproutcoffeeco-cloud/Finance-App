@@ -4,3 +4,6 @@ node_modules/
 # OS / editor cruft
 .DS_Store
 *.log
+
+# Personal health details — never commit or sync (see training/README.md)
+training/constraints.local.md

@@ -1,0 +1,689 @@
+session_id,date,week,block,archetype,location_variant,deload,slot,exercise_id,sets,rep_range,target_RPE,rest_sec,tempo,superset_group,notes,est_duration_min
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,gym,False,1,goblet_squat,3,8-10,7,120,3-1-1,,,54.2
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,gym,False,2,db_rdl,3,8-10,7,120,2-1-1,,,54.2
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,gym,False,3,box_step_up,3,8/leg,7,90,2-0-1,,Low box; control the descent,54.2
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,gym,False,4,db_bench_press,3,8-12,7,90,,,,54.2
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,gym,False,5,pallof_press,3,10/side,,60,,,,54.2
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,gym,False,6,wall_sit,3,30 s,,60,iso,,,54.2
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,home,False,1,goblet_squat,3,10-12,7,90,3-1-1,,Heaviest DB; slower tempo offsets lighter load,38.5
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,home,False,2,db_rdl,3,10-12,7,90,2-1-1,,,38.5
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,home,False,3,box_step_up,2,10/leg,7,75,2-0-1,,Stair or sturdy step,38.5
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,home,False,4,push_up,3,8-15,7,45,,,,38.5
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,home,False,5,pallof_press,2,12/side,,45,,,Band on door anchor; no anchor -> dead bug 2×8/side,38.5
+W01D1,2026-08-24,1,1,A — Lower Strength + Core,home,False,6,wall_sit,3,30 s,,30,iso,,,38.5
+W01D2,2026-08-26,1,1,B — Power + Balance,gym,False,1,drop_to_stick,4,4,,60,,,"Max intent, stick every landing; full recovery between sets",50.6
+W01D2,2026-08-26,1,1,B — Power + Balance,gym,False,2,pogo_hop,3,10,,60,,,"Max intent, stick every landing; full recovery between sets",50.6
+W01D2,2026-08-26,1,1,B — Power + Balance,gym,False,3,broad_jump_stick,3,3,,90,,,"Max intent, stick every landing; full recovery between sets",50.6
+W01D2,2026-08-26,1,1,B — Power + Balance,gym,False,4,mb_rotational_throw,3,5/side,,60,,,Full-body rotation — throw hard,50.6
+W01D2,2026-08-26,1,1,B — Power + Balance,gym,False,5,sl_rdl,3,6/leg,7,60,,,"Light DB, slow",50.6
+W01D2,2026-08-26,1,1,B — Power + Balance,gym,False,6,sl_balance,3,30 s/leg,,30,,,"Pad, then eyes closed",50.6
+W01D2,2026-08-26,1,1,B — Power + Balance,gym,False,7,calf_raise,3,15,7,60,2-1-2,,,50.6
+W01D2,2026-08-26,1,1,B — Power + Balance,home,False,1,snap_down,4,4,,45,,,"Max intent, stick every landing; full recovery between sets (home swap for drop to stick)",34.5
+W01D2,2026-08-26,1,1,B — Power + Balance,home,False,2,pogo_hop,3,10,,45,,,"Max intent, stick every landing; full recovery between sets",34.5
+W01D2,2026-08-26,1,1,B — Power + Balance,home,False,3,broad_jump_stick,3,3,,75,,,"Max intent, stick every landing; full recovery between sets",34.5
+W01D2,2026-08-26,1,1,B — Power + Balance,home,False,4,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",34.5
+W01D2,2026-08-26,1,1,B — Power + Balance,home,False,5,sl_rdl,2,6/leg,7,45,,,Bodyweight or light DB,34.5
+W01D2,2026-08-26,1,1,B — Power + Balance,home,False,6,sl_balance,2,30 s/leg,,30,,,,34.5
+W01D2,2026-08-26,1,1,B — Power + Balance,home,False,7,calf_raise,2,15,7,45,2-1-2,,On stair edge,34.5
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,10,,15,3-0-3,,"Circuit station — Continuous tension, no lockout rest",46.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,30 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",46.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,gym,False,3,box_step_up,3,8/leg,,15,2-0-1,,Circuit station,46.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,12,,15,3-0-3,,"Circuit station — Band behind knees, sit back",46.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,gym,False,5,band_lateral_walk,3,10/side,,15,,,Circuit station,46.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,gym,False,6,side_plank,3,20 s/side,,15,iso,,Circuit station,46.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,gym,False,7,bike_z2,1,12 min steady,,0,,,Aerobic finisher — Conversational pace (Zone 2),46.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,3,10,,15,3-0-3,,"Circuit station — Continuous tension, no lockout rest",37.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,home,False,2,wall_sit,3,30 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",37.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,home,False,3,box_step_up,3,8/leg,,15,2-0-1,,Circuit station — stair or sturdy step,37.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,3,12,,15,3-0-3,,"Circuit station — Band behind knees, sit back",37.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,home,False,5,band_lateral_walk,3,10/side,,15,,,Circuit station,37.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,home,False,6,side_plank,3,20 s/side,,15,iso,,Circuit station,37.0
+W01D3,2026-08-29,1,1,C — Quad Endurance + Aerobic,home,False,7,home_aerobic_circuit,1,8 min continuous easy pace,,0,,,Aerobic finisher — Conversational pace (Zone 2),37.0
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,gym,False,1,goblet_squat,3,8-10,7,120,3-1-1,,,54.5
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,gym,False,2,db_rdl,3,8-10,7,120,2-1-1,,,54.5
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,gym,False,3,box_step_up,3,8/leg,7,90,2-0-1,,Low box; control the descent,54.5
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,gym,False,4,db_bench_press,3,8-12,7,90,,,,54.5
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,gym,False,5,pallof_press,3,10/side,,60,,,,54.5
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,gym,False,6,wall_sit,3,35 s,,60,iso,,,54.5
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,home,False,1,goblet_squat,3,10-12,7,90,3-1-1,,Heaviest DB; slower tempo offsets lighter load,38.8
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,home,False,2,db_rdl,3,10-12,7,90,2-1-1,,,38.8
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,home,False,3,box_step_up,2,10/leg,7,75,2-0-1,,Stair or sturdy step,38.8
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,home,False,4,push_up,3,8-15,7,45,,,,38.8
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,home,False,5,pallof_press,2,12/side,,45,,,Band on door anchor; no anchor -> dead bug 2×8/side,38.8
+W02D1,2026-08-31,2,1,A — Lower Strength + Core,home,False,6,wall_sit,3,35 s,,30,iso,,,38.8
+W02D2,2026-09-02,2,1,B — Power + Balance,gym,False,1,drop_to_stick,4,4,,60,,,"Max intent, stick every landing; full recovery between sets",51.9
+W02D2,2026-09-02,2,1,B — Power + Balance,gym,False,2,pogo_hop,4,10,,60,,,"Max intent, stick every landing; full recovery between sets",51.9
+W02D2,2026-09-02,2,1,B — Power + Balance,gym,False,3,broad_jump_stick,3,3,,90,,,"Max intent, stick every landing; full recovery between sets",51.9
+W02D2,2026-09-02,2,1,B — Power + Balance,gym,False,4,mb_rotational_throw,3,5/side,,60,,,Full-body rotation — throw hard,51.9
+W02D2,2026-09-02,2,1,B — Power + Balance,gym,False,5,sl_rdl,3,6/leg,7,60,,,"Light DB, slow",51.9
+W02D2,2026-09-02,2,1,B — Power + Balance,gym,False,6,sl_balance,3,30 s/leg,,30,,,"Pad, then eyes closed",51.9
+W02D2,2026-09-02,2,1,B — Power + Balance,gym,False,7,calf_raise,3,15,7,60,2-1-2,,,51.9
+W02D2,2026-09-02,2,1,B — Power + Balance,home,False,1,snap_down,4,4,,45,,,"Max intent, stick every landing; full recovery between sets (home swap for drop to stick)",35.6
+W02D2,2026-09-02,2,1,B — Power + Balance,home,False,2,pogo_hop,4,10,,45,,,"Max intent, stick every landing; full recovery between sets",35.6
+W02D2,2026-09-02,2,1,B — Power + Balance,home,False,3,broad_jump_stick,3,3,,75,,,"Max intent, stick every landing; full recovery between sets",35.6
+W02D2,2026-09-02,2,1,B — Power + Balance,home,False,4,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",35.6
+W02D2,2026-09-02,2,1,B — Power + Balance,home,False,5,sl_rdl,2,6/leg,7,45,,,Bodyweight or light DB,35.6
+W02D2,2026-09-02,2,1,B — Power + Balance,home,False,6,sl_balance,2,30 s/leg,,30,,,,35.6
+W02D2,2026-09-02,2,1,B — Power + Balance,home,False,7,calf_raise,2,15,7,45,2-1-2,,On stair edge,35.6
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,10,,15,3-0-3,,"Circuit station — Continuous tension, no lockout rest",48.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,35 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",48.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,gym,False,3,box_step_up,3,8/leg,,15,2-0-1,,Circuit station,48.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,12,,15,3-0-3,,"Circuit station — Band behind knees, sit back",48.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,gym,False,5,band_lateral_walk,3,10/side,,15,,,Circuit station,48.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,gym,False,6,side_plank,3,20 s/side,,15,iso,,Circuit station,48.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,gym,False,7,bike_z2,1,14 min steady,,0,,,Aerobic finisher — Conversational pace (Zone 2),48.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,3,10,,15,3-0-3,,"Circuit station — Continuous tension, no lockout rest",37.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,home,False,2,wall_sit,3,35 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",37.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,home,False,3,box_step_up,3,8/leg,,15,2-0-1,,Circuit station — stair or sturdy step,37.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,3,12,,15,3-0-3,,"Circuit station — Band behind knees, sit back",37.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,home,False,5,band_lateral_walk,3,10/side,,15,,,Circuit station,37.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,home,False,6,side_plank,3,20 s/side,,15,iso,,Circuit station,37.2
+W02D3,2026-09-05,2,1,C — Quad Endurance + Aerobic,home,False,7,home_aerobic_circuit,1,8 min continuous easy pace,,0,,,Aerobic finisher — Conversational pace (Zone 2),37.2
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,gym,False,1,goblet_squat,4,8-10,7,120,3-1-1,,,57.6
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,gym,False,2,db_rdl,3,8-10,7,120,2-1-1,,,57.6
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,gym,False,3,box_step_up,3,8/leg,7,90,2-0-1,,Low box; control the descent,57.6
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,gym,False,4,db_bench_press,3,8-12,7,90,,,,57.6
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,gym,False,5,pallof_press,3,10/side,,60,,,,57.6
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,gym,False,6,wall_sit,3,40 s,,60,iso,,,57.6
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,home,False,1,goblet_squat,3,10-12,7,90,3-1-1,,Heaviest DB; slower tempo offsets lighter load,39.0
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,home,False,2,db_rdl,3,10-12,7,90,2-1-1,,,39.0
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,home,False,3,box_step_up,2,10/leg,7,75,2-0-1,,Stair or sturdy step,39.0
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,home,False,4,push_up,3,8-15,7,45,,,,39.0
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,home,False,5,pallof_press,2,12/side,,45,,,Band on door anchor; no anchor -> dead bug 2×8/side,39.0
+W03D1,2026-09-07,3,1,A — Lower Strength + Core,home,False,6,wall_sit,3,40 s,,30,iso,,,39.0
+W03D2,2026-09-09,3,1,B — Power + Balance,gym,False,1,drop_to_stick,4,4,,60,,,"Max intent, stick every landing; full recovery between sets",54.2
+W03D2,2026-09-09,3,1,B — Power + Balance,gym,False,2,pogo_hop,4,12,,60,,,"Max intent, stick every landing; full recovery between sets",54.2
+W03D2,2026-09-09,3,1,B — Power + Balance,gym,False,3,broad_jump_stick,4,3,,90,,,"Max intent, stick every landing; full recovery between sets",54.2
+W03D2,2026-09-09,3,1,B — Power + Balance,gym,False,4,mb_rotational_throw,3,5/side,,60,,,Full-body rotation — throw hard,54.2
+W03D2,2026-09-09,3,1,B — Power + Balance,gym,False,5,sl_rdl,3,6/leg,7,60,,,"Light DB, slow",54.2
+W03D2,2026-09-09,3,1,B — Power + Balance,gym,False,6,sl_balance,3,30 s/leg,,30,,,"Pad, then eyes closed",54.2
+W03D2,2026-09-09,3,1,B — Power + Balance,gym,False,7,calf_raise,3,15,7,60,2-1-2,,,54.2
+W03D2,2026-09-09,3,1,B — Power + Balance,home,False,1,snap_down,4,4,,45,,,"Max intent, stick every landing; full recovery between sets (home swap for drop to stick)",37.6
+W03D2,2026-09-09,3,1,B — Power + Balance,home,False,2,pogo_hop,4,12,,45,,,"Max intent, stick every landing; full recovery between sets",37.6
+W03D2,2026-09-09,3,1,B — Power + Balance,home,False,3,broad_jump_stick,4,3,,75,,,"Max intent, stick every landing; full recovery between sets",37.6
+W03D2,2026-09-09,3,1,B — Power + Balance,home,False,4,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",37.6
+W03D2,2026-09-09,3,1,B — Power + Balance,home,False,5,sl_rdl,2,6/leg,7,45,,,Bodyweight or light DB,37.6
+W03D2,2026-09-09,3,1,B — Power + Balance,home,False,6,sl_balance,2,30 s/leg,,30,,,,37.6
+W03D2,2026-09-09,3,1,B — Power + Balance,home,False,7,calf_raise,2,15,7,45,2-1-2,,On stair edge,37.6
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,10,,15,3-0-3,,"Circuit station — Continuous tension, no lockout rest",50.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,40 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",50.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,gym,False,3,box_step_up,3,8/leg,,15,2-0-1,,Circuit station,50.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,12,,15,3-0-3,,"Circuit station — Band behind knees, sit back",50.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,gym,False,5,band_lateral_walk,3,10/side,,15,,,Circuit station,50.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,gym,False,6,side_plank,3,20 s/side,,15,iso,,Circuit station,50.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,gym,False,7,bike_z2,1,16 min steady,,0,,,Aerobic finisher — Conversational pace (Zone 2),50.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,3,10,,15,3-0-3,,"Circuit station — Continuous tension, no lockout rest",37.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,home,False,2,wall_sit,3,40 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",37.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,home,False,3,box_step_up,3,8/leg,,15,2-0-1,,Circuit station — stair or sturdy step,37.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,3,12,,15,3-0-3,,"Circuit station — Band behind knees, sit back",37.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,home,False,5,band_lateral_walk,3,10/side,,15,,,Circuit station,37.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,home,False,6,side_plank,3,20 s/side,,15,iso,,Circuit station,37.5
+W03D3,2026-09-12,3,1,C — Quad Endurance + Aerobic,home,False,7,home_aerobic_circuit,1,8 min continuous easy pace,,0,,,Aerobic finisher — Conversational pace (Zone 2),37.5
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,gym,True,1,goblet_squat,2,8-10,6,120,3-1-1,,,40.5
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,gym,True,2,db_rdl,2,8-10,6,120,2-1-1,,,40.5
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,gym,True,3,box_step_up,2,8/leg,6,90,2-0-1,,Low box; control the descent,40.5
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,gym,True,4,db_bench_press,2,8-12,6,90,,,,40.5
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,gym,True,5,pallof_press,2,10/side,,60,,,,40.5
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,gym,True,6,wall_sit,2,30 s,,60,iso,,,40.5
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,home,True,1,goblet_squat,2,10-12,6,90,3-1-1,,Heaviest DB; slower tempo offsets lighter load,31.3
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,home,True,2,db_rdl,2,10-12,6,90,2-1-1,,,31.3
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,home,True,3,box_step_up,2,10/leg,6,75,2-0-1,,Stair or sturdy step,31.3
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,home,True,4,push_up,2,8-15,6,45,,,,31.3
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,home,True,5,pallof_press,2,12/side,,45,,,Band on door anchor; no anchor -> dead bug 2×8/side,31.3
+W04D1,2026-09-14,4,1,A — Lower Strength + Core,home,True,6,wall_sit,2,30 s,,30,iso,,,31.3
+W04D2,2026-09-16,4,1,B — Power + Balance,gym,True,1,drop_to_stick,3,3,,60,,,"Max intent, stick every landing; full recovery between sets",39.9
+W04D2,2026-09-16,4,1,B — Power + Balance,gym,True,2,pogo_hop,2,10,,60,,,"Max intent, stick every landing; full recovery between sets",39.9
+W04D2,2026-09-16,4,1,B — Power + Balance,gym,True,3,broad_jump_stick,3,3,,90,,,"Max intent, stick every landing; full recovery between sets",39.9
+W04D2,2026-09-16,4,1,B — Power + Balance,gym,True,4,mb_rotational_throw,2,5/side,,60,,,Full-body rotation — throw hard,39.9
+W04D2,2026-09-16,4,1,B — Power + Balance,gym,True,5,sl_rdl,2,6/leg,6,60,,,"Light DB, slow",39.9
+W04D2,2026-09-16,4,1,B — Power + Balance,gym,True,6,sl_balance,2,30 s/leg,,30,,,"Pad, then eyes closed",39.9
+W04D2,2026-09-16,4,1,B — Power + Balance,gym,True,7,calf_raise,2,15,6,60,2-1-2,,,39.9
+W04D2,2026-09-16,4,1,B — Power + Balance,home,True,1,snap_down,3,3,,45,,,"Max intent, stick every landing; full recovery between sets (home swap for drop to stick)",31.8
+W04D2,2026-09-16,4,1,B — Power + Balance,home,True,2,pogo_hop,2,10,,45,,,"Max intent, stick every landing; full recovery between sets",31.8
+W04D2,2026-09-16,4,1,B — Power + Balance,home,True,3,broad_jump_stick,3,3,,75,,,"Max intent, stick every landing; full recovery between sets",31.8
+W04D2,2026-09-16,4,1,B — Power + Balance,home,True,4,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",31.8
+W04D2,2026-09-16,4,1,B — Power + Balance,home,True,5,sl_rdl,2,6/leg,6,45,,,Bodyweight or light DB,31.8
+W04D2,2026-09-16,4,1,B — Power + Balance,home,True,6,sl_balance,2,30 s/leg,,30,,,,31.8
+W04D2,2026-09-16,4,1,B — Power + Balance,home,True,7,calf_raise,2,15,6,45,2-1-2,,On stair edge,31.8
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,gym,True,1,goblet_squat,2,10,,15,3-0-3,,"Circuit station — Continuous tension, no lockout rest",36.3
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,gym,True,2,wall_sit,2,25 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",36.3
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,gym,True,3,box_step_up,2,8/leg,,15,2-0-1,,Circuit station,36.3
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,gym,True,4,spanish_squat,2,12,,15,3-0-3,,"Circuit station — Band behind knees, sit back",36.3
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,gym,True,5,band_lateral_walk,2,10/side,,15,,,Circuit station,36.3
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,gym,True,6,side_plank,2,20 s/side,,15,iso,,Circuit station,36.3
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,gym,True,7,bike_z2,1,10 min steady,,0,,,Aerobic finisher — Conversational pace (Zone 2),36.3
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,home,True,1,goblet_squat,2,10,,15,3-0-3,,"Circuit station — Continuous tension, no lockout rest",27.8
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,home,True,2,wall_sit,2,25 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",27.8
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,home,True,3,box_step_up,2,8/leg,,15,2-0-1,,Circuit station — stair or sturdy step,27.8
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,home,True,4,spanish_squat,2,12,,15,3-0-3,,"Circuit station — Band behind knees, sit back",27.8
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,home,True,5,band_lateral_walk,2,10/side,,15,,,Circuit station,27.8
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,home,True,6,side_plank,2,20 s/side,,15,iso,,Circuit station,27.8
+W04D3,2026-09-19,4,1,C — Quad Endurance + Aerobic,home,True,7,home_aerobic_circuit,1,6 min continuous easy pace,,0,,,Aerobic finisher — Conversational pace (Zone 2),27.8
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,gym,False,1,back_squat,3,5-6,8,150,3-0-1,,Eccentric emphasis — 3 s down,52.1
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,gym,False,2,bb_rdl,3,6-8,8,150,2-1-1,,,52.1
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,gym,False,3,box_step_up,2,8/leg,8,90,2-0-1,,Hold DBs,52.1
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,gym,False,4,db_bench_press,3,8-10,8,0,,S1,,52.1
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,gym,False,5,one_arm_db_row,3,8-10/arm,8,60,,S1,Superset with DB bench,52.1
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,gym,False,6,pallof_press,3,10/side,,60,,,,52.1
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,home,False,1,goblet_squat,3,6-8,8,105,4-0-1,,"Heavy DB, 4 s eccentric = back-squat stand-in",37.9
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,home,False,2,db_rdl,3,8-10,8,90,2-1-1,,,37.9
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,home,False,3,push_up,3,8-12,8,0,,S1,Elevate feet when 12 is easy,37.9
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,home,False,4,one_arm_db_row,3,10/arm,8,60,,S1,,37.9
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,home,False,5,dead_bug,2,8/side,,45,,,,37.9
+W05D1,2026-09-21,5,2,A — Lower Strength + Core,home,False,6,wall_sit,2,45 s,,45,iso,,,37.9
+W05D2,2026-09-23,5,2,B — Power + Balance,gym,False,1,box_jump,4,4,,75,,,"Max intent, stick every landing; full recovery between sets",52.6
+W05D2,2026-09-23,5,2,B — Power + Balance,gym,False,2,pogo_hop,4,10,,60,,,"Max intent, stick every landing; full recovery between sets",52.6
+W05D2,2026-09-23,5,2,B — Power + Balance,gym,False,3,drop_to_stick,3,4,,60,,,"Max intent, stick every landing; full recovery between sets",52.6
+W05D2,2026-09-23,5,2,B — Power + Balance,gym,False,4,broad_jump_stick,4,3,,90,,,"Max intent, stick every landing; full recovery between sets",52.6
+W05D2,2026-09-23,5,2,B — Power + Balance,gym,False,5,mb_rotational_throw,3,5/side,,60,,,,52.6
+W05D2,2026-09-23,5,2,B — Power + Balance,gym,False,6,sl_rdl,3,6/leg,8,60,,,,52.6
+W05D2,2026-09-23,5,2,B — Power + Balance,gym,False,7,calf_raise,3,12,8,45,2-1-2,,,52.6
+W05D2,2026-09-23,5,2,B — Power + Balance,home,False,1,broad_jump_stick,4,4,,60,,,"Max intent, stick every landing; full recovery between sets (home swap for box jump)",37.9
+W05D2,2026-09-23,5,2,B — Power + Balance,home,False,2,pogo_hop,4,10,,45,,,"Max intent, stick every landing; full recovery between sets",37.9
+W05D2,2026-09-23,5,2,B — Power + Balance,home,False,3,snap_down,3,4,,45,,,"Max intent, stick every landing; full recovery between sets (home swap for drop to stick)",37.9
+W05D2,2026-09-23,5,2,B — Power + Balance,home,False,4,broad_jump_stick,4,3,,75,,,"Max intent, stick every landing; full recovery between sets",37.9
+W05D2,2026-09-23,5,2,B — Power + Balance,home,False,5,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",37.9
+W05D2,2026-09-23,5,2,B — Power + Balance,home,False,6,sl_rdl,2,6/leg,8,45,,,Bodyweight or light DB,37.9
+W05D2,2026-09-23,5,2,B — Power + Balance,home,False,7,calf_raise,2,15,8,45,2-1-2,,On stair edge,37.9
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,8,,15,3-1-3,,Circuit station,53.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,45 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",53.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,gym,False,3,eccentric_step_down,3,6/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,53.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,12,,15,3-0-3,,Circuit station,53.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,gym,False,5,split_squat_iso,3,20 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,53.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,gym,False,6,side_plank,3,30 s/side,,15,iso,,Circuit station,53.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,gym,False,7,bike_z2,1,16 min steady,,0,,,Aerobic finisher — Conversational pace (Zone 2),53.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,3,8,,15,3-1-3,,Circuit station,38.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,home,False,2,wall_sit,3,45 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",38.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,home,False,3,eccentric_step_down,3,6/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,38.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,3,12,,15,3-0-3,,Circuit station,38.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,home,False,5,split_squat_iso,3,20 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,38.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,home,False,6,side_plank,3,30 s/side,,15,iso,,Circuit station,38.5
+W05D3,2026-09-26,5,2,C — Quad Endurance + Aerobic,home,False,7,home_aerobic_circuit,1,6 min continuous easy pace,,0,,,Aerobic finisher — Conversational pace (Zone 2),38.5
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,gym,False,1,back_squat,4,5-6,8,150,3-0-1,,Eccentric emphasis — 3 s down,55.2
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,gym,False,2,bb_rdl,3,6-8,8,150,2-1-1,,,55.2
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,gym,False,3,box_step_up,2,8/leg,8,90,2-0-1,,Hold DBs,55.2
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,gym,False,4,db_bench_press,3,8-10,8,0,,S1,,55.2
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,gym,False,5,one_arm_db_row,3,8-10/arm,8,60,,S1,Superset with DB bench,55.2
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,gym,False,6,pallof_press,3,10/side,,60,,,,55.2
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,home,False,1,goblet_squat,3,6-8,8,105,4-0-1,,"Heavy DB, 4 s eccentric = back-squat stand-in",37.9
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,home,False,2,db_rdl,3,8-10,8,90,2-1-1,,,37.9
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,home,False,3,push_up,3,8-12,8,0,,S1,Elevate feet when 12 is easy,37.9
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,home,False,4,one_arm_db_row,3,10/arm,8,60,,S1,,37.9
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,home,False,5,dead_bug,2,8/side,,45,,,,37.9
+W06D1,2026-09-28,6,2,A — Lower Strength + Core,home,False,6,wall_sit,2,45 s,,45,iso,,,37.9
+W06D2,2026-09-30,6,2,B — Power + Balance,gym,False,1,box_jump,4,4,,75,,,"Max intent, stick every landing; full recovery between sets",53.9
+W06D2,2026-09-30,6,2,B — Power + Balance,gym,False,2,pogo_hop,5,10,,60,,,"Max intent, stick every landing; full recovery between sets",53.9
+W06D2,2026-09-30,6,2,B — Power + Balance,gym,False,3,drop_to_stick,3,4,,60,,,"Max intent, stick every landing; full recovery between sets",53.9
+W06D2,2026-09-30,6,2,B — Power + Balance,gym,False,4,broad_jump_stick,4,3,,90,,,"Max intent, stick every landing; full recovery between sets",53.9
+W06D2,2026-09-30,6,2,B — Power + Balance,gym,False,5,mb_rotational_throw,3,5/side,,60,,,,53.9
+W06D2,2026-09-30,6,2,B — Power + Balance,gym,False,6,sl_rdl,3,6/leg,8,60,,,,53.9
+W06D2,2026-09-30,6,2,B — Power + Balance,gym,False,7,calf_raise,3,12,8,45,2-1-2,,,53.9
+W06D2,2026-09-30,6,2,B — Power + Balance,home,False,1,broad_jump_stick,4,4,,60,,,"Max intent, stick every landing; full recovery between sets (home swap for box jump)",39.0
+W06D2,2026-09-30,6,2,B — Power + Balance,home,False,2,pogo_hop,5,10,,45,,,"Max intent, stick every landing; full recovery between sets",39.0
+W06D2,2026-09-30,6,2,B — Power + Balance,home,False,3,snap_down,3,4,,45,,,"Max intent, stick every landing; full recovery between sets (home swap for drop to stick)",39.0
+W06D2,2026-09-30,6,2,B — Power + Balance,home,False,4,broad_jump_stick,4,3,,75,,,"Max intent, stick every landing; full recovery between sets",39.0
+W06D2,2026-09-30,6,2,B — Power + Balance,home,False,5,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",39.0
+W06D2,2026-09-30,6,2,B — Power + Balance,home,False,6,sl_rdl,2,6/leg,8,45,,,Bodyweight or light DB,39.0
+W06D2,2026-09-30,6,2,B — Power + Balance,home,False,7,calf_raise,2,15,8,45,2-1-2,,On stair edge,39.0
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,8,,15,3-1-3,,Circuit station,55.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,50 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",55.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,gym,False,3,eccentric_step_down,3,6/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,55.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,12,,15,3-0-3,,Circuit station,55.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,gym,False,5,split_squat_iso,3,20 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,55.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,gym,False,6,side_plank,3,30 s/side,,15,iso,,Circuit station,55.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,gym,False,7,bike_z2,1,18 min steady,,0,,,Aerobic finisher — Conversational pace (Zone 2),55.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,3,8,,15,3-1-3,,Circuit station,38.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,home,False,2,wall_sit,3,50 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",38.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,home,False,3,eccentric_step_down,3,6/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,38.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,3,12,,15,3-0-3,,Circuit station,38.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,home,False,5,split_squat_iso,3,20 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,38.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,home,False,6,side_plank,3,30 s/side,,15,iso,,Circuit station,38.8
+W06D3,2026-10-03,6,2,C — Quad Endurance + Aerobic,home,False,7,home_aerobic_circuit,1,6 min continuous easy pace,,0,,,Aerobic finisher — Conversational pace (Zone 2),38.8
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,gym,False,1,back_squat,4,5-6,8,150,3-0-1,,Eccentric emphasis — 3 s down,55.2
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,gym,False,2,bb_rdl,3,6-8,8,150,2-1-1,,,55.2
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,gym,False,3,box_step_up,2,8/leg,8,90,2-0-1,,Hold DBs,55.2
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,gym,False,4,db_bench_press,3,8-10,8,0,,S1,,55.2
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,gym,False,5,one_arm_db_row,3,8-10/arm,8,60,,S1,Superset with DB bench,55.2
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,gym,False,6,pallof_press,3,10/side,,60,,,,55.2
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,home,False,1,goblet_squat,3,6-8,8,105,4-0-1,,"Heavy DB, 4 s eccentric = back-squat stand-in",37.9
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,home,False,2,db_rdl,3,8-10,8,90,2-1-1,,,37.9
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,home,False,3,push_up,3,8-12,8,0,,S1,Elevate feet when 12 is easy,37.9
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,home,False,4,one_arm_db_row,3,10/arm,8,60,,S1,,37.9
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,home,False,5,dead_bug,2,8/side,,45,,,,37.9
+W07D1,2026-10-05,7,2,A — Lower Strength + Core,home,False,6,wall_sit,2,45 s,,45,iso,,,37.9
+W07D2,2026-10-07,7,2,B — Power + Balance,gym,False,1,box_jump,5,4,,75,,,"Max intent, stick every landing; full recovery between sets",54.0
+W07D2,2026-10-07,7,2,B — Power + Balance,gym,False,2,pogo_hop,5,12,,60,,,"Max intent, stick every landing; full recovery between sets",54.0
+W07D2,2026-10-07,7,2,B — Power + Balance,gym,False,3,drop_to_stick,3,4,,60,,,"Max intent, stick every landing; full recovery between sets",54.0
+W07D2,2026-10-07,7,2,B — Power + Balance,gym,False,4,broad_jump_stick,3,3,,90,,,"Max intent, stick every landing; full recovery between sets",54.0
+W07D2,2026-10-07,7,2,B — Power + Balance,gym,False,5,mb_rotational_throw,3,5/side,,60,,,,54.0
+W07D2,2026-10-07,7,2,B — Power + Balance,gym,False,6,sl_rdl,3,6/leg,8,60,,,,54.0
+W07D2,2026-10-07,7,2,B — Power + Balance,gym,False,7,calf_raise,3,12,8,45,2-1-2,,,54.0
+W07D2,2026-10-07,7,2,B — Power + Balance,home,False,1,broad_jump_stick,5,4,,60,,,"Max intent, stick every landing; full recovery between sets (home swap for box jump)",39.1
+W07D2,2026-10-07,7,2,B — Power + Balance,home,False,2,pogo_hop,5,12,,45,,,"Max intent, stick every landing; full recovery between sets",39.1
+W07D2,2026-10-07,7,2,B — Power + Balance,home,False,3,snap_down,3,4,,45,,,"Max intent, stick every landing; full recovery between sets (home swap for drop to stick)",39.1
+W07D2,2026-10-07,7,2,B — Power + Balance,home,False,4,broad_jump_stick,3,3,,75,,,"Max intent, stick every landing; full recovery between sets",39.1
+W07D2,2026-10-07,7,2,B — Power + Balance,home,False,5,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",39.1
+W07D2,2026-10-07,7,2,B — Power + Balance,home,False,6,sl_rdl,2,6/leg,8,45,,,Bodyweight or light DB,39.1
+W07D2,2026-10-07,7,2,B — Power + Balance,home,False,7,calf_raise,2,15,8,45,2-1-2,,On stair edge,39.1
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,8,,15,3-1-3,,Circuit station,58.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,60 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",58.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,gym,False,3,eccentric_step_down,3,6/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,58.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,12,,15,3-0-3,,Circuit station,58.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,gym,False,5,split_squat_iso,3,20 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,58.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,gym,False,6,side_plank,3,30 s/side,,15,iso,,Circuit station,58.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,gym,False,7,bike_z2,1,20 min steady,,0,,,Aerobic finisher — Conversational pace (Zone 2),58.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,3,8,,15,3-1-3,,Circuit station,39.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,home,False,2,wall_sit,3,60 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",39.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,home,False,3,eccentric_step_down,3,6/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,39.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,3,12,,15,3-0-3,,Circuit station,39.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,home,False,5,split_squat_iso,3,20 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,39.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,home,False,6,side_plank,3,30 s/side,,15,iso,,Circuit station,39.2
+W07D3,2026-10-10,7,2,C — Quad Endurance + Aerobic,home,False,7,home_aerobic_circuit,1,6 min continuous easy pace,,0,,,Aerobic finisher — Conversational pace (Zone 2),39.2
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,gym,True,1,back_squat,2,5-6,6,150,3-0-1,,Eccentric emphasis — 3 s down,40.8
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,gym,True,2,bb_rdl,2,6-8,6,150,2-1-1,,,40.8
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,gym,True,3,box_step_up,2,8/leg,6,90,2-0-1,,Hold DBs,40.8
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,gym,True,4,db_bench_press,2,8-10,6,0,,S1,,40.8
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,gym,True,5,one_arm_db_row,2,8-10/arm,6,60,,S1,Superset with DB bench,40.8
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,gym,True,6,pallof_press,2,10/side,,60,,,,40.8
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,home,True,1,goblet_squat,2,6-8,6,105,4-0-1,,"Heavy DB, 4 s eccentric = back-squat stand-in",30.1
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,home,True,2,db_rdl,2,8-10,6,90,2-1-1,,,30.1
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,home,True,3,push_up,2,8-12,6,0,,S1,Elevate feet when 12 is easy,30.1
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,home,True,4,one_arm_db_row,2,10/arm,6,60,,S1,,30.1
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,home,True,5,dead_bug,2,8/side,,45,,,,30.1
+W08D1,2026-10-12,8,2,A — Lower Strength + Core,home,True,6,wall_sit,2,45 s,,45,iso,,,30.1
+W08D2,2026-10-14,8,2,B — Power + Balance,gym,True,1,box_jump,3,3,,75,,,"Max intent, stick every landing; full recovery between sets",37.3
+W08D2,2026-10-14,8,2,B — Power + Balance,gym,True,2,pogo_hop,3,10,,60,,,"Max intent, stick every landing; full recovery between sets",37.3
+W08D2,2026-10-14,8,2,B — Power + Balance,gym,True,3,broad_jump_stick,3,3,,90,,,"Max intent, stick every landing; full recovery between sets",37.3
+W08D2,2026-10-14,8,2,B — Power + Balance,gym,True,4,mb_rotational_throw,2,5/side,,60,,,,37.3
+W08D2,2026-10-14,8,2,B — Power + Balance,gym,True,5,sl_rdl,2,6/leg,6,60,,,,37.3
+W08D2,2026-10-14,8,2,B — Power + Balance,gym,True,6,calf_raise,2,12,6,45,2-1-2,,,37.3
+W08D2,2026-10-14,8,2,B — Power + Balance,home,True,1,broad_jump_stick,3,3,,60,,,"Max intent, stick every landing; full recovery between sets (home swap for box jump)",29.6
+W08D2,2026-10-14,8,2,B — Power + Balance,home,True,2,pogo_hop,3,10,,45,,,"Max intent, stick every landing; full recovery between sets",29.6
+W08D2,2026-10-14,8,2,B — Power + Balance,home,True,3,broad_jump_stick,3,3,,75,,,"Max intent, stick every landing; full recovery between sets",29.6
+W08D2,2026-10-14,8,2,B — Power + Balance,home,True,4,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",29.6
+W08D2,2026-10-14,8,2,B — Power + Balance,home,True,5,sl_rdl,2,6/leg,6,45,,,Bodyweight or light DB,29.6
+W08D2,2026-10-14,8,2,B — Power + Balance,home,True,6,calf_raise,2,15,6,45,2-1-2,,On stair edge,29.6
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,gym,True,1,goblet_squat,2,8,,15,3-1-3,,Circuit station,40.7
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,gym,True,2,wall_sit,2,40 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",40.7
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,gym,True,3,eccentric_step_down,2,6/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,40.7
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,gym,True,4,spanish_squat,2,12,,15,3-0-3,,Circuit station,40.7
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,gym,True,5,split_squat_iso,2,20 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,40.7
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,gym,True,6,side_plank,2,30 s/side,,15,iso,,Circuit station,40.7
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,gym,True,7,bike_z2,1,12 min steady,,0,,,Aerobic finisher — Conversational pace (Zone 2),40.7
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,home,True,1,goblet_squat,2,8,,15,3-1-3,,Circuit station,30.2
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,home,True,2,wall_sit,2,40 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",30.2
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,home,True,3,eccentric_step_down,2,6/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,30.2
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,home,True,4,spanish_squat,2,12,,15,3-0-3,,Circuit station,30.2
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,home,True,5,split_squat_iso,2,20 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,30.2
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,home,True,6,side_plank,2,30 s/side,,15,iso,,Circuit station,30.2
+W08D3,2026-10-17,8,2,C — Quad Endurance + Aerobic,home,True,7,home_aerobic_circuit,1,6 min continuous easy pace,,0,,,Aerobic finisher — Conversational pace (Zone 2),30.2
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,gym,False,1,back_squat,4,4-6,8,180,3-0-1,,Eccentric emphasis — 3 s down,55.0
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,gym,False,2,bb_rdl,3,6-8,8,150,2-1-1,,,55.0
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,gym,False,3,hip_thrust,2,8-10,8,90,,,,55.0
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,gym,False,4,db_overhead_press,3,6-8,8,0,,S1,,55.0
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,gym,False,5,one_arm_db_row,3,8-10/arm,8,60,,S1,Superset with OHP,55.0
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,gym,False,6,suitcase_carry,2,30 s/side,,60,,,,55.0
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,home,False,1,goblet_squat,3,6-8,8,105,4-0-1,,Heavy DB,39.2
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,home,False,2,db_rdl,3,6-8,8,90,2-1-1,,,39.2
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,home,False,3,sl_glute_bridge,2,10/leg,,60,,,,39.2
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,home,False,4,push_up,3,8-12,8,0,,S1,Deficit (hands on books) when easy,39.2
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,home,False,5,one_arm_db_row,3,8-10/arm,8,60,,S1,,39.2
+W09D1,2026-10-19,9,3,A — Lower Strength + Core,home,False,6,dead_bug,2,8/side,,45,,,,39.2
+W09D2,2026-10-21,9,3,B — Power + Balance,gym,False,1,jump_squat,4,5,,90,,,"Max intent, stick every landing; full recovery between sets",54.2
+W09D2,2026-10-21,9,3,B — Power + Balance,gym,False,2,lateral_bound,4,3/side,,75,,,"Max intent, stick every landing; full recovery between sets",54.2
+W09D2,2026-10-21,9,3,B — Power + Balance,gym,False,3,pogo_hop,4,10,,60,,,"Max intent, stick every landing; full recovery between sets",54.2
+W09D2,2026-10-21,9,3,B — Power + Balance,gym,False,4,box_jump,4,4,,75,,,"Max intent, stick every landing; full recovery between sets",54.2
+W09D2,2026-10-21,9,3,B — Power + Balance,gym,False,5,mb_rotational_throw,3,5/side,,60,,,,54.2
+W09D2,2026-10-21,9,3,B — Power + Balance,gym,False,6,sl_rdl,3,6/leg,8,60,,,,54.2
+W09D2,2026-10-21,9,3,B — Power + Balance,gym,False,7,calf_raise,3,12,8,45,2-1-2,,,54.2
+W09D2,2026-10-21,9,3,B — Power + Balance,home,False,1,jump_squat,4,5,,75,,,"Max intent, stick every landing; full recovery between sets",35.4
+W09D2,2026-10-21,9,3,B — Power + Balance,home,False,2,lateral_bound,4,3/side,,60,,,"Max intent, stick every landing; full recovery between sets",35.4
+W09D2,2026-10-21,9,3,B — Power + Balance,home,False,3,pogo_hop,4,10,,45,,,"Max intent, stick every landing; full recovery between sets",35.4
+W09D2,2026-10-21,9,3,B — Power + Balance,home,False,4,broad_jump_stick,4,4,,60,,,"Max intent, stick every landing; full recovery between sets (home swap for box jump)",35.4
+W09D2,2026-10-21,9,3,B — Power + Balance,home,False,5,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",35.4
+W09D2,2026-10-21,9,3,B — Power + Balance,home,False,6,calf_raise,2,15,8,45,2-1-2,,On stair edge,35.4
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,10,,15,3-0-3,,Circuit station,57.5
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,65 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",57.5
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,gym,False,3,eccentric_step_down,3,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,57.5
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,15,,15,3-0-3,,Circuit station,57.5
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,gym,False,5,split_squat_iso,3,30 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,57.5
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,gym,False,6,band_lateral_walk,3,12/side,,15,,,Circuit station,57.5
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,gym,False,7,bike_intervals,4,4×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",57.5
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,2,10,,15,3-0-3,,Circuit station,38.7
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,home,False,2,wall_sit,2,65 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",38.7
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,home,False,3,eccentric_step_down,2,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,38.7
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,2,15,,15,3-0-3,,Circuit station,38.7
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,home,False,5,split_squat_iso,2,30 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,38.7
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,home,False,6,band_lateral_walk,2,12/side,,15,,,Circuit station,38.7
+W09D3,2026-10-24,9,3,C — Quad Endurance + Aerobic,home,False,7,home_intervals,3,3×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",38.7
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,gym,False,1,back_squat,4,4-6,8,180,3-0-1,,Eccentric emphasis — 3 s down,55.0
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,gym,False,2,bb_rdl,3,6-8,8,150,2-1-1,,,55.0
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,gym,False,3,hip_thrust,2,8-10,8,90,,,,55.0
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,gym,False,4,db_overhead_press,3,6-8,8,0,,S1,,55.0
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,gym,False,5,one_arm_db_row,3,8-10/arm,8,60,,S1,Superset with OHP,55.0
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,gym,False,6,suitcase_carry,2,30 s/side,,60,,,,55.0
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,home,False,1,goblet_squat,3,6-8,8,105,4-0-1,,Heavy DB,39.2
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,home,False,2,db_rdl,3,6-8,8,90,2-1-1,,,39.2
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,home,False,3,sl_glute_bridge,2,10/leg,,60,,,,39.2
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,home,False,4,push_up,3,8-12,8,0,,S1,Deficit (hands on books) when easy,39.2
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,home,False,5,one_arm_db_row,3,8-10/arm,8,60,,S1,,39.2
+W10D1,2026-10-26,10,3,A — Lower Strength + Core,home,False,6,dead_bug,2,8/side,,45,,,,39.2
+W10D2,2026-10-28,10,3,B — Power + Balance,gym,False,1,jump_squat,5,5,,90,,,"Max intent, stick every landing; full recovery between sets",52.2
+W10D2,2026-10-28,10,3,B — Power + Balance,gym,False,2,lateral_bound,4,3/side,,75,,,"Max intent, stick every landing; full recovery between sets",52.2
+W10D2,2026-10-28,10,3,B — Power + Balance,gym,False,3,pogo_hop,4,10,,60,,,"Max intent, stick every landing; full recovery between sets",52.2
+W10D2,2026-10-28,10,3,B — Power + Balance,gym,False,4,box_jump,5,4,,75,,,"Max intent, stick every landing; full recovery between sets",52.2
+W10D2,2026-10-28,10,3,B — Power + Balance,gym,False,5,mb_rotational_throw,2,5/side,,60,,,,52.2
+W10D2,2026-10-28,10,3,B — Power + Balance,gym,False,6,sl_rdl,2,6/leg,8,60,,,,52.2
+W10D2,2026-10-28,10,3,B — Power + Balance,gym,False,7,calf_raise,2,12,8,45,2-1-2,,,52.2
+W10D2,2026-10-28,10,3,B — Power + Balance,home,False,1,jump_squat,5,5,,75,,,"Max intent, stick every landing; full recovery between sets",38.3
+W10D2,2026-10-28,10,3,B — Power + Balance,home,False,2,lateral_bound,4,3/side,,60,,,"Max intent, stick every landing; full recovery between sets",38.3
+W10D2,2026-10-28,10,3,B — Power + Balance,home,False,3,pogo_hop,4,10,,45,,,"Max intent, stick every landing; full recovery between sets",38.3
+W10D2,2026-10-28,10,3,B — Power + Balance,home,False,4,broad_jump_stick,5,4,,60,,,"Max intent, stick every landing; full recovery between sets (home swap for box jump)",38.3
+W10D2,2026-10-28,10,3,B — Power + Balance,home,False,5,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",38.3
+W10D2,2026-10-28,10,3,B — Power + Balance,home,False,6,calf_raise,2,15,8,45,2-1-2,,On stair edge,38.3
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,10,,15,3-0-3,,Circuit station,58.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,75 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",58.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,gym,False,3,eccentric_step_down,3,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,58.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,15,,15,3-0-3,,Circuit station,58.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,gym,False,5,split_squat_iso,3,30 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,58.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,gym,False,6,band_lateral_walk,3,12/side,,15,,,Circuit station,58.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,gym,False,7,bike_intervals,4,4×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",58.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,2,10,,15,3-0-3,,Circuit station,39.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,home,False,2,wall_sit,2,75 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",39.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,home,False,3,eccentric_step_down,2,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,39.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,2,15,,15,3-0-3,,Circuit station,39.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,home,False,5,split_squat_iso,2,30 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,39.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,home,False,6,band_lateral_walk,2,12/side,,15,,,Circuit station,39.0
+W10D3,2026-10-31,10,3,C — Quad Endurance + Aerobic,home,False,7,home_intervals,3,3×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",39.0
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,gym,False,1,back_squat,4,4-6,8,180,3-0-1,,Eccentric emphasis — 3 s down,55.0
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,gym,False,2,bb_rdl,3,6-8,8,150,2-1-1,,,55.0
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,gym,False,3,hip_thrust,2,8-10,8,90,,,,55.0
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,gym,False,4,db_overhead_press,3,6-8,8,0,,S1,,55.0
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,gym,False,5,one_arm_db_row,3,8-10/arm,8,60,,S1,Superset with OHP,55.0
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,gym,False,6,suitcase_carry,2,30 s/side,,60,,,,55.0
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,home,False,1,goblet_squat,3,6-8,8,105,4-0-1,,Heavy DB,39.2
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,home,False,2,db_rdl,3,6-8,8,90,2-1-1,,,39.2
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,home,False,3,sl_glute_bridge,2,10/leg,,60,,,,39.2
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,home,False,4,push_up,3,8-12,8,0,,S1,Deficit (hands on books) when easy,39.2
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,home,False,5,one_arm_db_row,3,8-10/arm,8,60,,S1,,39.2
+W11D1,2026-11-02,11,3,A — Lower Strength + Core,home,False,6,dead_bug,2,8/side,,45,,,,39.2
+W11D2,2026-11-04,11,3,B — Power + Balance,gym,False,1,jump_squat,5,5,,90,,,"Max intent, stick every landing; full recovery between sets",52.6
+W11D2,2026-11-04,11,3,B — Power + Balance,gym,False,2,lateral_bound,5,3/side,,75,,,"Max intent, stick every landing; full recovery between sets",52.6
+W11D2,2026-11-04,11,3,B — Power + Balance,gym,False,3,pogo_hop,4,12,,60,,,"Max intent, stick every landing; full recovery between sets",52.6
+W11D2,2026-11-04,11,3,B — Power + Balance,gym,False,4,box_jump,4,4,,75,,,"Max intent, stick every landing; full recovery between sets",52.6
+W11D2,2026-11-04,11,3,B — Power + Balance,gym,False,5,mb_rotational_throw,2,5/side,,60,,,,52.6
+W11D2,2026-11-04,11,3,B — Power + Balance,gym,False,6,sl_rdl,2,6/leg,8,60,,,,52.6
+W11D2,2026-11-04,11,3,B — Power + Balance,gym,False,7,calf_raise,2,12,8,45,2-1-2,,,52.6
+W11D2,2026-11-04,11,3,B — Power + Balance,home,False,1,jump_squat,5,5,,75,,,"Max intent, stick every landing; full recovery between sets",38.8
+W11D2,2026-11-04,11,3,B — Power + Balance,home,False,2,lateral_bound,5,3/side,,60,,,"Max intent, stick every landing; full recovery between sets",38.8
+W11D2,2026-11-04,11,3,B — Power + Balance,home,False,3,pogo_hop,4,12,,45,,,"Max intent, stick every landing; full recovery between sets",38.8
+W11D2,2026-11-04,11,3,B — Power + Balance,home,False,4,broad_jump_stick,4,4,,60,,,"Max intent, stick every landing; full recovery between sets (home swap for box jump)",38.8
+W11D2,2026-11-04,11,3,B — Power + Balance,home,False,5,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",38.8
+W11D2,2026-11-04,11,3,B — Power + Balance,home,False,6,calf_raise,2,15,8,45,2-1-2,,On stair edge,38.8
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,10,,15,3-0-3,,Circuit station,58.8
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,90 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",58.8
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,gym,False,3,eccentric_step_down,3,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,58.8
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,15,,15,3-0-3,,Circuit station,58.8
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,gym,False,5,split_squat_iso,3,30 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,58.8
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,gym,False,6,band_lateral_walk,3,12/side,,15,,,Circuit station,58.8
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,gym,False,7,bike_intervals,4,4×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",58.8
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,2,10,,15,3-0-3,,Circuit station,39.5
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,home,False,2,wall_sit,2,90 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",39.5
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,home,False,3,eccentric_step_down,2,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,39.5
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,2,15,,15,3-0-3,,Circuit station,39.5
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,home,False,5,split_squat_iso,2,30 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,39.5
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,home,False,6,band_lateral_walk,2,12/side,,15,,,Circuit station,39.5
+W11D3,2026-11-07,11,3,C — Quad Endurance + Aerobic,home,False,7,home_intervals,3,3×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",39.5
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,gym,True,1,back_squat,2,4-6,6,180,3-0-1,,Eccentric emphasis — 3 s down,41.5
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,gym,True,2,bb_rdl,2,6-8,6,150,2-1-1,,,41.5
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,gym,True,3,hip_thrust,2,8-10,6,90,,,,41.5
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,gym,True,4,db_overhead_press,2,6-8,6,0,,S1,,41.5
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,gym,True,5,one_arm_db_row,2,8-10/arm,6,60,,S1,Superset with OHP,41.5
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,gym,True,6,suitcase_carry,2,30 s/side,,60,,,,41.5
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,home,True,1,goblet_squat,2,6-8,6,105,4-0-1,,Heavy DB,31.4
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,home,True,2,db_rdl,2,6-8,6,90,2-1-1,,,31.4
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,home,True,3,sl_glute_bridge,2,10/leg,,60,,,,31.4
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,home,True,4,push_up,2,8-12,6,0,,S1,Deficit (hands on books) when easy,31.4
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,home,True,5,one_arm_db_row,2,8-10/arm,6,60,,S1,,31.4
+W12D1,2026-11-09,12,3,A — Lower Strength + Core,home,True,6,dead_bug,2,8/side,,45,,,,31.4
+W12D2,2026-11-11,12,3,B — Power + Balance,gym,True,1,jump_squat,3,4,,90,,,"Max intent, stick every landing; full recovery between sets",37.3
+W12D2,2026-11-11,12,3,B — Power + Balance,gym,True,2,pogo_hop,3,10,,60,,,"Max intent, stick every landing; full recovery between sets",37.3
+W12D2,2026-11-11,12,3,B — Power + Balance,gym,True,3,lateral_bound,3,3/side,,75,,,"Max intent, stick every landing; full recovery between sets",37.3
+W12D2,2026-11-11,12,3,B — Power + Balance,gym,True,4,mb_rotational_throw,2,5/side,,60,,,,37.3
+W12D2,2026-11-11,12,3,B — Power + Balance,gym,True,5,sl_rdl,2,6/leg,6,60,,,,37.3
+W12D2,2026-11-11,12,3,B — Power + Balance,gym,True,6,calf_raise,2,12,6,45,2-1-2,,,37.3
+W12D2,2026-11-11,12,3,B — Power + Balance,home,True,1,jump_squat,3,4,,75,,,"Max intent, stick every landing; full recovery between sets",25.8
+W12D2,2026-11-11,12,3,B — Power + Balance,home,True,2,pogo_hop,3,10,,45,,,"Max intent, stick every landing; full recovery between sets",25.8
+W12D2,2026-11-11,12,3,B — Power + Balance,home,True,3,lateral_bound,3,3/side,,60,,,"Max intent, stick every landing; full recovery between sets",25.8
+W12D2,2026-11-11,12,3,B — Power + Balance,home,True,4,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",25.8
+W12D2,2026-11-11,12,3,B — Power + Balance,home,True,5,calf_raise,2,15,6,45,2-1-2,,On stair edge,25.8
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,gym,True,1,goblet_squat,2,10,,15,3-0-3,,Circuit station,42.0
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,gym,True,2,wall_sit,2,60 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",42.0
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,gym,True,3,eccentric_step_down,2,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,42.0
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,gym,True,4,spanish_squat,2,15,,15,3-0-3,,Circuit station,42.0
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,gym,True,5,split_squat_iso,2,30 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,42.0
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,gym,True,6,band_lateral_walk,2,12/side,,15,,,Circuit station,42.0
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,gym,True,7,bike_z2,1,12 min steady,,0,,,Aerobic finisher — Conversational pace (Zone 2),42.0
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,home,True,1,goblet_squat,2,10,,15,3-0-3,,Circuit station,31.5
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,home,True,2,wall_sit,2,60 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",31.5
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,home,True,3,eccentric_step_down,2,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,31.5
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,home,True,4,spanish_squat,2,15,,15,3-0-3,,Circuit station,31.5
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,home,True,5,split_squat_iso,2,30 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,31.5
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,home,True,6,band_lateral_walk,2,12/side,,15,,,Circuit station,31.5
+W12D3,2026-11-14,12,3,C — Quad Endurance + Aerobic,home,True,7,home_aerobic_circuit,1,6 min continuous easy pace,,0,,,Aerobic finisher — Conversational pace (Zone 2),31.5
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,gym,False,1,back_squat,3,4-5,8,0,2-0-1,C1,"Contrast pair — squat, then jumps",52.6
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,gym,False,2,box_jump,3,3,,150,,C1,"Contrast pair: 30 s after squat set; max intent, step down",52.6
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,gym,False,3,bb_rdl,3,6-8,8,120,2-1-1,,,52.6
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,gym,False,4,sl_glute_bridge,2,10/leg,,60,,,,52.6
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,gym,False,5,db_bench_press,3,8-10,8,0,,S1,,52.6
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,gym,False,6,one_arm_db_row,3,8-10/arm,8,60,,S1,,52.6
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,gym,False,7,pallof_press,3,10/side,,60,,,,52.6
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,home,False,1,goblet_squat,3,5,8,0,2-0-1,C1,"Contrast pair — heavy DB, then jumps",37.8
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,home,False,2,jump_squat,3,3,,120,,C1,"Contrast pair: 30 s after squat set; bodyweight, max intent",37.8
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,home,False,3,db_rdl,3,6-8,8,90,2-1-1,,,37.8
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,home,False,4,sl_glute_bridge,2,10/leg,,60,,,,37.8
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,home,False,5,push_up,3,8-12,8,45,,,,37.8
+W13D1,2026-11-16,13,4,A — Lower Strength + Core,home,False,6,dead_bug,2,8/side,,45,,,,37.8
+W13D2,2026-11-18,13,4,B — Power + Balance,gym,False,1,depth_jump,4,4,,90,,,"Max intent, stick every landing; full recovery between sets",50.1
+W13D2,2026-11-18,13,4,B — Power + Balance,gym,False,2,sl_hop_stick,4,4/leg,,75,,,"Max intent, stick every landing; full recovery between sets",50.1
+W13D2,2026-11-18,13,4,B — Power + Balance,gym,False,3,lateral_bound,4,3/side,,75,,,"Max intent, stick every landing; full recovery between sets",50.1
+W13D2,2026-11-18,13,4,B — Power + Balance,gym,False,4,pogo_hop,4,10,,60,,,"Max intent, stick every landing; full recovery between sets",50.1
+W13D2,2026-11-18,13,4,B — Power + Balance,gym,False,5,mb_rotational_throw,2,5/side,,60,,,,50.1
+W13D2,2026-11-18,13,4,B — Power + Balance,gym,False,6,sl_rdl,2,6/leg,8,60,,,,50.1
+W13D2,2026-11-18,13,4,B — Power + Balance,gym,False,7,calf_raise,2,12,8,45,2-1-2,,,50.1
+W13D2,2026-11-18,13,4,B — Power + Balance,home,False,1,snap_down,4,4,,75,,,"Max intent, stick every landing; full recovery between sets (home swap for depth jump)",36.8
+W13D2,2026-11-18,13,4,B — Power + Balance,home,False,2,sl_hop_stick,4,4/leg,,60,,,"Max intent, stick every landing; full recovery between sets",36.8
+W13D2,2026-11-18,13,4,B — Power + Balance,home,False,3,lateral_bound,4,3/side,,60,,,"Max intent, stick every landing; full recovery between sets",36.8
+W13D2,2026-11-18,13,4,B — Power + Balance,home,False,4,pogo_hop,4,10,,45,,,"Max intent, stick every landing; full recovery between sets",36.8
+W13D2,2026-11-18,13,4,B — Power + Balance,home,False,5,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",36.8
+W13D2,2026-11-18,13,4,B — Power + Balance,home,False,6,calf_raise,2,15,8,45,2-1-2,,On stair edge,36.8
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,10,,15,4-0-1,,Circuit station — Leg-blaster-style eccentric emphasis,55.5
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,90 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",55.5
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,gym,False,3,eccentric_step_down,3,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,55.5
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,15,,15,3-0-3,,Circuit station,55.5
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,gym,False,5,split_squat_iso,3,40 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,55.5
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,gym,False,6,calf_raise,3,15,,15,3-0-3,,Circuit station — Slow — toeside-pressure endurance,55.5
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,gym,False,7,bike_intervals,3,3×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",55.5
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,2,10,,15,4-0-1,,Circuit station — Leg-blaster-style eccentric emphasis,35.7
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,home,False,2,wall_sit,2,90 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",35.7
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,home,False,3,eccentric_step_down,2,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,35.7
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,2,15,,15,3-0-3,,Circuit station,35.7
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,home,False,5,split_squat_iso,2,40 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,35.7
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,home,False,6,calf_raise,2,15,,15,3-0-3,,Circuit station — Slow — toeside-pressure endurance,35.7
+W13D3,2026-11-21,13,4,C — Quad Endurance + Aerobic,home,False,7,home_intervals,2,2×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",35.7
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,gym,False,1,back_squat,3,4-5,8,0,2-0-1,C1,"Contrast pair — squat, then jumps",52.6
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,gym,False,2,box_jump,3,3,,150,,C1,"Contrast pair: 30 s after squat set; max intent, step down",52.6
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,gym,False,3,bb_rdl,3,6-8,8,120,2-1-1,,,52.6
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,gym,False,4,sl_glute_bridge,2,10/leg,,60,,,,52.6
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,gym,False,5,db_bench_press,3,8-10,8,0,,S1,,52.6
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,gym,False,6,one_arm_db_row,3,8-10/arm,8,60,,S1,,52.6
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,gym,False,7,pallof_press,3,10/side,,60,,,,52.6
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,home,False,1,goblet_squat,3,5,8,0,2-0-1,C1,"Contrast pair — heavy DB, then jumps",37.8
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,home,False,2,jump_squat,3,3,,120,,C1,"Contrast pair: 30 s after squat set; bodyweight, max intent",37.8
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,home,False,3,db_rdl,3,6-8,8,90,2-1-1,,,37.8
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,home,False,4,sl_glute_bridge,2,10/leg,,60,,,,37.8
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,home,False,5,push_up,3,8-12,8,45,,,,37.8
+W14D1,2026-11-23,14,4,A — Lower Strength + Core,home,False,6,dead_bug,2,8/side,,45,,,,37.8
+W14D2,2026-11-25,14,4,B — Power + Balance,gym,False,1,depth_jump,4,4,,90,,,"Max intent, stick every landing; full recovery between sets",51.8
+W14D2,2026-11-25,14,4,B — Power + Balance,gym,False,2,sl_hop_stick,4,4/leg,,75,,,"Max intent, stick every landing; full recovery between sets",51.8
+W14D2,2026-11-25,14,4,B — Power + Balance,gym,False,3,lateral_bound,5,3/side,,75,,,"Max intent, stick every landing; full recovery between sets",51.8
+W14D2,2026-11-25,14,4,B — Power + Balance,gym,False,4,pogo_hop,4,10,,60,,,"Max intent, stick every landing; full recovery between sets",51.8
+W14D2,2026-11-25,14,4,B — Power + Balance,gym,False,5,mb_rotational_throw,2,5/side,,60,,,,51.8
+W14D2,2026-11-25,14,4,B — Power + Balance,gym,False,6,sl_rdl,2,6/leg,8,60,,,,51.8
+W14D2,2026-11-25,14,4,B — Power + Balance,gym,False,7,calf_raise,2,12,8,45,2-1-2,,,51.8
+W14D2,2026-11-25,14,4,B — Power + Balance,home,False,1,snap_down,4,4,,75,,,"Max intent, stick every landing; full recovery between sets (home swap for depth jump)",38.2
+W14D2,2026-11-25,14,4,B — Power + Balance,home,False,2,sl_hop_stick,4,4/leg,,60,,,"Max intent, stick every landing; full recovery between sets",38.2
+W14D2,2026-11-25,14,4,B — Power + Balance,home,False,3,lateral_bound,5,3/side,,60,,,"Max intent, stick every landing; full recovery between sets",38.2
+W14D2,2026-11-25,14,4,B — Power + Balance,home,False,4,pogo_hop,4,10,,45,,,"Max intent, stick every landing; full recovery between sets",38.2
+W14D2,2026-11-25,14,4,B — Power + Balance,home,False,5,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",38.2
+W14D2,2026-11-25,14,4,B — Power + Balance,home,False,6,calf_raise,2,15,8,45,2-1-2,,On stair edge,38.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,10,,15,4-0-1,,Circuit station — Leg-blaster-style eccentric emphasis,56.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,105 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",56.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,gym,False,3,eccentric_step_down,3,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,56.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,15,,15,3-0-3,,Circuit station,56.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,gym,False,5,split_squat_iso,3,40 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,56.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,gym,False,6,calf_raise,3,15,,15,3-0-3,,Circuit station — Slow — toeside-pressure endurance,56.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,gym,False,7,bike_intervals,3,3×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",56.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,2,10,,15,4-0-1,,Circuit station — Leg-blaster-style eccentric emphasis,36.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,home,False,2,wall_sit,2,105 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",36.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,home,False,3,eccentric_step_down,2,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,36.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,2,15,,15,3-0-3,,Circuit station,36.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,home,False,5,split_squat_iso,2,40 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,36.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,home,False,6,calf_raise,2,15,,15,3-0-3,,Circuit station — Slow — toeside-pressure endurance,36.2
+W14D3,2026-11-28,14,4,C — Quad Endurance + Aerobic,home,False,7,home_intervals,2,2×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",36.2
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,gym,False,1,back_squat,3,4-5,8,0,2-0-1,C1,"Contrast pair — squat, then jumps",52.6
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,gym,False,2,box_jump,3,3,,150,,C1,"Contrast pair: 30 s after squat set; max intent, step down",52.6
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,gym,False,3,bb_rdl,3,6-8,8,120,2-1-1,,,52.6
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,gym,False,4,sl_glute_bridge,2,10/leg,,60,,,,52.6
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,gym,False,5,db_bench_press,3,8-10,8,0,,S1,,52.6
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,gym,False,6,one_arm_db_row,3,8-10/arm,8,60,,S1,,52.6
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,gym,False,7,pallof_press,3,10/side,,60,,,,52.6
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,home,False,1,goblet_squat,3,5,8,0,2-0-1,C1,"Contrast pair — heavy DB, then jumps",37.8
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,home,False,2,jump_squat,3,3,,120,,C1,"Contrast pair: 30 s after squat set; bodyweight, max intent",37.8
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,home,False,3,db_rdl,3,6-8,8,90,2-1-1,,,37.8
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,home,False,4,sl_glute_bridge,2,10/leg,,60,,,,37.8
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,home,False,5,push_up,3,8-12,8,45,,,,37.8
+W15D1,2026-11-30,15,4,A — Lower Strength + Core,home,False,6,dead_bug,2,8/side,,45,,,,37.8
+W15D2,2026-12-02,15,4,B — Power + Balance,gym,False,1,depth_jump,5,4,,90,,,"Max intent, stick every landing; full recovery between sets",49.2
+W15D2,2026-12-02,15,4,B — Power + Balance,gym,False,2,sl_hop_stick,4,4/leg,,75,,,"Max intent, stick every landing; full recovery between sets",49.2
+W15D2,2026-12-02,15,4,B — Power + Balance,gym,False,3,lateral_bound,5,3/side,,75,,,"Max intent, stick every landing; full recovery between sets",49.2
+W15D2,2026-12-02,15,4,B — Power + Balance,gym,False,4,pogo_hop,4,10,,60,,,"Max intent, stick every landing; full recovery between sets",49.2
+W15D2,2026-12-02,15,4,B — Power + Balance,gym,False,5,mb_rotational_throw,2,5/side,,60,,,,49.2
+W15D2,2026-12-02,15,4,B — Power + Balance,gym,False,6,calf_raise,2,12,8,45,2-1-2,,,49.2
+W15D2,2026-12-02,15,4,B — Power + Balance,home,False,1,snap_down,5,4,,75,,,"Max intent, stick every landing; full recovery between sets (home swap for depth jump)",39.8
+W15D2,2026-12-02,15,4,B — Power + Balance,home,False,2,sl_hop_stick,4,4/leg,,60,,,"Max intent, stick every landing; full recovery between sets",39.8
+W15D2,2026-12-02,15,4,B — Power + Balance,home,False,3,lateral_bound,5,3/side,,60,,,"Max intent, stick every landing; full recovery between sets",39.8
+W15D2,2026-12-02,15,4,B — Power + Balance,home,False,4,pogo_hop,4,10,,45,,,"Max intent, stick every landing; full recovery between sets",39.8
+W15D2,2026-12-02,15,4,B — Power + Balance,home,False,5,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",39.8
+W15D2,2026-12-02,15,4,B — Power + Balance,home,False,6,calf_raise,2,15,8,45,2-1-2,,On stair edge,39.8
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,3,10,,15,4-0-1,,Circuit station — Leg-blaster-style eccentric emphasis,57.0
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,3,120 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",57.0
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,gym,False,3,eccentric_step_down,3,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,57.0
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,gym,False,4,spanish_squat,3,15,,15,3-0-3,,Circuit station,57.0
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,gym,False,5,split_squat_iso,3,40 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,57.0
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,gym,False,6,calf_raise,3,15,,15,3-0-3,,Circuit station — Slow — toeside-pressure endurance,57.0
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,gym,False,7,bike_intervals,3,3×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",57.0
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,2,10,,15,4-0-1,,Circuit station — Leg-blaster-style eccentric emphasis,36.7
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,home,False,2,wall_sit,2,120 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",36.7
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,home,False,3,eccentric_step_down,2,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,36.7
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,home,False,4,spanish_squat,2,15,,15,3-0-3,,Circuit station,36.7
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,home,False,5,split_squat_iso,2,40 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,36.7
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,home,False,6,calf_raise,2,15,,15,3-0-3,,Circuit station — Slow — toeside-pressure endurance,36.7
+W15D3,2026-12-05,15,4,C — Quad Endurance + Aerobic,home,False,7,home_intervals,2,2×3 min hard / 2 min easy,,120,,,"Aerobic finisher — Hard = RPE 8-9 breathing, easy = spin/march it out",36.7
+W16D1,2026-12-07,16,4,A — Lower Strength + Core,gym,True,1,back_squat,2,5,6,150,2-0-1,,,34.5
+W16D1,2026-12-07,16,4,A — Lower Strength + Core,gym,True,2,bb_rdl,2,6-8,6,120,,,,34.5
+W16D1,2026-12-07,16,4,A — Lower Strength + Core,gym,True,3,db_bench_press,2,8-10,6,0,,S1,,34.5
+W16D1,2026-12-07,16,4,A — Lower Strength + Core,gym,True,4,one_arm_db_row,2,8-10/arm,6,60,,S1,,34.5
+W16D1,2026-12-07,16,4,A — Lower Strength + Core,gym,True,5,pallof_press,2,10/side,,60,,,,34.5
+W16D1,2026-12-07,16,4,A — Lower Strength + Core,home,True,1,goblet_squat,2,5,6,90,2-0-1,,,26.6
+W16D1,2026-12-07,16,4,A — Lower Strength + Core,home,True,2,db_rdl,2,6-8,6,90,,,,26.6
+W16D1,2026-12-07,16,4,A — Lower Strength + Core,home,True,3,push_up,2,8-12,6,45,,,,26.6
+W16D1,2026-12-07,16,4,A — Lower Strength + Core,home,True,4,dead_bug,2,8/side,,45,,,,26.6
+W16D1,2026-12-07,16,4,A — Lower Strength + Core,home,True,5,wall_sit,2,60 s,,45,iso,,,26.6
+W16D2,2026-12-09,16,4,B — Power + Balance,gym,True,1,box_jump,3,3,,75,,,"Max intent, stick every landing; full recovery between sets",36.8
+W16D2,2026-12-09,16,4,B — Power + Balance,gym,True,2,sl_hop_stick,3,3/leg,,75,,,"Max intent, stick every landing; full recovery between sets",36.8
+W16D2,2026-12-09,16,4,B — Power + Balance,gym,True,3,pogo_hop,3,10,,60,,,"Max intent, stick every landing; full recovery between sets",36.8
+W16D2,2026-12-09,16,4,B — Power + Balance,gym,True,4,mb_rotational_throw,2,5/side,,60,,,,36.8
+W16D2,2026-12-09,16,4,B — Power + Balance,gym,True,5,sl_rdl,2,6/leg,6,60,,,,36.8
+W16D2,2026-12-09,16,4,B — Power + Balance,gym,True,6,calf_raise,2,12,6,45,2-1-2,,,36.8
+W16D2,2026-12-09,16,4,B — Power + Balance,home,True,1,broad_jump_stick,3,3,,60,,,"Max intent, stick every landing; full recovery between sets (home swap for box jump)",25.2
+W16D2,2026-12-09,16,4,B — Power + Balance,home,True,2,sl_hop_stick,3,3/leg,,60,,,"Max intent, stick every landing; full recovery between sets",25.2
+W16D2,2026-12-09,16,4,B — Power + Balance,home,True,3,pogo_hop,3,10,,45,,,"Max intent, stick every landing; full recovery between sets",25.2
+W16D2,2026-12-09,16,4,B — Power + Balance,home,True,4,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",25.2
+W16D2,2026-12-09,16,4,B — Power + Balance,home,True,5,calf_raise,2,15,6,45,2-1-2,,On stair edge,25.2
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,gym,True,1,goblet_squat,2,10,,15,4-0-1,,Circuit station — Leg-blaster-style eccentric emphasis,41.7
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,gym,True,2,wall_sit,2,75 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",41.7
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,gym,True,3,eccentric_step_down,2,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,41.7
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,gym,True,4,spanish_squat,2,15,,15,3-0-3,,Circuit station,41.7
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,gym,True,5,split_squat_iso,2,40 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,41.7
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,gym,True,6,calf_raise,2,15,,15,3-0-3,,Circuit station — Slow — toeside-pressure endurance,41.7
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,gym,True,7,bike_z2,1,10 min steady,,0,,,Aerobic finisher — Conversational pace (Zone 2),41.7
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,home,True,1,goblet_squat,2,10,,15,4-0-1,,Circuit station — Leg-blaster-style eccentric emphasis,33.2
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,home,True,2,wall_sit,2,75 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",33.2
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,home,True,3,eccentric_step_down,2,8/leg,,15,5-0-1,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,33.2
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,home,True,4,spanish_squat,2,15,,15,3-0-3,,Circuit station,33.2
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,home,True,5,split_squat_iso,2,40 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,33.2
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,home,True,6,calf_raise,2,15,,15,3-0-3,,Circuit station — Slow — toeside-pressure endurance,33.2
+W16D3,2026-12-12,16,4,C — Quad Endurance + Aerobic,home,True,7,home_aerobic_circuit,1,6 min continuous easy pace,,0,,,Aerobic finisher — Conversational pace (Zone 2),33.2
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,gym,False,1,back_squat,2,4-5,8,0,2-0-1,C1,"Contrast pair — crisp, no grinding",41.7
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,gym,False,2,box_jump,2,3,,150,,C1,Contrast pair: 30 s after squat set; max intent,41.7
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,gym,False,3,db_rdl,2,6-8,8,120,,,,41.7
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,gym,False,4,db_bench_press,2,8-10,8,0,,S1,,41.7
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,gym,False,5,one_arm_db_row,2,8-10/arm,8,60,,S1,,41.7
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,gym,False,6,sl_balance,3,30 s/leg,,30,,,Pad or eyes closed — proprioception density,41.7
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,gym,False,7,pallof_press,2,10/side,,60,,,,41.7
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,home,False,1,goblet_squat,2,5,8,0,2-0-1,C1,Contrast pair — crisp,31.1
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,home,False,2,jump_squat,2,3,,120,,C1,Contrast pair: 30 s after squat set; max intent,31.1
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,home,False,3,db_rdl,2,6-8,8,90,,,,31.1
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,home,False,4,push_up,2,8-12,8,45,,,,31.1
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,home,False,5,sl_balance,3,30 s/leg,,30,,,Pad/pillow or eyes closed,31.1
+W17D1,2026-12-14,17,5,A — Lower Strength + Core,home,False,6,dead_bug,2,8/side,,45,,,,31.1
+W17D2,2026-12-16,17,5,B — Power + Balance,gym,False,1,box_jump,4,3,,90,,,"Max intent, stick every landing; full recovery between sets",45.8
+W17D2,2026-12-16,17,5,B — Power + Balance,gym,False,2,sl_hop_stick,3,4/leg,,75,,,"Max intent, stick every landing; full recovery between sets",45.8
+W17D2,2026-12-16,17,5,B — Power + Balance,gym,False,3,pogo_hop,3,10,,60,,,"Max intent, stick every landing; full recovery between sets",45.8
+W17D2,2026-12-16,17,5,B — Power + Balance,gym,False,4,jump_squat,3,4,,90,,,"Max intent, stick every landing; full recovery between sets",45.8
+W17D2,2026-12-16,17,5,B — Power + Balance,gym,False,5,sl_balance,3,30 s/leg,,30,,,Pad + eyes closed — pre-season proprioception,45.8
+W17D2,2026-12-16,17,5,B — Power + Balance,gym,False,6,mb_rotational_throw,2,5/side,,60,,,,45.8
+W17D2,2026-12-16,17,5,B — Power + Balance,gym,False,7,calf_raise,2,12,8,45,2-1-2,,,45.8
+W17D2,2026-12-16,17,5,B — Power + Balance,home,False,1,broad_jump_stick,4,3,,75,,,"Max intent, stick every landing; full recovery between sets (home swap for box jump)",37.5
+W17D2,2026-12-16,17,5,B — Power + Balance,home,False,2,sl_hop_stick,3,4/leg,,60,,,"Max intent, stick every landing; full recovery between sets",37.5
+W17D2,2026-12-16,17,5,B — Power + Balance,home,False,3,pogo_hop,3,10,,45,,,"Max intent, stick every landing; full recovery between sets",37.5
+W17D2,2026-12-16,17,5,B — Power + Balance,home,False,4,jump_squat,3,4,,75,,,"Max intent, stick every landing; full recovery between sets",37.5
+W17D2,2026-12-16,17,5,B — Power + Balance,home,False,5,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",37.5
+W17D2,2026-12-16,17,5,B — Power + Balance,home,False,6,sl_balance,3,30 s/leg,,30,,,,37.5
+W17D2,2026-12-16,17,5,B — Power + Balance,home,False,7,calf_raise,2,15,8,45,2-1-2,,On stair edge,37.5
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,gym,False,1,goblet_squat,2,8,,15,3-0-3,,"Circuit station — Sharpen, don't bury yourself",42.0
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,gym,False,2,wall_sit,2,90 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",42.0
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,gym,False,3,spanish_squat,2,12,,15,3-0-3,,Circuit station,42.0
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,gym,False,4,split_squat_iso,2,30 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,42.0
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,gym,False,5,calf_raise,2,12,,15,3-0-3,,Circuit station,42.0
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,gym,False,6,sl_balance,2,30 s/leg,,15,,,Circuit station — Pad or eyes closed,42.0
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,gym,False,7,bike_z2,1,12 min steady,,0,,,Aerobic finisher — Conversational pace (Zone 2),42.0
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,home,False,1,goblet_squat,2,8,,15,3-0-3,,"Circuit station — Sharpen, don't bury yourself",33.5
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,home,False,2,wall_sit,2,90 s,,15,iso,,"Circuit station — The 'legs burn out' fix — breathe, stay tall",33.5
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,home,False,3,spanish_squat,2,12,,15,3-0-3,,Circuit station,33.5
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,home,False,4,split_squat_iso,2,30 s/side,,15,iso,,Circuit station — Reduce depth or skip if any knee pain; sub +15 s wall sit,33.5
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,home,False,5,calf_raise,2,12,,15,3-0-3,,Circuit station,33.5
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,home,False,6,sl_balance,2,30 s/leg,,15,,,Circuit station — Pad or eyes closed,33.5
+W17D3,2026-12-19,17,5,C — Quad Endurance + Aerobic,home,False,7,home_aerobic_circuit,1,8 min continuous easy pace,,0,,,Aerobic finisher — Conversational pace (Zone 2),33.5
+W18D1,2026-12-21,18,5,A — Lower Strength + Core,gym,False,1,back_squat,2,4-5,8,0,2-0-1,C1,"Contrast pair — crisp, no grinding",35.5
+W18D1,2026-12-21,18,5,A — Lower Strength + Core,gym,False,2,box_jump,2,3,,150,,C1,Contrast pair: 30 s after squat set; max intent,35.5
+W18D1,2026-12-21,18,5,A — Lower Strength + Core,gym,False,3,db_rdl,2,6-8,8,120,,,,35.5
+W18D1,2026-12-21,18,5,A — Lower Strength + Core,gym,False,4,sl_balance,3,30 s/leg,,30,,,Pad or eyes closed — proprioception density,35.5
+W18D1,2026-12-21,18,5,A — Lower Strength + Core,gym,False,5,pallof_press,2,10/side,,60,,,,35.5
+W18D1,2026-12-21,18,5,A — Lower Strength + Core,home,False,1,goblet_squat,2,5,8,0,2-0-1,C1,Contrast pair — crisp,28.2
+W18D1,2026-12-21,18,5,A — Lower Strength + Core,home,False,2,jump_squat,2,3,,120,,C1,Contrast pair: 30 s after squat set; max intent,28.2
+W18D1,2026-12-21,18,5,A — Lower Strength + Core,home,False,3,db_rdl,2,6-8,8,90,,,,28.2
+W18D1,2026-12-21,18,5,A — Lower Strength + Core,home,False,4,sl_balance,3,30 s/leg,,30,,,Pad/pillow or eyes closed,28.2
+W18D1,2026-12-21,18,5,A — Lower Strength + Core,home,False,5,dead_bug,2,8/side,,45,,,,28.2
+W18D2,2026-12-23,18,5,B — Power + Balance,gym,False,1,box_jump,3,3,,75,,,"Max intent, stick every landing; full recovery between sets",34.2
+W18D2,2026-12-23,18,5,B — Power + Balance,gym,False,2,sl_hop_stick,3,3/leg,,75,,,"Max intent, stick every landing; full recovery between sets",34.2
+W18D2,2026-12-23,18,5,B — Power + Balance,gym,False,3,pogo_hop,3,10,,60,,,"Max intent, stick every landing; full recovery between sets",34.2
+W18D2,2026-12-23,18,5,B — Power + Balance,gym,False,4,sl_balance,3,30 s/leg,,30,,,Pad + eyes closed — pre-season proprioception,34.2
+W18D2,2026-12-23,18,5,B — Power + Balance,gym,False,5,calf_raise,2,12,8,45,2-1-2,,,34.2
+W18D2,2026-12-23,18,5,B — Power + Balance,home,False,1,broad_jump_stick,3,3,,60,,,"Max intent, stick every landing; full recovery between sets (home swap for box jump)",30.2
+W18D2,2026-12-23,18,5,B — Power + Balance,home,False,2,sl_hop_stick,3,3/leg,,60,,,"Max intent, stick every landing; full recovery between sets",30.2
+W18D2,2026-12-23,18,5,B — Power + Balance,home,False,3,pogo_hop,3,10,,45,,,"Max intent, stick every landing; full recovery between sets",30.2
+W18D2,2026-12-23,18,5,B — Power + Balance,home,False,4,band_rotational_chop,2,8/side,,45,,,"Fast, athletic stance",30.2
+W18D2,2026-12-23,18,5,B — Power + Balance,home,False,5,sl_balance,3,30 s/leg,,30,,,,30.2
+W18D2,2026-12-23,18,5,B — Power + Balance,home,False,6,calf_raise,2,15,8,45,2-1-2,,On stair edge,30.2
