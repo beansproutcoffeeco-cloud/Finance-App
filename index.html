@@ -479,23 +479,26 @@ const CAT_PALETTE = [
   '#2a78d6', '#1baf7a', '#e0803a', '#7b61c4', '#b8558f', '#d0553b',
   '#3aa5b0', '#c25b7c', '#c99a2e', '#5f8bd0', '#6aa84f', '#8a8f98',
 ];
+// The Uncategorized bucket — shared by the seed set and catById's fallback
+// for dangling ids. Always spread into a fresh copy, never handed out live.
+const UNCAT_SEED = { id: 'uncat', name: 'Uncategorized', emoji: '❓', color: '#a0a09a', kind: 'expense', budget: null };
 function seedCategories() {
-  const mk = (id, name, emoji, color, kind) => ({ id, name, emoji, color, kind: kind || 'expense', budget: null });
+  const mk = ([id, name, emoji, kind], i) => ({ id, name, emoji, color: CAT_PALETTE[i], kind: kind || 'expense', budget: null });
+  // Colors follow CAT_PALETTE positionally; uncat keeps its own muted 13th hue.
   return [
-    mk('housing', 'Housing', '🏠', '#2a78d6'),
-    mk('groceries', 'Groceries', '🛒', '#1baf7a'),
-    mk('dining', 'Dining', '🍽️', '#e0803a'),
-    mk('transport', 'Transport', '🚗', '#7b61c4'),
-    mk('shopping', 'Shopping', '🛍️', '#b8558f'),
-    mk('subscriptions', 'Subscriptions', '📺', '#d0553b'),
-    mk('utilities', 'Utilities', '💡', '#3aa5b0'),
-    mk('health', 'Health', '💊', '#c25b7c'),
-    mk('entertainment', 'Entertainment', '🎬', '#c99a2e'),
-    mk('travel', 'Travel', '✈️', '#5f8bd0'),
-    mk('income', 'Income', '💵', '#6aa84f', 'income'),
-    mk('other', 'Other', '📦', '#8a8f98'),
-    mk('uncat', 'Uncategorized', '❓', '#a0a09a'),
-  ];
+    ['housing', 'Housing', '🏠'],
+    ['groceries', 'Groceries', '🛒'],
+    ['dining', 'Dining', '🍽️'],
+    ['transport', 'Transport', '🚗'],
+    ['shopping', 'Shopping', '🛍️'],
+    ['subscriptions', 'Subscriptions', '📺'],
+    ['utilities', 'Utilities', '💡'],
+    ['health', 'Health', '💊'],
+    ['entertainment', 'Entertainment', '🎬'],
+    ['travel', 'Travel', '✈️'],
+    ['income', 'Income', '💵', 'income'],
+    ['other', 'Other', '📦'],
+  ].map(mk).concat([{ ...UNCAT_SEED }]);
 }
 
 // Keyword seeds applied at import when no learned rule matches. Matched
@@ -625,7 +628,7 @@ function dateLabel(dateStr) {
 function catById(id) {
   return data.categories.find(c => c.id === id)
     || data.categories.find(c => c.id === 'uncat')
-    || { id: 'uncat', name: 'Uncategorized', emoji: '❓', color: '#a0a09a', kind: 'expense', budget: null };
+    || { ...UNCAT_SEED };
 }
 // A category's display color, tolerating old records with no color set.
 function catColor(cat) { return (cat && cat.color) || 'var(--series-1)'; }
@@ -662,9 +665,14 @@ function savingsFlow(ym, types, accountId) {
   return sum;
 }
 
+// An account's manual balance snapshots, oldest → newest.
+function snapshotsFor(acctId) {
+  return (data.balances || []).filter(b => b.accountId === acctId).sort((a, b) => a.date.localeCompare(b.date));
+}
+
 // Balance = latest manual snapshot + transaction flows since (or flows-only if never set).
 function acctBalance(acct) {
-  const snaps = (data.balances || []).filter(b => b.accountId === acct.id).sort((a, b) => a.date.localeCompare(b.date));
+  const snaps = snapshotsFor(acct.id);
   const snap = snaps.length ? snaps[snaps.length - 1] : null;
   let bal = snap ? snap.balance : 0;
   for (const t of data.transactions) {
@@ -678,7 +686,7 @@ function acctBalance(acct) {
 // Investment growth the CSVs can't see: change between first and latest balance
 // snapshots minus the money added in between = market gains/losses.
 function marketGains(acct) {
-  const snaps = (data.balances || []).filter(b => b.accountId === acct.id).sort((a, b) => a.date.localeCompare(b.date));
+  const snaps = snapshotsFor(acct.id);
   if (snaps.length < 2) return null;
   const first = snaps[0], last = snaps[snaps.length - 1];
   let flows = 0;
@@ -696,6 +704,15 @@ function titleCase(s) {
 function csvCell(v) {
   const s = v == null ? '' : String(v);
   return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+}
+
+// Trigger a browser download of a Blob via a temporary object URL.
+function downloadBlob(blob, filename) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
 }
 
 // Show a transient toast. Pass an optional action { label, fn } to render an
@@ -731,13 +748,11 @@ function merchantKey(desc) {
   return s.slice(0, 40);
 }
 
-function autoCategory(key, rawDesc, amount) {
+function autoCategory(key) {
   if (data.rules[key]) return data.rules[key];
-  // A merchant match wins regardless of sign: a positive amount at a known
-  // expense merchant is a credit/refund and stays in that expense category
-  // (e.g. a returned Amazon purchase stays under Shopping), while a match on
-  // the income rule stays income. Only genuine income-rule hits become
-  // 'income'; anything unrecognized goes to review, never silently income.
+  // Learned rule first, then keyword seeds. The amount's sign is deliberately
+  // not consulted: a refund at a known merchant stays in that merchant's
+  // category, and anything unrecognized goes to review, never silently income.
   for (const [re, cat] of KEYWORD_RULES) {
     if (re.test(key)) return cat;
   }
@@ -914,6 +929,13 @@ function fingerprintBase(accountId, date, amount, desc) {
   return accountId + '|' + date + '|' + amount + '|' + merchantKey(desc).slice(0, 30);
 }
 
+// Every mutation of data.transactions ends here: re-sort newest-first
+// (id as the tiebreaker for same-day rows) and persist in one step.
+function commitTxns() {
+  data.transactions.sort((a, b) => b.date.localeCompare(a.date) || (a.id < b.id ? 1 : -1));
+  saveData();
+}
+
 // Import parsed rows into an account. Duplicate-safe across re-imports:
 // identical rows within one file get occurrence-numbered fingerprints so
 // legitimate same-day duplicates import, but re-importing the same file skips.
@@ -937,7 +959,7 @@ function importRows(parsedRows, accountId) {
       desc: row.desc,
       merchantKey: key,
       accountId,
-      categoryId: isXfer ? 'uncat' : autoCategory(key, row.desc, row.amount),
+      categoryId: isXfer ? 'uncat' : autoCategory(key),
       isTransfer: isXfer,
       source: 'csv',
       fp,
@@ -945,8 +967,7 @@ function importRows(parsedRows, accountId) {
   }
   data.transactions.push(...added);
   detectTransferPairs(added);
-  data.transactions.sort((a, b) => b.date.localeCompare(a.date) || (a.id < b.id ? 1 : -1));
-  saveData();
+  commitTxns();
   return { added: added.length, dupes, invalid, transfers: added.filter(t => t.isTransfer).length };
 }
 
@@ -986,6 +1007,15 @@ function monthTotals(ym) {
     }
   }
   return { income, spending, net: income - spending, byCat };
+}
+
+// Per-render memo over monthTotals: one dashboard render can hit the same few
+// months dozens of times (hero, setup card, suggestions, trends). Cleared at
+// the top of every render() — any data change re-renders, so entries never go
+// stale. monthTotals itself stays uncached; callers must not mutate results.
+let mtCache = Object.create(null);
+function monthTotalsCached(ym) {
+  return mtCache[ym] || (mtCache[ym] = monthTotals(ym));
 }
 
 function lastNMonths(n, endYm) {
@@ -1077,13 +1107,28 @@ function paceExpectedFrac(ym, mp) {
   return fracs.length ? median(fracs) : mp.frac;
 }
 
+// "On pace" when spend is within this fraction of the total budget of the
+// expected-by-today amount — the one 3% threshold, shared by hero and card.
+const PACE_ON_FRAC = 0.03;
+
+// The month's pace picture, computed once per dashboard render and shared by
+// the hero tile and the budget card. frac = expected share of budget spent by
+// today (calendar share for past/future months); state: 'on' | 'over' | 'ahead'.
+function computePace(ym, bs, mp, isCurMonth) {
+  const frac = isCurMonth ? paceExpectedFrac(ym, mp) : mp.frac;
+  const expected = Math.round(bs.totalBudget * frac);
+  const diff = bs.totalSpent - expected;
+  const st = Math.abs(diff) <= bs.totalBudget * PACE_ON_FRAC ? 'on' : diff > 0 ? 'over' : 'ahead';
+  return { frac, expected, diff, state: st };
+}
+
 // Suggest a monthly budget from the last 3 completed months: average of the
 // months that actually had spend, but only when at least 2 did (one data point
 // is too thin to suggest from). Returns cents, or null when there's no basis.
 function suggestBudget(catId) {
   const months = lastNMonths(3, monthAdd(curMonth(), -1));
   const spends = months
-    .map(ym => Math.max(0, monthTotals(ym).byCat[catId] || 0))
+    .map(ym => Math.max(0, monthTotalsCached(ym).byCat[catId] || 0))
     .filter(v => v > 0);
   if (spends.length < 2) return null;
   const avg = spends.reduce((s, v) => s + v, 0) / spends.length;
@@ -1112,7 +1157,7 @@ function detectRecurring() {
   for (const gk of Object.keys(groups)) {
     const txns = groups[gk];
     if (txns.length < 3) continue;
-    const direction = txns[0].amount < 0 ? 'expense' : 'income';
+    const direction = gk.slice(0, gk.indexOf('|')); // 'expense' or 'income' — encoded in the group key
     txns.sort((a, b) => a.date.localeCompare(b.date));
     const intervals = [];
     for (let i = 1; i < txns.length; i++) intervals.push(dayDiff(txns[i - 1].date, txns[i].date));
@@ -1185,6 +1230,7 @@ function renderTabbar() {
 }
 
 function render() {
+  mtCache = Object.create(null); // fresh memo per render — data may have changed
   renderTabbar();
   hideTip();
   const app = $('#app');
@@ -1211,6 +1257,22 @@ function wireEmpty(el) {
   if (a) a.onclick = () => { state.view = 'transactions'; render(); };
 }
 
+// Standard activation wiring for role=button elements: click + Enter/Space.
+// opts.selfOnly ignores key events bubbling up from focusable children (so an
+// embedded button keeps its own Enter); opts.stopProp also stops propagation
+// (for chips nested inside other tappable rows). Overwrite el.onclick after
+// calling when the click path needs its own guard.
+function wirePress(el, act, opts) {
+  el.onclick = opts && opts.stopProp ? e => { e.stopPropagation(); act(); } : act;
+  el.onkeydown = e => {
+    if (opts && opts.selfOnly && e.target !== el) return;
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+    if (opts && opts.stopProp) e.stopPropagation();
+    act();
+  };
+}
+
 /* ---------- dashboard ---------- */
 // moneyAbs with the trailing cents wrapped in a span so hero tiles can
 // de-emphasize them (only styled under .tile.hero — inert elsewhere).
@@ -1222,8 +1284,8 @@ function moneyAbsHero(cents) {
 
 function renderDashboard(app) {
   const ym = state.dashMonth;
-  const t = monthTotals(ym);
-  const prev = monthTotals(monthAdd(ym, -1));
+  const t = monthTotalsCached(ym);
+  const prev = monthTotalsCached(monthAdd(ym, -1));
   const nw = netWorth();
   const hasAny = data.transactions.length > 0;
 
@@ -1258,6 +1320,7 @@ function renderDashboard(app) {
   const mp = monthProgress(ym);
   const hasBudgets = bs.rows.length > 0;
   const isCurMonth = ym === curMonth();
+  const pace = hasBudgets ? computePace(ym, bs, mp, isCurMonth) : null;
   // Hero becomes "Left to spend" only when budgets exist AND we're looking at
   // the current month; past months and budget-less data keep Net (zero regression).
   const heroBudget = hasBudgets && isCurMonth;
@@ -1268,12 +1331,10 @@ function renderDashboard(app) {
   let heroHtml;
   if (heroBudget) {
     const overCount = bs.rows.filter(r => r.state === 'over').length;
-    const expected = Math.round(bs.totalBudget * paceExpectedFrac(ym, mp));
-    const paceDiff = bs.totalSpent - expected;
     let paceBit;
-    if (Math.abs(paceDiff) <= bs.totalBudget * 0.03) paceBit = `<span style="color:var(--good-text)">on pace ✓</span>`;
-    else if (paceDiff > 0) paceBit = `<span style="color:var(--text-warning)">${moneyAbs(paceDiff)} over pace</span>`;
-    else paceBit = `<span style="color:var(--good-text)">${moneyAbs(paceDiff)} ahead of pace</span>`;
+    if (pace.state === 'on') paceBit = `<span style="color:var(--good-text)">on pace ✓</span>`;
+    else if (pace.state === 'over') paceBit = `<span style="color:var(--text-warning)">${moneyAbs(pace.diff)} over pace</span>`;
+    else paceBit = `<span style="color:var(--good-text)">${moneyAbs(pace.diff)} ahead of pace</span>`;
     const overBit = overCount ? ` · <span style="color:var(--critical)">${overCount} over budget</span>` : '';
     heroHtml = `<div class="tile hero">
       <div class="lbl">Left to spend · ${monthLabel(ym)}</div>
@@ -1318,7 +1379,7 @@ function renderDashboard(app) {
     </div>` : ''}
   </div>`;
 
-  html += budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth);
+  html += budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth, pace);
 
   // category breakdown — single-series horizontal bars, direct-labeled
   const cats = Object.entries(t.byCat)
@@ -1353,23 +1414,18 @@ function renderDashboard(app) {
   if (gs) gs.onclick = (e) => { e.preventDefault(); state.view = 'settings'; render(); };
 
   // Tiles drill into the month's transactions (Spending = expenses, Income = income).
-  $$('.tile[data-drill]', app).forEach(el => {
-    const act = () => drillToActivity(el.dataset.drill === 'income' ? '__income__' : '__expense__', ym);
-    el.onclick = act;
-    el.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } };
-  });
+  $$('.tile[data-drill]', app).forEach(el =>
+    wirePress(el, () => drillToActivity(el.dataset.drill === 'income' ? '__income__' : '__expense__', ym)));
   // Category rows drill into that category for this month.
-  $$('.cbar .crow', app).forEach(el => {
-    const act = () => drillToActivity(el.dataset.cat, ym);
-    el.onclick = act;
-    el.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } };
-  });
+  $$('.cbar .crow', app).forEach(el =>
+    wirePress(el, () => drillToActivity(el.dataset.cat, ym)));
 
-  // Budget meter rows drill like .crow; the ✎ button toggles the inline editor.
+  // Budget meter rows drill like .crow; the ✎ button toggles the inline editor,
+  // so clicks and key events on it must stay the button's.
   $$('.meter[data-cat]', app).forEach(el => {
     const act = () => drillToActivity(el.dataset.cat, ym);
+    wirePress(el, act, { selfOnly: true });
     el.onclick = e => { if (e.target.closest && e.target.closest('.budget-edit')) return; act(); };
-    el.onkeydown = e => { if (e.target !== el) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } };
   });
   $$('.budget-edit', app).forEach(btn => {
     btn.onclick = e => {
@@ -1381,16 +1437,9 @@ function renderDashboard(app) {
 
   // "Everything else" expands into the unbudgeted category list.
   const ubt = $('#ub-toggle', app);
-  if (ubt) {
-    const tog = () => { state.unbudgetedOpen = !state.unbudgetedOpen; render(); };
-    ubt.onclick = tog;
-    ubt.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tog(); } };
-  }
-  $$('.ub-set', app).forEach(chip => {
-    const act = () => { state.budgetEdit = chip.dataset.cat; render(); };
-    chip.onclick = e => { e.stopPropagation(); act(); };
-    chip.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); act(); } };
-  });
+  if (ubt) wirePress(ubt, () => { state.unbudgetedOpen = !state.unbudgetedOpen; render(); });
+  $$('.ub-set', app).forEach(chip =>
+    wirePress(chip, () => { state.budgetEdit = chip.dataset.cat; render(); }, { stopProp: true }));
 
   wireBudgetEditor(app);
 
@@ -1429,7 +1478,7 @@ function renderDashboard(app) {
 // The dashboard's budget card: overall bar + pace copy, per-category meters
 // (over → near → ok, remaining-first labels), the "Everything else" rollup,
 // and — when no budgets exist yet — the one-time setup card.
-function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth) {
+function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth, pace) {
   if (!hasBudgets) {
     if (data.settings && data.settings.budgetsSetupDismissed) {
       return `<div class="sub" style="margin:0 2px 12px"><a href="#" id="budget-reopen">Set budgets →</a></div>`;
@@ -1440,15 +1489,12 @@ function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth) {
   const overallPct = bs.totalBudget ? bs.totalSpent / bs.totalBudget : 0;
   const fillColor = overallPct > 1 ? 'var(--critical)' : overallPct >= 0.9 ? 'var(--warning)' : 'var(--accent)';
   let paceLine = '';
-  const paceFrac = isCurMonth ? paceExpectedFrac(ym, mp) : mp.frac;
   if (isCurMonth) {
-    const expected = Math.round(bs.totalBudget * paceFrac);
-    const diff = bs.totalSpent - expected;
-    if (Math.abs(diff) <= bs.totalBudget * 0.03) paceLine = 'On pace';
-    else if (diff > 0) paceLine = `${moneyAbs(diff)} over pace for day ${mp.day}`;
-    else paceLine = `${moneyAbs(diff)} ahead of pace`;
+    if (pace.state === 'on') paceLine = 'On pace';
+    else if (pace.state === 'over') paceLine = `${moneyAbs(pace.diff)} over pace for day ${mp.day}`;
+    else paceLine = `${moneyAbs(pace.diff)} ahead of pace`;
     // Projection needs a week of data before it stops being noise.
-    if (mp.day > 7 && paceFrac > 0) paceLine += ` · ~${moneyAbs(Math.round(bs.totalSpent / paceFrac))} by month end at this rate`;
+    if (mp.day > 7 && pace.frac > 0) paceLine += ` · ~${moneyAbs(Math.round(bs.totalSpent / pace.frac))} by month end at this rate`;
   } else if (ym < curMonth()) {
     paceLine = bs.left >= 0 ? `Finished ${moneyAbs(bs.left)} under budget ✓` : `${moneyAbs(bs.left)} over budget`;
   }
@@ -1457,7 +1503,7 @@ function budgetCardHtml(ym, t, bs, mp, hasBudgets, isCurMonth) {
     <div class="meter overall">
       <div class="top"><span class="nm">${moneyAbs(bs.totalSpent)} of ${moneyAbs(bs.totalBudget)}</span>
         <span class="st">${bs.left >= 0 ? moneyAbs(bs.left) + ' left' : `<span style="color:var(--critical)">${moneyAbs(bs.left)} over</span>`}</span></div>
-      <div class="track" role="meter" aria-valuemin="0" aria-valuemax="${Math.round(bs.totalBudget / 100)}" aria-valuenow="${Math.round(bs.totalSpent / 100)}" aria-label="Overall budget"><div class="fill" style="width:${Math.min(100, Math.max(0, overallPct * 100))}%;background:${fillColor}"></div>${isCurMonth ? `<div class="pace-tick" style="left:calc(${(paceFrac * 100).toFixed(1)}% - 1px)"></div>` : ''}</div>
+      <div class="track" role="meter" aria-valuemin="0" aria-valuemax="${Math.round(bs.totalBudget / 100)}" aria-valuenow="${Math.round(bs.totalSpent / 100)}" aria-label="Overall budget"><div class="fill" style="width:${Math.min(100, Math.max(0, overallPct * 100))}%;background:${fillColor}"></div>${isCurMonth ? `<div class="pace-tick" style="left:calc(${(pace.frac * 100).toFixed(1)}% - 1px)"></div>` : ''}</div>
       ${paceLine ? `<div class="sub" style="margin-top:4px">${paceLine}</div>` : ''}
     </div>`;
 
@@ -1524,7 +1570,7 @@ function budgetSetupCardHtml() {
   const cand = data.categories
     .filter(c => c.kind !== 'income' && c.id !== 'uncat')
     .map(c => {
-      const avg = compMonths.reduce((s, m) => s + Math.max(0, monthTotals(m).byCat[c.id] || 0), 0) / compMonths.length;
+      const avg = compMonths.reduce((s, m) => s + Math.max(0, monthTotalsCached(m).byCat[c.id] || 0), 0) / compMonths.length;
       return { cat: c, avg, sug: suggestBudget(c.id) };
     })
     .filter(x => x.avg > 0)
@@ -1564,18 +1610,24 @@ function budgetEditorHtml(c) {
   </div>`;
 }
 
-// Save/remove semantics identical to the Settings budget inputs — two doors,
-// one field (cat.budget in cents, null = no budget).
+// The one budget-save path, shared by both doors (inline editor + Settings):
+// any positive dollar amount sets cat.budget in cents, anything else clears it.
+// Persists and toasts; callers decide whether to re-render.
+function setCatBudget(cat, rawValue) {
+  const v = parseFloat(rawValue);
+  cat.budget = isFinite(v) && v > 0 ? Math.round(v * 100) : null;
+  saveData();
+  toast(cat.budget ? `${cat.name} budget: ${moneyAbs(cat.budget)}/mo` : `${cat.name} budget removed`);
+}
+
 function wireBudgetEditor(root) {
   const ed = $('.budget-editor', root);
   if (!ed) return;
   const c = data.categories.find(x => x.id === ed.dataset.cat);
   if (!c) return;
   const save = () => {
-    const v = parseFloat($('#be-amt', ed).value);
-    c.budget = isFinite(v) && v > 0 ? Math.round(v * 100) : null;
-    saveData(); state.budgetEdit = null; render();
-    toast(c.budget ? `${c.name} budget: ${moneyAbs(c.budget)}/month` : `${c.name} budget removed`);
+    setCatBudget(c, $('#be-amt', ed).value);
+    state.budgetEdit = null; render();
   };
   $('#be-save', ed).onclick = save;
   $('#be-amt', ed).onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); save(); } };
@@ -1586,14 +1638,10 @@ function wireBudgetEditor(root) {
   };
   $('#be-cancel', ed).onclick = () => { state.budgetEdit = null; render(); };
   const sugChip = $('#be-sug', ed);
-  if (sugChip) {
-    const fill = () => {
-      const s = suggestBudget(c.id);
-      if (s != null) $('#be-amt', ed).value = (s / 100).toFixed(0);
-    };
-    sugChip.onclick = fill;
-    sugChip.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fill(); } };
-  }
+  if (sugChip) wirePress(sugChip, () => {
+    const s = suggestBudget(c.id);
+    if (s != null) $('#be-amt', ed).value = (s / 100).toFixed(0);
+  });
 }
 
 // Shrink tile values that would overflow their tile (7-digit net worth) down
@@ -1635,8 +1683,7 @@ function wireMonthJump() {
     jump.focus();
     if (jump.showPicker) { try { jump.showPicker(); } catch (e) { /* not supported */ } }
   };
-  cur.onclick = open;
-  cur.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } };
+  wirePress(cur, open);
   jump.onchange = () => {
     const v = jump.value;
     if (v && /^\d{4}-\d{2}$/.test(v) && v <= curMonth()) { state.dashMonth = v; render(); }
@@ -1668,13 +1715,13 @@ function renderTrends(app) {
   let series;
   if (catSel === 'all') {
     const inc = [], spd = [];
-    for (const ym of months) { const t = monthTotals(ym); inc.push(t.income); spd.push(t.spending); }
+    for (const ym of months) { const t = monthTotalsCached(ym); inc.push(t.income); spd.push(t.spending); }
     series = [
       { name: 'Spending', color: 'var(--series-1)', values: spd },
       { name: 'Income', color: 'var(--series-2)', values: inc },
     ];
   } else {
-    const vals = months.map(ym => monthTotals(ym).byCat[catSel] || 0);
+    const vals = months.map(ym => monthTotalsCached(ym).byCat[catSel] || 0);
     series = [{ name: catById(catSel).name, color: catColor(catById(catSel)), values: vals }];
   }
 
@@ -1688,8 +1735,7 @@ function renderTrends(app) {
       </select>
     </div>`;
 
-  html += `<div class="legend">` + series.map(s =>
-    `<span class="key"><span class="swatch" style="background:${s.color}"></span>${esc(s.name)}${series.length === 1 ? ` · ${moneyAbs(s.values[s.values.length - 1])}` : ''}</span>`).join('') + `</div>`;
+  html += legendHtml(series);
   html += `<div class="chartwrap" id="trend-chart"></div></div>`;
 
   // table twin — every charted value reachable without hover
@@ -1705,6 +1751,12 @@ function renderTrends(app) {
   app.innerHTML = html;
   $('#trend-cat').onchange = e => { state.trendCat = e.target.value; render(); };
   drawLineChart($('#trend-chart'), months, series);
+}
+
+// Legend for drawLineChart series; a lone series shows its latest value inline.
+function legendHtml(series) {
+  return `<div class="legend">` + series.map(s =>
+    `<span class="key"><span class="swatch" style="background:${s.color}"></span>${esc(s.name)}${series.length === 1 ? ` · ${moneyAbs(s.values[s.values.length - 1])}` : ''}</span>`).join('') + `</div>`;
 }
 
 function niceCeil(v) {
@@ -1932,55 +1984,12 @@ function renderTransactions(app) {
     html += `<div style="margin-bottom:10px"><span class="chip ${state.fUncatOnly ? 'on' : ''}" id="chip-uncat" role="button" tabindex="0" aria-pressed="${state.fUncatOnly}">❓ Needs review · ${uncatN}</span></div>`;
   }
 
-  const matches = data.transactions.filter(txnMatchesFilters);
-  // Bulk-categorize bar: only while the review queue filter is active and it
-  // actually has items in view (all matches are uncat when fUncatOnly is on).
-  if (state.fUncatOnly && matches.length) {
-    html += `<div class="card" id="bulk-bar" style="padding:10px 12px;margin-bottom:10px">
-      <div class="row">
-        <span class="sub" style="flex:0 0 auto">Set category for all ${matches.length} shown:</span>
-        <select id="bulk-cat" class="grow" style="flex:1 1 140px">${data.categories.filter(c => c.id !== 'uncat').map(c => `<option value="${c.id}">${c.emoji} ${esc(c.name)}</option>`).join('')}</select>
-        <button class="btn small" id="bulk-apply">Apply to all shown</button>
-      </div>
-      <label class="chk" style="margin:8px 0 0;display:flex;gap:6px;font-size:13px;color:var(--text-secondary)">
-        <input type="checkbox" id="bulk-learn" checked> Also remember by merchant (learn rules for these)
-      </label>
-    </div>`;
-  }
-  if (!data.transactions.length) {
-    html += emptyState();
-  } else if (!matches.length) {
-    html += `<div class="card empty"><div><strong>No matches</strong></div>
-      <div class="sub" style="margin:6px 0 12px">Nothing fits these filters.</div>
-      <button class="btn secondary small" id="clear-filters">Clear filters</button></div>`;
-  } else {
-    const shown = matches.slice(0, state.showCount);
-    let lastDay = '', groupOpen = false;
-    for (const t of shown) {
-      if (t.date !== lastDay) {
-        if (groupOpen) html += `</div>`;
-        html += `<div class="dayhdr">${dateLabel(t.date)}</div><div class="daygroup">`;
-        groupOpen = true;
-        lastDay = t.date;
-      }
-      html += txnRowHtml(t);
-      if (state.editingId === t.id) html += txnEditorHtml(t);
-    }
-    if (groupOpen) html += `</div>`;
-    if (matches.length > shown.length) {
-      html += `<div style="text-align:center;margin:12px 0"><button class="btn secondary" id="show-more">Show more (${matches.length - shown.length} left)</button></div>`;
-    }
-  }
+  html += `<div id="txn-list">${txnListHtml()}</div>`;
 
   app.innerHTML = html;
-  wireEmpty(app);
 
   const addToggle = $('#addtxn-toggle');
-  if (addToggle) {
-    const tog = () => { state.addOpen = !state.addOpen; render(); };
-    addToggle.onclick = tog;
-    addToggle.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tog(); } };
-  }
+  if (addToggle) wirePress(addToggle, () => { state.addOpen = !state.addOpen; render(); });
 
   $('#quickadd').onsubmit = e => {
     e.preventDefault();
@@ -1994,56 +2003,102 @@ function renderTransactions(app) {
       merchantKey: merchantKey(desc), accountId: $('#qa-acct').value,
       categoryId: $('#qa-cat').value, isTransfer: false, source: 'manual', fp: null,
     });
-    data.transactions.sort((a, b) => b.date.localeCompare(a.date) || (a.id < b.id ? 1 : -1));
-    saveData();
+    commitTxns();
     toast('Added ' + moneyAbs(amount));
     render();
   };
   $('#open-import').onclick = openImportModal;
-  $('#f-search').oninput = e => { state.fSearch = e.target.value; state.showCount = 100; renderListOnly(); };
+  // Search keystrokes are the hottest input path: rebuild only the results
+  // inside #txn-list, leaving the search input (and its focus/caret) alone.
+  $('#f-search').oninput = e => {
+    state.fSearch = e.target.value;
+    state.showCount = 100;
+    const list = $('#txn-list');
+    list.innerHTML = txnListHtml();
+    wireTxnList(list);
+  };
   $('#f-acct').onchange = e => { state.fAccount = e.target.value; render(); };
   $('#f-cat').onchange = e => { state.fCategory = e.target.value; render(); };
   $('#f-month').onchange = e => { state.fMonth = e.target.value; render(); };
   $('#f-xfer').onchange = e => { state.fTransfers = e.target.checked; render(); };
   const chip = $('#chip-uncat');
-  if (chip) {
-    const tog = () => { state.fUncatOnly = !state.fUncatOnly; render(); };
-    chip.onclick = tog;
-    chip.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tog(); } };
-  }
-  const clearF = $('#clear-filters');
-  if (clearF) clearF.onclick = () => {
-    state.fSearch = ''; state.fAccount = 'all'; state.fCategory = 'all'; state.fMonth = 'all';
-    state.fTransfers = false; state.fUncatOnly = false; state.showCount = 100;
-    render();
-  };
-  const bulkApply = $('#bulk-apply');
-  if (bulkApply) bulkApply.onclick = () => {
-    const cat = $('#bulk-cat').value;
-    if (!cat || cat === 'uncat') return;
-    const learn = $('#bulk-learn').checked;
-    const targets = data.transactions.filter(txnMatchesFilters);
-    const keys = new Set();
-    let n = 0;
-    for (const t of targets) {
-      if (t.categoryId === 'uncat' && !t.isTransfer) {
-        t.categoryId = cat; n++;
-        if (t.merchantKey) keys.add(t.merchantKey);
+  if (chip) wirePress(chip, () => { state.fUncatOnly = !state.fUncatOnly; render(); });
+  wireTxnList($('#txn-list'));
+
+  // The results portion — bulk bar, empty/no-match cards, day groups and
+  // show-more — i.e. everything the filters change, rebuildable on its own.
+  function txnListHtml() {
+    const matches = data.transactions.filter(txnMatchesFilters);
+    let html = '';
+    // Bulk-categorize bar: only while the review queue filter is active and it
+    // actually has items in view (all matches are uncat when fUncatOnly is on).
+    if (state.fUncatOnly && matches.length) {
+      html += `<div class="card" id="bulk-bar" style="padding:10px 12px;margin-bottom:10px">
+        <div class="row">
+          <span class="sub" style="flex:0 0 auto">Set category for all ${matches.length} shown:</span>
+          <select id="bulk-cat" class="grow" style="flex:1 1 140px">${data.categories.filter(c => c.id !== 'uncat').map(c => `<option value="${c.id}">${c.emoji} ${esc(c.name)}</option>`).join('')}</select>
+          <button class="btn small" id="bulk-apply">Apply to all shown</button>
+        </div>
+        <label class="chk" style="margin:8px 0 0;display:flex;gap:6px;font-size:13px;color:var(--text-secondary)">
+          <input type="checkbox" id="bulk-learn" checked> Also remember by merchant (learn rules for these)
+        </label>
+      </div>`;
+    }
+    if (!data.transactions.length) {
+      html += emptyState();
+    } else if (!matches.length) {
+      html += `<div class="card empty"><div><strong>No matches</strong></div>
+        <div class="sub" style="margin:6px 0 12px">Nothing fits these filters.</div>
+        <button class="btn secondary small" id="clear-filters">Clear filters</button></div>`;
+    } else {
+      const shown = matches.slice(0, state.showCount);
+      let lastDay = '', groupOpen = false;
+      for (const t of shown) {
+        if (t.date !== lastDay) {
+          if (groupOpen) html += `</div>`;
+          html += `<div class="dayhdr">${dateLabel(t.date)}</div><div class="daygroup">`;
+          groupOpen = true;
+          lastDay = t.date;
+        }
+        html += txnRowHtml(t);
+        if (state.editingId === t.id) html += txnEditorHtml(t);
+      }
+      if (groupOpen) html += `</div>`;
+      if (matches.length > shown.length) {
+        html += `<div style="text-align:center;margin:12px 0"><button class="btn secondary" id="show-more">Show more (${matches.length - shown.length} left)</button></div>`;
       }
     }
-    if (learn) for (const k of keys) learnRule(k, cat);
-    data.transactions.sort((a, b) => b.date.localeCompare(a.date) || (a.id < b.id ? 1 : -1));
-    saveData();
-    render();
-    toast(`Categorized ${n} transaction${n === 1 ? '' : 's'} as ${catById(cat).name}`);
-  };
-  const more = $('#show-more');
-  if (more) more.onclick = () => { state.showCount += 200; render(); };
-  wireTxnRows(app);
-  wireEditor(app);
+    return html;
+  }
 
-  // re-render just the list on search keystrokes without losing input focus
-  function renderListOnly() { render(); const s = $('#f-search'); s.focus(); s.setSelectionRange(s.value.length, s.value.length); }
+  function wireTxnList(list) {
+    wireEmpty(list);
+    const clearF = $('#clear-filters', list);
+    if (clearF) clearF.onclick = () => drillToActivity('all', 'all'); // the one filter-reset path
+    const bulkApply = $('#bulk-apply', list);
+    if (bulkApply) bulkApply.onclick = () => {
+      const cat = $('#bulk-cat').value;
+      if (!cat || cat === 'uncat') return;
+      const learn = $('#bulk-learn').checked;
+      const targets = data.transactions.filter(txnMatchesFilters);
+      const keys = new Set();
+      let n = 0;
+      for (const t of targets) {
+        if (t.categoryId === 'uncat' && !t.isTransfer) {
+          t.categoryId = cat; n++;
+          if (t.merchantKey) keys.add(t.merchantKey);
+        }
+      }
+      if (learn) for (const k of keys) learnRule(k, cat);
+      commitTxns();
+      render();
+      toast(`Categorized ${n} transaction${n === 1 ? '' : 's'} as ${catById(cat).name}`);
+    };
+    const more = $('#show-more', list);
+    if (more) more.onclick = () => { state.showCount += 200; render(); };
+    wireTxnRows(list);
+    wireEditor(list);
+  }
 }
 
 function txnRowHtml(t) {
@@ -2083,14 +2138,11 @@ function txnEditorHtml(t) {
 }
 
 function wireTxnRows(root) {
-  $$('.txn', root).forEach(el => {
-    const act = () => {
+  $$('.txn', root).forEach(el =>
+    wirePress(el, () => {
       state.editingId = state.editingId === el.dataset.id ? null : el.dataset.id;
       render();
-    };
-    el.onclick = act;
-    el.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } };
-  });
+    }));
 }
 
 function wireEditor(root) {
@@ -2107,8 +2159,7 @@ function wireEditor(root) {
     saveData(); state.editingId = null; render();
     toast('Deleted', { label: 'Undo', fn: () => {
       data.transactions.push(removed);
-      data.transactions.sort((a, b) => b.date.localeCompare(a.date) || (a.id < b.id ? 1 : -1));
-      saveData(); render(); toast('Transaction restored');
+      commitTxns(); render(); toast('Transaction restored');
     } });
   };
   $('#ed-save', ed).onclick = () => {
@@ -2125,8 +2176,7 @@ function wireEditor(root) {
       t.categoryId = newCat;
       learned = learnRule(t.merchantKey, newCat);
     }
-    data.transactions.sort((a, b) => b.date.localeCompare(a.date) || (a.id < b.id ? 1 : -1));
-    saveData(); state.editingId = null; render();
+    commitTxns(); state.editingId = null; render();
     toast(learned > 0 ? `Saved — rule learned, ${learned} similar transaction${learned > 1 ? 's' : ''} updated` : 'Saved');
   };
 }
@@ -2161,29 +2211,28 @@ function renderSavings(app) {
     ${added !== 0 ? `<div class="tile"><div class="lbl">Added · ${monthLabel(ym)}</div><div class="val">${added < 0 ? '−' : '+'}${moneyAbs(added)}</div></div>` : ''}
   </div>`;
 
-  // 12-month contributions chart (net added per month; withdrawals show in the table)
+  // 12-month contributions chart (net added per month; withdrawals show in the
+  // table, which reads each series' raw flows — the chart clamps them at 0).
   const months = lastNMonths(12, ym);
   const series = [];
+  const flowSeries = (name, color, types) => {
+    const raw = months.map(m => savingsFlow(m, types));
+    return { name, color, types, raw, values: raw.map(v => Math.max(0, v)) };
+  };
   if (data.accounts.some(a => a.type === 'savings')) {
-    series.push({ name: 'Savings', color: 'var(--series-1)', values: months.map(m => Math.max(0, savingsFlow(m, ['savings']))) });
+    series.push(flowSeries('Savings', 'var(--series-1)', ['savings']));
   }
   if (data.accounts.some(a => a.type === 'investment')) {
-    series.push({ name: 'Investments', color: 'var(--series-2)', values: months.map(m => Math.max(0, savingsFlow(m, ['investment']))) });
+    series.push(flowSeries('Investments', 'var(--series-2)', ['investment']));
   }
   html += `<div class="card"><h2>Money added per month</h2>`;
-  if (series.length) {
-    html += `<div class="legend">` + series.map(s =>
-      `<span class="key"><span class="swatch" style="background:${s.color}"></span>${esc(s.name)}${series.length === 1 ? ` · ${moneyAbs(s.values[s.values.length - 1])}` : ''}</span>`).join('') + `</div>`;
-  }
+  if (series.length) html += legendHtml(series);
   html += `<div class="chartwrap" id="sv-chart"></div>
     <div class="preview-scroll flush" style="margin-top:8px"><table class="mini">
     <tr><th>Month</th>${series.map(s => `<th class="num">${esc(s.name)}</th>`).join('')}</tr>`;
   for (let i = months.length - 1; i >= 0; i--) {
     html += `<tr><td>${monthShort(months[i])}</td>` +
-      series.map(s => {
-        const real = savingsFlow(months[i], s.name === 'Savings' ? ['savings'] : ['investment']);
-        return `<td class="num">${real < 0 ? '−' : ''}${moneyAbs(real)}</td>`;
-      }).join('') + `</tr>`;
+      series.map(s => `<td class="num">${s.raw[i] < 0 ? '−' : ''}${moneyAbs(s.raw[i])}</td>`).join('') + `</tr>`;
   }
   html += `</table></div></div>`;
 
@@ -2264,9 +2313,10 @@ function renderRecurring(app) {
     html += `</div>`;
   }
   app.innerHTML = html;
-  $$('.rec-row', app).forEach(row => {
-    row.onclick = () => drillToActivity('all', 'all', row.dataset.merchant);
-  });
+  // wirePress also gives the mobile rec-cards (role=button) their previously
+  // missing Enter/Space activation; on the table rows the keydown is inert.
+  $$('.rec-row', app).forEach(row =>
+    wirePress(row, () => drillToActivity('all', 'all', row.dataset.merchant)));
 }
 
 // One recurring list (expenses or income). Income rows get a + sign and are
@@ -2393,11 +2443,7 @@ function renderSettings(app) {
     const cat = catById(id);
     $('.cat-name', row).onchange = e => { cat.name = e.target.value.trim() || cat.name; saveData(); };
     const b = $('.budget', row);
-    if (b) b.onchange = e => {
-      const v = parseFloat(e.target.value);
-      cat.budget = isFinite(v) && v > 0 ? Math.round(v * 100) : null;
-      saveData(); toast(cat.budget ? `${cat.name} budget: ${moneyAbs(cat.budget)}/mo` : `${cat.name} budget removed`);
-    };
+    if (b) b.onchange = e => setCatBudget(cat, e.target.value);
     $('.cat-del', row).onclick = () => {
       const n = data.transactions.filter(t => t.categoryId === id).length;
       if (!confirm(`Delete "${cat.name}"?${n ? ` ${n} transaction(s) will move to Uncategorized.` : ''}`)) return;
@@ -2461,12 +2507,8 @@ function renderSettings(app) {
 
   // data
   $('#export-json').onclick = () => {
-    const blob = new Blob([JSON.stringify(data, null, 1)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'finance-backup-' + todayStr() + '.json';
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    downloadBlob(new Blob([JSON.stringify(data, null, 1)], { type: 'application/json' }),
+      'finance-backup-' + todayStr() + '.json');
     toast('Backup downloaded');
   };
   $('#export-csv').onclick = () => {
@@ -2484,12 +2526,7 @@ function renderSettings(app) {
         t.isTransfer ? 'Yes' : 'No',
       ].map(csvCell).join(','));
     }
-    const blob = new Blob([lines.join('\r\n')], { type: 'text/csv' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'transactions-' + todayStr() + '.csv';
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    downloadBlob(new Blob([lines.join('\r\n')], { type: 'text/csv' }), 'transactions-' + todayStr() + '.csv');
     toast('Transactions exported');
   };
   $('#import-json').onclick = () => $('#import-json-file').click();
@@ -2517,7 +2554,7 @@ function renderSettings(app) {
 }
 
 /* ---------- CSV import modal ---------- */
-let importCtx = null; // { rows, map, accountId }
+let importCtx = null; // { rows, map } — the account is read from the picker at import time
 
 function openImportModal() {
   importCtx = { rows: null, map: null };
@@ -2713,8 +2750,6 @@ function openImportModal() {
     if (res.invalid) bits.push(`${res.invalid} unreadable`);
     toast(bits.join(' · '));
   }
-
-  // pre-select remembered mapping's account? (mapping restored on import per account)
 }
 
 /* ---------- boot ---------- */
